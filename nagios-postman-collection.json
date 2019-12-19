@@ -1,0 +1,12 @@
+{
+    "id": "9f3a92c5483b3c510b798ae56b480f69",
+    "name": "Nagios",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": []
+}
