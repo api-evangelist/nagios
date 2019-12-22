@@ -9,8 +9,8 @@
         "monitoring",
         "networks"
     ],
-    "created": "2019-12-19",
-    "modified": "2019-12-19",
+    "created": "2019-12-21",
+    "modified": "2019-12-21",
     "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/nagios\/master\/apis.json",
     "specificationVersion": "0.14",
     "apis": [
@@ -24,17 +24,21 @@
             "properties": [
                 {
                     "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/nagios-openapi.json"
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/nagios\/master\/nagios-openapi.json"
                 },
                 {
                     "type": "x-postman-collecction",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/nagios-postman-collection.json"
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/nagios\/master\/nagios-postman-collection.json"
                 }
             ]
         }
     ],
     "include": [],
     "x-common": [
+        {
+            "type": "APIs.json",
+            "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/apis.json"
+        },
         {
             "type": "Blog",
             "url": "https:\/\/www.nagios.org\/news\/"
