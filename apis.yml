@@ -1,0 +1,90 @@
+aid: nagios
+name: Nagios
+description: >-
+  Nagios is a family of open-source and commercial IT infrastructure
+  monitoring tools, including Nagios Core (the original open-source monitoring
+  engine), Nagios XI (the commercial enterprise distribution), Nagios Fusion,
+  Nagios Log Server, and Nagios Network Analyzer, used to monitor hosts,
+  services, networks, applications, and metrics with alerting and reporting.
+  Nagios Core itself has no central HTTP API; Nagios XI ships a built-in REST
+  API (typically reached at https://{nagios-xi-host}/nagiosxi/api/v1/) for
+  reading, writing, deleting, and updating monitoring configuration and
+  status. The Nagios XI API is authenticated via a per-user API key passed
+  as a query parameter or header.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Monitoring
+  - Infrastructure Monitoring
+  - Network Monitoring
+  - Open Source
+  - IT Operations
+  - Alerting
+  - Nagios XI
+  - Nagios Core
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/nagios/refs/heads/main/apis.yml
+created: '2026-05-11'
+modified: '2026-05-11'
+specificationVersion: '0.19'
+apis:
+  - aid: nagios:xi-rest-api
+    name: Nagios XI REST API
+    description: >-
+      Built-in REST API for Nagios XI, the commercial enterprise distribution
+      of Nagios. Provides endpoints for objects (hosts, services, host groups,
+      contacts), config management, system status, and reporting. Responses
+      are returned as JSON. Authentication uses a per-user Nagios XI API key
+      passed via the `apikey` query parameter (or header).
+    humanURL: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
+    baseURL: https://{nagios-xi-host}/nagiosxi/api/v1
+    tags:
+      - Monitoring
+      - REST
+      - Nagios XI
+      - IT Operations
+    properties:
+      - type: Documentation
+        url: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
+      - type: API PDF Guide
+        url: https://assets.nagios.com/downloads/nagiosxi/docs/Accessing-and-Using-the-XI-REST-API.pdf
+      - type: Backend API
+        url: https://assets.nagios.com/downloads/nagiosxi/docs/Accessing_The_XI_Backend_API.pdf
+      - type: Automated Host Management
+        url: https://assets.nagios.com/downloads/nagiosxi/docs/Automated_Host_Management.pdf
+  - aid: nagios:ncpa-api
+    name: NCPA (Nagios Cross-Platform Agent) API
+    description: >-
+      REST API exposed by the Nagios Cross-Platform Agent (NCPA), a
+      cross-platform monitoring agent that runs on Linux, Windows, and macOS.
+      The NCPA API allows passive and active monitoring data to be retrieved
+      from the agent and integrated into Nagios Core or Nagios XI. Requests
+      are authenticated via a configured token.
+    humanURL: https://www.nagios.org/ncpa/help/3.x/api.html
+    baseURL: https://{ncpa-host}:5693/api
+    tags:
+      - Monitoring
+      - Agent
+      - REST
+      - NCPA
+    properties:
+      - type: Documentation
+        url: https://www.nagios.org/ncpa/help/3.x/api.html
+
+common:
+  - type: Website
+    url: https://www.nagios.org
+  - type: Nagios XI Website
+    url: https://www.nagios.com/products/nagios-xi/
+  - type: Documentation
+    url: https://www.nagios.org/documentation/
+  - type: Support Knowledgebase
+    url: https://support.nagios.com/kb/
+  - type: Pricing
+    url: https://www.nagios.com/products/pricing/
+  - type: Downloads
+    url: https://www.nagios.org/downloads/
+
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
