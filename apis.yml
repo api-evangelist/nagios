@@ -72,6 +72,10 @@ apis:
         url: https://www.nagios.org/ncpa/help/3.x/api.html
 
 common:
+  - type: GitHubOrganization
+    url: https://github.com/NagiosEnterprises
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/nagios-enterprises-llc
   - type: Website
     url: https://www.nagios.org
   - type: Nagios XI Website
