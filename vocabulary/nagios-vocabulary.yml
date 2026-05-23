@@ -1,0 +1,74 @@
+name: Nagios Vocabulary
+description: |
+  Domain vocabulary for the Nagios family of monitoring tools. Captures the
+  canonical concepts shared across Nagios Core, Nagios XI, NCPA, NRPE, NSCA,
+  NRDP and related Nagios Enterprises projects.
+version: '0.1'
+terms:
+  Host:
+    definition: A monitored network entity (server, switch, router, sensor) identified by `host_name` and reachable at an `address`.
+    aliases: [Node]
+  Service:
+    definition: A monitored function or metric on a host (PING, HTTP, CPU). Tied to one host via `host_name` + `service_description`.
+  HostGroup:
+    definition: A named collection of hosts used for assignment and reporting.
+  ServiceGroup:
+    definition: A named collection of services used for assignment and reporting.
+  Contact:
+    definition: A notification recipient with one or more notification methods.
+  ContactGroup:
+    definition: A named collection of contacts.
+  CheckCommand:
+    definition: A reusable command definition that wraps a Nagios plugin invocation.
+  Plugin:
+    definition: An executable returning a Nagios exit code (0/1/2/3) and a stdout summary plus optional `| perfdata`.
+  ActiveCheck:
+    definition: A check executed by Nagios on a schedule against a host/service.
+  PassiveCheck:
+    definition: A check result submitted *to* Nagios by an external source (via NSCA, NRDP, NCPA push, or external command pipe).
+  State:
+    definition: Current evaluated state. Hosts use UP/DOWN/UNREACHABLE; services use OK/WARNING/CRITICAL/UNKNOWN.
+  StateType:
+    definition: SOFT (transitioning) or HARD (confirmed after max_check_attempts).
+  Downtime:
+    definition: A scheduled window during which notifications are suppressed for a host or service.
+  EventHandler:
+    definition: A script triggered on state changes to perform remediation or escalation.
+  Notification:
+    definition: An alert sent to contacts when a host/service changes state, honoring time periods and escalation rules.
+  TimePeriod:
+    definition: A named schedule defining when checks or notifications may occur.
+  Escalation:
+    definition: A rule that re-notifies different contacts after a configurable number of notifications.
+  Flapping:
+    definition: Rapid state oscillation detected by Nagios to suppress alert noise.
+  Perfdata:
+    definition: Optional pipe-delimited performance metrics appended to plugin output, parsed by graphing back ends.
+  NEB:
+    definition: Nagios Event Broker — Nagios Core's in-process module loader for extensions (mod-gearman, NDOUtils, NSCA helpers).
+  NCPA:
+    definition: Nagios Cross-Platform Agent — Python/Shell-based monitoring agent for Linux/Windows/macOS exposing an HTTPS API on port 5693.
+  NRPE:
+    definition: Nagios Remote Plugin Executor — daemon that runs Nagios plugins on a remote host on TCP port 5666.
+  NSCA:
+    definition: Nagios Service Check Acceptor — encrypted binary daemon (TCP 5667) for submitting passive check results.
+  NRDP:
+    definition: Nagios Remote Data Processor — PHP-based HTTP collector accepting XML/JSON passive check submissions.
+  ApiKey:
+    definition: Per-user token used to authenticate Nagios XI REST API calls via the `apikey` parameter.
+  ApplyConfig:
+    definition: Operation that validates pending configuration changes and restarts Nagios Core.
+tags:
+  - Monitoring
+  - Infrastructure Monitoring
+  - Network Monitoring
+  - Open Source
+  - IT Operations
+  - Alerting
+  - Observability
+  - Nagios Core
+  - Nagios XI
+  - NCPA
+  - NRPE
+  - NSCA
+  - NRDP

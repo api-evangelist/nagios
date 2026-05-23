@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nagios/main/json-schema/nagios-xi-host-schema.json",
+  "title": "Nagios XI Host",
+  "description": "Definition of a monitored host in Nagios XI / Nagios Core. Mirrors the directives accepted by `define host { ... }` and the `POST /config/host` REST endpoint.",
+  "type": "object",
+  "required": ["host_name", "address"],
+  "properties": {
+    "host_name": { "type": "string", "description": "Unique host identifier." },
+    "alias": { "type": "string" },
+    "address": { "type": "string", "description": "IP address or DNS name." },
+    "display_name": { "type": "string" },
+    "use": { "type": "string", "description": "Inherited template name (e.g. xiwizard_generic_host)." },
+    "parents": { "type": "array", "items": { "type": "string" } },
+    "hostgroups": { "type": "array", "items": { "type": "string" } },
+    "check_command": { "type": "string" },
+    "max_check_attempts": { "type": "integer", "minimum": 1 },
+    "check_interval": { "type": "number", "minimum": 0 },
+    "retry_interval": { "type": "number", "minimum": 0 },
+    "check_period": { "type": "string" },
+    "notification_interval": { "type": "number" },
+    "notification_period": { "type": "string" },
+    "notification_options": { "type": "string", "description": "Combination of d,u,r,f,s,n." },
+    "contacts": { "type": "string" },
+    "contact_groups": { "type": "string" },
+    "active_checks_enabled": { "type": "integer", "enum": [0, 1] },
+    "passive_checks_enabled": { "type": "integer", "enum": [0, 1] },
+    "notifications_enabled": { "type": "integer", "enum": [0, 1] },
+    "event_handler_enabled": { "type": "integer", "enum": [0, 1] },
+    "flap_detection_enabled": { "type": "integer", "enum": [0, 1] },
+    "process_perf_data": { "type": "integer", "enum": [0, 1] }
+  }
+}

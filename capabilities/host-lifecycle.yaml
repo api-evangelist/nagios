@@ -1,0 +1,22 @@
+name: host-lifecycle
+title: Host Lifecycle Workflow
+description: |
+  End-to-end workflow for registering a new monitored host in Nagios XI,
+  attaching services, applying config, and de-registering at decommission.
+provider: nagios
+workflow:
+  - step: register-host
+    api: nagios-xi
+    capability: register-host
+  - step: register-service
+    api: nagios-xi
+    capability: register-service
+  - step: apply-config
+    api: nagios-xi
+    capability: apply-config
+  - step: verify-status
+    api: nagios-xi
+    capability: list-host-status
+  - step: deregister-host
+    api: nagios-xi
+    capability: deregister-host

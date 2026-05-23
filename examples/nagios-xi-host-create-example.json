@@ -1,0 +1,11 @@
+{
+  "_request": {
+    "method": "POST",
+    "url": "https://nagios.example.com/nagiosxi/api/v1/config/host?apikey=5goacg8s&pretty=1",
+    "headers": { "Content-Type": "application/x-www-form-urlencoded" },
+    "body": "host_name=LOC_MASShost_1&address=127.0.0.1&use=xiwizard_generic_host&force=1&applyconfig=1"
+  },
+  "_response": {
+    "success": "Added host LOC_MASShost_1. Config applied, Nagios Core was restarted."
+  }
+}

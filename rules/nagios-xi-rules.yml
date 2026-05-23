@@ -1,0 +1,42 @@
+extends: [[spectral:oas, all]]
+documentationUrl: https://github.com/api-evangelist/nagios
+
+rules:
+  nagios-summary-title-case:
+    description: Operation summaries should use Title Case.
+    severity: warn
+    given: $.paths..[get,post,put,delete].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: '^([A-Z][A-Za-z0-9]*)( ([A-Z][A-Za-z0-9]*|API|REST|JSON|XML|URL|ID))*$'
+  nagios-apikey-security:
+    description: Every operation must declare apikey-based security (Nagios XI uses per-user API keys).
+    severity: error
+    given: $.paths..[get,post,put,delete]
+    then:
+      field: security
+      function: truthy
+  nagios-tag-vocabulary:
+    description: Tags must come from the Nagios XI section vocabulary (Objects, Config, System).
+    severity: warn
+    given: $.paths..[get,post,put,delete].tags[*]
+    then:
+      function: enumeration
+      functionOptions:
+        values: [Objects, Config, System]
+  nagios-operation-id-camel:
+    description: operationId must be lowerCamelCase.
+    severity: warn
+    given: $.paths..[get,post,put,delete].operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[a-z][a-zA-Z0-9]+$'
+  nagios-response-200:
+    description: Every operation must define a 200 response.
+    severity: error
+    given: $.paths..[get,post,put,delete].responses
+    then:
+      field: '200'
+      function: truthy

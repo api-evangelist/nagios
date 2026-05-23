@@ -1,0 +1,27 @@
+extends: [[spectral:oas, all]]
+documentationUrl: https://github.com/api-evangelist/nagios
+
+rules:
+  ncpa-token-required:
+    description: Every NCPA operation must require the `token` query parameter.
+    severity: error
+    given: $.paths..[get,post]
+    then:
+      field: security
+      function: truthy
+  ncpa-summary-title-case:
+    description: Operation summaries should use Title Case.
+    severity: warn
+    given: $.paths..[get,post,put,delete].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: '^([A-Z][A-Za-z0-9]*)( ([A-Z][A-Za-z0-9]*|API|CPU|NCPA))*$'
+  ncpa-tag-vocabulary:
+    description: Tags must come from the NCPA module vocabulary.
+    severity: warn
+    given: $.paths..[get,post,put,delete].tags[*]
+    then:
+      function: enumeration
+      functionOptions:
+        values: [System, CPU, Memory, Disk, Interface, Processes, Services, Plugins]

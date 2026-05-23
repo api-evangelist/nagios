@@ -1,0 +1,9 @@
+{
+  "_request": {
+    "method": "DELETE",
+    "url": "https://nagios.example.com/nagiosxi/api/v1/config/service?apikey=5goacg8s&pretty=1&host_name=LOC_MASShost_1&service_description=LOC_MASSservice_ping"
+  },
+  "_response": {
+    "success": "Removed LOC_MASShost_1 :: LOC_MASSservice_ping from the system. Config imported but not yet applied."
+  }
+}

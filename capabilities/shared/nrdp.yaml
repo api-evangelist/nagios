@@ -1,0 +1,23 @@
+name: nrdp
+title: NRDP Capabilities
+description: Capabilities for submitting passive check results into Nagios via NRDP.
+provider: nagios
+api: nrdp
+specification: openapi/nrdp-openapi.yml
+capabilities:
+  - id: submit-passive-check
+    title: Submit Passive Check
+    description: Submit one or more host/service check results to a Nagios server.
+    operation: submitNrdp
+    method: POST
+    path: /
+    inputs: [token, cmd, XMLDATA, JSONDATA]
+    tags: [Write, PassiveMonitoring]
+  - id: submit-external-command
+    title: Submit External Command
+    description: Send a Nagios external command via NRDP.
+    operation: submitNrdp
+    method: POST
+    path: /
+    inputs: [token, cmd, command]
+    tags: [Write, Operations]

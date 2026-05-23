@@ -1,0 +1,84 @@
+apiCommonsPlansVersion: '0.1'
+provider:
+  name: Nagios Enterprises, LLC
+  product: Nagios XI
+  url: https://www.nagios.com/products/nagios-xi/
+  pricingUrl: https://www.nagios.com/products/pricing/
+plans:
+  - id: free
+    name: Free
+    description: Free Nagios XI license capped at 7 nodes or 100 services, whichever is reached first.
+    price:
+      amount: 0
+      currency: USD
+      interval: perpetual
+    limits:
+      nodes: 7
+      services: 100
+      reachedFirst: true
+  - id: standard
+    name: Standard
+    description: Infrastructure monitoring and graphing, Open API to connect to existing technology stack, enhanced alerting and reporting.
+    price:
+      currency: USD
+      interval: perpetual
+      tiers:
+        - nodes: 100
+          amount: 2595
+        - nodes: 200
+          amount: 4395
+        - nodes: 300
+          amount: 6195
+        - nodes: 400
+          amount: 7295
+        - nodes: 500
+          amount: 8295
+        - nodes: 750
+          amount: 11495
+        - nodes: 1000
+          amount: 14995
+        - nodes: 2000
+          amount: null
+          note: Contact Sales
+    features:
+      - infrastructureMonitoring
+      - graphing
+      - openApi
+      - enhancedAlerting
+      - reporting
+  - id: enterprise
+    name: Enterprise
+    description: Enterprise feature add-on available on top of any Nagios XI license level.
+    price:
+      currency: USD
+      interval: perpetual
+      tiers:
+        - nodes: 100
+          amount: 4690
+        - nodes: 200
+          amount: 6490
+        - nodes: 300
+          amount: 8290
+        - nodes: 400
+          amount: 9390
+        - nodes: 500
+          amount: 10390
+        - nodes: 750
+          amount: 13590
+        - nodes: 1000
+          amount: 17090
+        - nodes: 2000
+          amount: null
+          note: Contact Sales
+  - id: sitewide
+    name: Sitewide
+    description: Sitewide packages include Enterprise features at no additional cost. Contact sales for pricing.
+    price:
+      amount: null
+      currency: USD
+      note: Contact Sales
+    features:
+      - enterpriseIncluded
+notes:
+  - Nagios Core, NCPA, NRPE, NSCA, NRDP, and Nagios Plugins remain free / open-source (GPLv2/GPLv3 / MIT depending on project).
+  - Pricing observed 2026-05-22 on https://www.nagios.com/products/pricing/

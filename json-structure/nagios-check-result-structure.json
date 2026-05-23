@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/structure/draft/2025-01",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nagios/main/json-structure/nagios-check-result-structure.json",
+  "name": "NagiosCheckResult",
+  "type": "object",
+  "fields": {
+    "type": { "type": "string", "enum": ["host", "service"], "required": true },
+    "hostname": { "type": "string", "required": true },
+    "servicename": { "type": "string" },
+    "state": { "type": "int32", "enum": [0, 1, 2, 3], "required": true },
+    "output": { "type": "string", "required": true },
+    "checktime": { "type": "int64", "description": "Unix timestamp." }
+  }
+}

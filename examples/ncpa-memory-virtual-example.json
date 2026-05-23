@@ -1,0 +1,13 @@
+{
+  "_request": {
+    "method": "GET",
+    "url": "https://node-1.example.com:5693/api/memory/virtual?token=mytoken&units=G"
+  },
+  "_response": {
+    "total": [15.5, "G"],
+    "available": [9.2, "G"],
+    "percent": [40.6, "%"],
+    "used": [6.3, "G"],
+    "free": [2.1, "G"]
+  }
+}

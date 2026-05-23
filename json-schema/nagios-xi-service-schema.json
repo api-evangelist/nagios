@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nagios/main/json-schema/nagios-xi-service-schema.json",
+  "title": "Nagios XI Service",
+  "description": "Definition of a monitored service on a host, mirroring `define service { ... }` and the `POST /config/service` endpoint.",
+  "type": "object",
+  "required": ["host_name", "service_description"],
+  "properties": {
+    "host_name": { "type": "string" },
+    "service_description": { "type": "string" },
+    "display_name": { "type": "string" },
+    "use": { "type": "string" },
+    "servicegroups": { "type": "array", "items": { "type": "string" } },
+    "check_command": { "type": "string" },
+    "max_check_attempts": { "type": "integer", "minimum": 1 },
+    "check_interval": { "type": "number", "minimum": 0 },
+    "retry_interval": { "type": "number", "minimum": 0 },
+    "check_period": { "type": "string" },
+    "notification_interval": { "type": "number" },
+    "notification_period": { "type": "string" },
+    "notification_options": { "type": "string", "description": "Combination of w,u,c,r,f,s,n." },
+    "contacts": { "type": "string" },
+    "contact_groups": { "type": "string" },
+    "active_checks_enabled": { "type": "integer", "enum": [0, 1] },
+    "passive_checks_enabled": { "type": "integer", "enum": [0, 1] },
+    "freshness_threshold": { "type": "integer" },
+    "is_volatile": { "type": "integer", "enum": [0, 1] }
+  }
+}

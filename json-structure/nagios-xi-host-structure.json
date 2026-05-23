@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/structure/draft/2025-01",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nagios/main/json-structure/nagios-xi-host-structure.json",
+  "name": "NagiosXiHost",
+  "type": "object",
+  "fields": {
+    "host_name": { "type": "string", "required": true },
+    "address": { "type": "string", "required": true },
+    "display_name": { "type": "string" },
+    "use": { "type": "string", "description": "Inherited template." },
+    "hostgroups": { "type": { "array": "string" } },
+    "check_command": { "type": "string" },
+    "max_check_attempts": { "type": "int32" },
+    "check_interval": { "type": "double" },
+    "retry_interval": { "type": "double" },
+    "notification_interval": { "type": "double" },
+    "notification_period": { "type": "string" },
+    "contacts": { "type": "string" },
+    "contact_groups": { "type": "string" }
+  }
+}

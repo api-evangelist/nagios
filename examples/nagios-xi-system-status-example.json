@@ -1,0 +1,24 @@
+{
+  "_request": {
+    "method": "GET",
+    "url": "https://nagios.example.com/nagiosxi/api/v1/system/status?apikey=5goacg8s&pretty=1"
+  },
+  "_response": {
+    "instance_id": "1",
+    "instance_name": "localhost",
+    "status_update_time": "2026-05-22 16:37:46",
+    "program_start_time": "2026-05-22 14:20:42",
+    "program_run_time": "8225",
+    "is_currently_running": "1",
+    "process_id": "2819",
+    "daemon_mode": "1",
+    "notifications_enabled": "1",
+    "active_service_checks_enabled": "1",
+    "passive_service_checks_enabled": "1",
+    "active_host_checks_enabled": "1",
+    "passive_host_checks_enabled": "1",
+    "event_handlers_enabled": "1",
+    "flap_detection_enabled": "1",
+    "process_performance_data": "1"
+  }
+}

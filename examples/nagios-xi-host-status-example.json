@@ -1,0 +1,24 @@
+{
+  "_request": {
+    "method": "GET",
+    "url": "https://nagios.example.com/nagiosxi/api/v1/objects/hoststatus?apikey=5goacg8s&pretty=1&host_name=web01"
+  },
+  "_response": {
+    "recordcount": 1,
+    "hoststatus": [
+      {
+        "host_object_id": "42",
+        "host_name": "web01",
+        "current_state": 0,
+        "status_update_time": "2026-05-22 16:40:00",
+        "last_check": "2026-05-22 16:39:55",
+        "last_state_change": "2026-05-20 09:15:42",
+        "output": "PING OK - Packet loss = 0%, RTA = 0.42 ms",
+        "perfdata": "rta=0.420ms;3000.000;5000.000;0; pl=0%;80;100;0;100",
+        "notifications_enabled": 1,
+        "active_checks_enabled": 1,
+        "passive_checks_enabled": 1
+      }
+    ]
+  }
+}

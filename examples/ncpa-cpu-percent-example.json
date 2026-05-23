@@ -1,0 +1,10 @@
+{
+  "_request": {
+    "method": "GET",
+    "url": "https://node-1.example.com:5693/api/cpu/percent?token=mytoken&aggregate=avg&warning=80&critical=90&check=1"
+  },
+  "_response": {
+    "returncode": 0,
+    "stdout": "OK: Average CPU usage was 12.4% | 'cpu_percent'=12.4%;80;90;"
+  }
+}

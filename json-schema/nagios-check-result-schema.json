@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nagios/main/json-schema/nagios-check-result-schema.json",
+  "title": "Nagios Check Result",
+  "description": "Canonical Nagios passive/active check result payload as accepted by NRDP, NSCA, and NCPA.",
+  "type": "object",
+  "required": ["hostname", "state", "output"],
+  "properties": {
+    "type": { "type": "string", "enum": ["host", "service"] },
+    "hostname": { "type": "string" },
+    "servicename": { "type": "string", "description": "Required when type=service." },
+    "state": {
+      "type": "integer",
+      "enum": [0, 1, 2, 3],
+      "description": "For services: 0=OK, 1=WARNING, 2=CRITICAL, 3=UNKNOWN. For hosts: 0=UP, 1=DOWN, 2=UNREACHABLE, 3=UNKNOWN."
+    },
+    "output": { "type": "string", "description": "Plugin output text. Optional `| perfdata` suffix." },
+    "checktime": { "type": "integer", "format": "int64", "description": "Unix timestamp." }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "type": { "const": "service" } }, "required": ["type"] },
+      "then": { "required": ["servicename"] }
+    }
+  ]
+}

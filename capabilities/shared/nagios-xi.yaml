@@ -1,0 +1,64 @@
+name: nagios-xi
+title: Nagios XI Capabilities
+description: Per-API capabilities exposed by the Nagios XI REST API.
+provider: nagios
+api: nagios-xi
+specification: openapi/nagios-xi-openapi.yml
+capabilities:
+  - id: list-host-status
+    title: List Host Status
+    description: Retrieve the current state (UP/DOWN/UNREACHABLE) of one or more hosts.
+    operation: listHostStatuses
+    method: GET
+    path: /objects/hoststatus
+    inputs: [host_name]
+    outputs: [current_state, last_check, output, perfdata]
+    tags: [Read, Monitoring]
+  - id: list-service-status
+    title: List Service Status
+    description: Retrieve the OK/WARN/CRIT/UNKNOWN state of services on a host.
+    operation: listServiceStatuses
+    method: GET
+    path: /objects/servicestatus
+    inputs: [host_name, name]
+    outputs: [current_state, last_check, output, perfdata]
+    tags: [Read, Monitoring]
+  - id: register-host
+    title: Register Host
+    description: Add a new monitored host (idempotent with force=1) and optionally apply config.
+    operation: createOrUpdateHost
+    method: POST
+    path: /config/host
+    inputs: [host_name, address, use, force, applyconfig]
+    tags: [Write, Configuration]
+  - id: register-service
+    title: Register Service
+    description: Add a new monitored service tied to a host and apply config.
+    operation: createOrUpdateService
+    method: POST
+    path: /config/service
+    inputs: [host_name, service_description, use, check_command, applyconfig]
+    tags: [Write, Configuration]
+  - id: deregister-host
+    title: Deregister Host
+    description: Delete a host (requires all dependent services to be removed first).
+    operation: deleteHost
+    method: DELETE
+    path: /config/host
+    inputs: [host_name, applyconfig]
+    tags: [Write, Configuration]
+  - id: apply-config
+    title: Apply Configuration
+    description: Run apply-config to validate and restart Nagios with pending changes.
+    operation: applyConfig
+    method: POST
+    path: /system/applyconfig
+    tags: [Write, Administration]
+  - id: schedule-downtime
+    title: Schedule Downtime
+    description: Schedule maintenance downtime for one or more hosts or services.
+    operation: scheduleDowntime
+    method: POST
+    path: /system/scheduleddowntime
+    inputs: [comment, start, end, "hosts[]", "services[host][]"]
+    tags: [Write, Operations]

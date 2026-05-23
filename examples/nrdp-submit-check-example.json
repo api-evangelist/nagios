@@ -1,0 +1,13 @@
+{
+  "_request": {
+    "method": "POST",
+    "url": "https://nagios.example.com/nrdp/",
+    "headers": { "Content-Type": "application/x-www-form-urlencoded" },
+    "body": "token=mytoken&cmd=submitcheck&JSONDATA={\"checkresults\":[{\"checkresult\":{\"type\":\"service\",\"checktype\":\"1\"},\"hostname\":\"web01\",\"servicename\":\"HTTP\",\"state\":\"0\",\"output\":\"HTTP OK: 200 OK | time=0.123s;5.000;10.000;\"}]}"
+  },
+  "_response": {
+    "status": 0,
+    "message": "OK",
+    "meta": { "output": "1 checks processed." }
+  }
+}

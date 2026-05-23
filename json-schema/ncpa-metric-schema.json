@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nagios/main/json-schema/ncpa-metric-schema.json",
+  "title": "NCPA Metric Response",
+  "description": "Response format returned by NCPA module endpoints. Each metric is a `[value, \"unit\"]` tuple.",
+  "type": "object",
+  "additionalProperties": {
+    "type": "array",
+    "minItems": 2,
+    "maxItems": 2,
+    "items": [
+      { "type": ["number", "string", "array"] },
+      { "type": "string", "description": "Unit label (e.g. '%', 'B', 'KiB', 'c')." }
+    ]
+  }
+}
