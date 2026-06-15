@@ -1,0 +1,473 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nagios XI REST API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Objects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Host Objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/objects/host",
+            "params": [
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 to return human-readable formatted JSON."
+              },
+              {
+                "name": "host_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by host name (supports `name-lk=` modifier for substring match)."
+              },
+              {
+                "name": "records",
+                "value": "",
+                "type": "query",
+                "description": "Pagination, format `count` or `count:startingAt`."
+              },
+              {
+                "name": "orderby",
+                "value": "",
+                "type": "query",
+                "description": "Order by column, `:a` ascending or `:d` descending."
+              }
+            ]
+          },
+          "docs": "List Host Objects"
+        },
+        {
+          "info": {
+            "name": "List Host Statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/objects/hoststatus",
+            "params": [
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 to return human-readable formatted JSON."
+              },
+              {
+                "name": "host_name",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Host Statuses"
+        },
+        {
+          "info": {
+            "name": "List Service Objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/objects/service",
+            "params": [
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 to return human-readable formatted JSON."
+              },
+              {
+                "name": "host_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "service_description",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Service Objects"
+        },
+        {
+          "info": {
+            "name": "List Service Statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/objects/servicestatus",
+            "params": [
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 to return human-readable formatted JSON."
+              },
+              {
+                "name": "host_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Service description (with optional `-lk` modifier)."
+              }
+            ]
+          },
+          "docs": "List Service Statuses"
+        },
+        {
+          "info": {
+            "name": "List Host Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/objects/hostgroup",
+            "params": [
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 to return human-readable formatted JSON."
+              }
+            ]
+          },
+          "docs": "List Host Groups"
+        },
+        {
+          "info": {
+            "name": "List Service Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/objects/servicegroup",
+            "params": [
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 to return human-readable formatted JSON."
+              }
+            ]
+          },
+          "docs": "List Service Groups"
+        },
+        {
+          "info": {
+            "name": "List Contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/objects/contact",
+            "params": [
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 to return human-readable formatted JSON."
+              }
+            ]
+          },
+          "docs": "List Contacts"
+        },
+        {
+          "info": {
+            "name": "List Contact Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/objects/contactgroup",
+            "params": [
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 to return human-readable formatted JSON."
+              }
+            ]
+          },
+          "docs": "List Contact Groups"
+        },
+        {
+          "info": {
+            "name": "List Time Periods",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/objects/timeperiod",
+            "params": [
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 to return human-readable formatted JSON."
+              }
+            ]
+          },
+          "docs": "List Time Periods"
+        },
+        {
+          "info": {
+            "name": "List Commands",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/objects/command",
+            "params": [
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 to return human-readable formatted JSON."
+              }
+            ]
+          },
+          "docs": "List Commands"
+        },
+        {
+          "info": {
+            "name": "List Scheduled Downtime",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/objects/downtime",
+            "params": [
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 to return human-readable formatted JSON."
+              }
+            ]
+          },
+          "docs": "List Scheduled Downtime"
+        },
+        {
+          "info": {
+            "name": "List State History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/objects/statehistory",
+            "params": [
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 to return human-readable formatted JSON."
+              },
+              {
+                "name": "starttime",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp (default 24 hours ago)."
+              },
+              {
+                "name": "endtime",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp (default now)."
+              }
+            ]
+          },
+          "docs": "List State History"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Config",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Or Update Host",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/config/host",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Add or update a Nagios XI host definition. Use `force=1` to skip template-required directives and `applyconfig=1` to immediately apply the running configuration."
+        },
+        {
+          "info": {
+            "name": "Delete Host",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/config/host",
+            "params": [
+              {
+                "name": "host_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "applyconfig",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete Host"
+        },
+        {
+          "info": {
+            "name": "Create Or Update Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/config/service",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Create Or Update Service"
+        },
+        {
+          "info": {
+            "name": "Delete Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/config/service",
+            "params": [
+              {
+                "name": "host_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "service_description",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "applyconfig",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete Service"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "System",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get System Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/system/status",
+            "params": [
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 to return human-readable formatted JSON."
+              }
+            ]
+          },
+          "docs": "Get System Status"
+        },
+        {
+          "info": {
+            "name": "Apply Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/system/applyconfig"
+          },
+          "docs": "Run Apply Configuration to validate and restart Nagios with any pending object changes."
+        },
+        {
+          "info": {
+            "name": "Schedule Downtime",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/system/scheduleddowntime",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "comment",
+                  "value": ""
+                },
+                {
+                  "name": "start",
+                  "value": ""
+                },
+                {
+                  "name": "end",
+                  "value": ""
+                },
+                {
+                  "name": "hosts[]",
+                  "value": ""
+                },
+                {
+                  "name": "services[host][]",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Schedule Downtime"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

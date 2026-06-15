@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NRDP (Nagios Remote Data Processor) API",
+    "version": "2.0.x"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "token",
+      "value": "{{token}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Submission",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Submit NRDP Payload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{nrdpHost}/nrdp/",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "token",
+                  "value": ""
+                },
+                {
+                  "name": "cmd",
+                  "value": ""
+                },
+                {
+                  "name": "XMLDATA",
+                  "value": ""
+                },
+                {
+                  "name": "JSONDATA",
+                  "value": ""
+                },
+                {
+                  "name": "command",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Submit a `checkresults` payload (`cmd=submitcheck`) or a Nagios external\ncommand (`cmd=submitcmd`). The body can be `application/x-www-form-urlencoded`\nwith an XML/JSON `XMLDATA`/`JSONDATA` field.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

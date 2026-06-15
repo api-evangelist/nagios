@@ -1,18 +1,14 @@
 aid: nagios
 name: Nagios
 description: >-
-  Nagios is a family of open-source and commercial IT infrastructure
-  monitoring tools, including Nagios Core (the original open-source monitoring
-  engine), Nagios XI (the commercial enterprise distribution), Nagios Fusion,
-  Nagios Log Server, and Nagios Network Analyzer, used to monitor hosts,
-  services, networks, applications, and metrics with alerting and reporting.
-  Nagios Core itself has no central HTTP API; Nagios XI ships a built-in REST
-  API (typically reached at https://{nagios-xi-host}/nagiosxi/api/v1/) for
-  reading, writing, deleting, and updating monitoring configuration and
-  status. The Nagios XI API is authenticated via a per-user API key passed
-  as a query parameter or header. Passive check results can also be submitted
-  via NRDP (HTTP, JSON/XML) or NSCA (encrypted TCP, port 5667), and the NCPA
-  cross-platform agent exposes a hierarchical REST API on port 5693.
+  Nagios is a family of open-source and commercial IT infrastructure monitoring tools, including Nagios Core (the
+  original open-source monitoring engine), Nagios XI (the commercial enterprise distribution), Nagios Fusion, Nagios Log
+  Server, and Nagios Network Analyzer, used to monitor hosts, services, networks, applications, and metrics with
+  alerting and reporting. Nagios Core itself has no central HTTP API; Nagios XI ships a built-in REST API (typically
+  reached at https://{nagios-xi-host}/nagiosxi/api/v1/) for reading, writing, deleting, and updating monitoring
+  configuration and status. The Nagios XI API is authenticated via a per-user API key passed as a query parameter or
+  header. Passive check results can also be submitted via NRDP (HTTP, JSON/XML) or NSCA (encrypted TCP, port 5667), and
+  the NCPA cross-platform agent exposes a hierarchical REST API on port 5693.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
@@ -29,23 +25,19 @@ tags:
   - NRPE
   - NSCA
   - NRDP
-url: >-
-  https://raw.githubusercontent.com/api-evangelist/nagios/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/nagios/refs/heads/main/apis.yml
 created: '2026-05-11'
 modified: '2026-05-23'
 specificationVersion: '0.19'
-
 apis:
   - aid: nagios:xi-rest-api
     name: Nagios XI REST API
     description: >-
-      Built-in REST API for Nagios XI. Split into three sections: Objects
-      (read-only backend for hosts, services, host groups, contacts, downtime,
-      history), Config (admin-only writes for hosts and services), and System
-      (admin-only commands such as apply configuration, scheduled downtime,
-      status). Responses are returned as JSON. Authentication uses a per-user
-      Nagios XI API key passed via the `apikey` query parameter (or header).
-      Custom endpoints can be added by creating a Nagios XI Component.
+      Built-in REST API for Nagios XI. Split into three sections: Objects (read-only backend for hosts, services, host
+      groups, contacts, downtime, history), Config (admin-only writes for hosts and services), and System (admin-only
+      commands such as apply configuration, scheduled downtime, status). Responses are returned as JSON. Authentication
+      uses a per-user Nagios XI API key passed via the `apikey` query parameter (or header). Custom endpoints can be
+      added by creating a Nagios XI Component.
     humanURL: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
     baseURL: https://{nagios-xi-host}/nagiosxi/api/v1
     tags:
@@ -72,20 +64,14 @@ apis:
         url: json-structure/nagios-xi-host-structure.json
       - type: SpectralRules
         url: rules/nagios-xi-rules.yml
-      - type: NaftikoCapabilities
-        url: capabilities/shared/nagios-xi.yaml
-
   - aid: nagios:ncpa-api
     name: NCPA (Nagios Cross-Platform Agent) API
     description: >-
-      REST API exposed by the Nagios Cross-Platform Agent (NCPA), a
-      cross-platform monitoring agent that runs on Linux, Windows, and macOS.
-      Uses a hierarchical URL structure `/api/{module}/{node1}/{node2}` for
-      CPU, memory, disk, interface, process, service, and plugin metrics.
-      Both active polling and passive Nagios-style check results
-      (`check=1` + thresholds) are supported. Authenticated via a `token`
-      query parameter matching the `community_string` in the agent config.
-      Default TLS port 5693.
+      REST API exposed by the Nagios Cross-Platform Agent (NCPA), a cross-platform monitoring agent that runs on Linux,
+      Windows, and macOS. Uses a hierarchical URL structure `/api/{module}/{node1}/{node2}` for CPU, memory, disk,
+      interface, process, service, and plugin metrics. Both active polling and passive Nagios-style check results
+      (`check=1` + thresholds) are supported. Authenticated via a `token` query parameter matching the
+      `community_string` in the agent config. Default TLS port 5693.
     humanURL: https://www.nagios.org/ncpa/help/3.x/api.html
     baseURL: https://{ncpa-host}:5693/api
     tags:
@@ -104,18 +90,13 @@ apis:
         url: json-schema/ncpa-metric-schema.json
       - type: SpectralRules
         url: rules/ncpa-rules.yml
-      - type: NaftikoCapabilities
-        url: capabilities/shared/ncpa.yaml
-
   - aid: nagios:nrdp-api
     name: NRDP (Nagios Remote Data Processor) API
     description: >-
-      PHP-based HTTP collector that accepts passive check results and external
-      commands. Two commands are supported: `submitcheck` (host/service check
-      results) and `submitcmd` (Nagios external command). Payloads can be sent
-      as XML (`XMLDATA`) or JSON (`JSONDATA`) in a POST form. Authenticated by
-      a token configured in `config.inc.php` with optional per-command deny
-      mappings.
+      PHP-based HTTP collector that accepts passive check results and external commands. Two commands are supported:
+      `submitcheck` (host/service check results) and `submitcmd` (Nagios external command). Payloads can be sent as XML
+      (`XMLDATA`) or JSON (`JSONDATA`) in a POST form. Authenticated by a token configured in `config.inc.php` with
+      optional per-command deny mappings.
     humanURL: https://github.com/NagiosEnterprises/nrdp
     baseURL: https://{nrdp-host}/nrdp
     tags:
@@ -132,16 +113,12 @@ apis:
         url: json-schema/nagios-check-result-schema.json
       - type: JSONStructure
         url: json-structure/nagios-check-result-structure.json
-      - type: NaftikoCapabilities
-        url: capabilities/shared/nrdp.yaml
-
   - aid: nagios:nsca
     name: NSCA (Nagios Service Check Acceptor)
     description: >-
-      Encrypted binary TCP daemon (default port 5667) that accepts passive
-      service/host check results from remote machines. Not REST — clients send
-      tab-delimited records over a shared-secret-encrypted socket. Use NRDP
-      for an HTTP/JSON equivalent.
+      Encrypted binary TCP daemon (default port 5667) that accepts passive service/host check results from remote
+      machines. Not REST — clients send tab-delimited records over a shared-secret-encrypted socket. Use NRDP for an
+      HTTP/JSON equivalent.
     humanURL: https://github.com/NagiosEnterprises/nsca
     baseURL: tcp://{nsca-host}:5667
     tags:
@@ -152,13 +129,11 @@ apis:
     properties:
       - type: GitHub
         url: https://github.com/NagiosEnterprises/nsca
-
   - aid: nagios:nrpe
     name: NRPE (Nagios Remote Plugin Executor)
     description: >-
-      Daemon that runs Nagios plugins on a remote Linux/Unix host on TCP port
-      5666, returning the plugin's exit code and output to the Nagios server.
-      Binary protocol, not REST.
+      Daemon that runs Nagios plugins on a remote Linux/Unix host on TCP port 5666, returning the plugin's exit code and
+      output to the Nagios server. Binary protocol, not REST.
     humanURL: https://github.com/NagiosEnterprises/nrpe
     baseURL: tcp://{nrpe-host}:5666
     tags:
@@ -169,7 +144,6 @@ apis:
     properties:
       - type: GitHub
         url: https://github.com/NagiosEnterprises/nrpe
-
 common:
   - type: Website
     url: https://www.nagios.org
@@ -225,11 +199,6 @@ common:
     url: vocabulary/nagios-vocabulary.yml
   - type: JSONLD
     url: json-ld/nagios-context.jsonld
-  - type: NaftikoWorkflow
-    url: capabilities/incident-monitoring.yaml
-  - type: NaftikoWorkflow
-    url: capabilities/host-lifecycle.yaml
-
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

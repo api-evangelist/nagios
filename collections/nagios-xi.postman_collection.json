@@ -1,0 +1,2485 @@
+{
+  "item": [
+    {
+      "id": "3f0ced32-ee2e-4207-9cf8-60df97b89cc0",
+      "name": "Objects",
+      "description": {
+        "content": "Read-only backend for hosts, services, host groups, contacts, downtime, history, and other monitored objects.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e5018ef7-744e-4b16-a6f8-00e990b46143",
+          "name": "List Host Objects",
+          "request": {
+            "name": "List Host Objects",
+            "description": {},
+            "url": {
+              "path": [
+                "objects",
+                "host"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pretty",
+                  "value": "0",
+                  "description": "Set to 1 to return human-readable formatted JSON."
+                },
+                {
+                  "disabled": false,
+                  "key": "host_name",
+                  "value": "<string>",
+                  "description": "Filter by host name (supports `name-lk=` modifier for substring match)."
+                },
+                {
+                  "disabled": false,
+                  "key": "records",
+                  "value": "<string>",
+                  "description": "Pagination, format `count` or `count:startingAt`."
+                },
+                {
+                  "disabled": false,
+                  "key": "orderby",
+                  "value": "<string>",
+                  "description": "Order by column, `:a` ascending or `:d` descending."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b2723a80-ad9f-4355-8db1-145dba16b284",
+              "name": "Host objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "objects",
+                    "host"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pretty",
+                      "value": "0"
+                    },
+                    {
+                      "key": "host_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "records",
+                      "value": "20:10"
+                    },
+                    {
+                      "key": "orderby",
+                      "value": "host_name:a"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"recordcount\": 9166,\n  \"host\": [\n    {\n      \"host_object_id\": \"string\",\n      \"host_name\": \"string\",\n      \"display_name\": \"string\",\n      \"address\": \"string\",\n      \"check_command\": \"string\",\n      \"max_check_attempts\": 1407,\n      \"check_interval\": 1180.5174845611243,\n      \"retry_interval\": 2656.832054790166,\n      \"notification_interval\": 5000.954832847374,\n      \"notification_period\": \"string\",\n      \"contacts\": \"string\",\n      \"contact_groups\": \"string\",\n      \"hostgroups\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"host_object_id\": \"string\",\n      \"host_name\": \"string\",\n      \"display_name\": \"string\",\n      \"address\": \"string\",\n      \"check_command\": \"string\",\n      \"max_check_attempts\": 8343,\n      \"check_interval\": 6948.9103415282,\n      \"retry_interval\": 4875.827186865663,\n      \"notification_interval\": 6284.761706681314,\n      \"notification_period\": \"string\",\n      \"contacts\": \"string\",\n      \"contact_groups\": \"string\",\n      \"hostgroups\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3227f756-10b7-4730-bcbe-30c81b6c9ec9",
+          "name": "List Host Statuses",
+          "request": {
+            "name": "List Host Statuses",
+            "description": {},
+            "url": {
+              "path": [
+                "objects",
+                "hoststatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pretty",
+                  "value": "0",
+                  "description": "Set to 1 to return human-readable formatted JSON."
+                },
+                {
+                  "disabled": false,
+                  "key": "host_name",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e16ad9c4-6af6-46a3-803a-1eb0f99236ba",
+              "name": "Host status records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "objects",
+                    "hoststatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pretty",
+                      "value": "0"
+                    },
+                    {
+                      "key": "host_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"recordcount\": 479,\n  \"hoststatus\": [\n    {\n      \"host_object_id\": \"string\",\n      \"host_name\": \"string\",\n      \"current_state\": 2,\n      \"status_update_time\": \"1980-09-26T02:57:43.931Z\",\n      \"last_check\": \"2020-03-21T05:02:10.063Z\",\n      \"last_state_change\": \"1979-03-06T20:27:04.118Z\",\n      \"output\": \"string\",\n      \"perfdata\": \"string\",\n      \"notifications_enabled\": 0,\n      \"active_checks_enabled\": 1,\n      \"passive_checks_enabled\": 1\n    },\n    {\n      \"host_object_id\": \"string\",\n      \"host_name\": \"string\",\n      \"current_state\": 3,\n      \"status_update_time\": \"1946-12-08T11:55:58.321Z\",\n      \"last_check\": \"1973-08-09T11:33:34.779Z\",\n      \"last_state_change\": \"2019-06-06T16:02:50.801Z\",\n      \"output\": \"string\",\n      \"perfdata\": \"string\",\n      \"notifications_enabled\": 0,\n      \"active_checks_enabled\": 1,\n      \"passive_checks_enabled\": 1\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0d2acf67-10fc-4115-a2d4-a5f230d33967",
+          "name": "List Service Objects",
+          "request": {
+            "name": "List Service Objects",
+            "description": {},
+            "url": {
+              "path": [
+                "objects",
+                "service"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pretty",
+                  "value": "0",
+                  "description": "Set to 1 to return human-readable formatted JSON."
+                },
+                {
+                  "disabled": false,
+                  "key": "host_name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "service_description",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bd24b553-03f5-403a-af2c-7e11d6bd6b32",
+              "name": "Service objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "objects",
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pretty",
+                      "value": "0"
+                    },
+                    {
+                      "key": "host_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "service_description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"recordcount\": 9981,\n  \"service\": [\n    {\n      \"service_object_id\": \"string\",\n      \"host_name\": \"string\",\n      \"service_description\": \"string\",\n      \"display_name\": \"string\",\n      \"check_command\": \"string\",\n      \"max_check_attempts\": 2598,\n      \"check_interval\": 8359.95080994626,\n      \"retry_interval\": 2428.1589434706875,\n      \"notification_interval\": 5729.850732708015,\n      \"check_period\": \"string\",\n      \"notification_period\": \"string\"\n    },\n    {\n      \"service_object_id\": \"string\",\n      \"host_name\": \"string\",\n      \"service_description\": \"string\",\n      \"display_name\": \"string\",\n      \"check_command\": \"string\",\n      \"max_check_attempts\": 7628,\n      \"check_interval\": 2778.913323700738,\n      \"retry_interval\": 6905.909349591343,\n      \"notification_interval\": 646.7558138069129,\n      \"check_period\": \"string\",\n      \"notification_period\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f27e1c06-a704-4ad8-9b35-611a1d516ee3",
+          "name": "List Service Statuses",
+          "request": {
+            "name": "List Service Statuses",
+            "description": {},
+            "url": {
+              "path": [
+                "objects",
+                "servicestatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pretty",
+                  "value": "0",
+                  "description": "Set to 1 to return human-readable formatted JSON."
+                },
+                {
+                  "disabled": false,
+                  "key": "host_name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Service description (with optional `-lk` modifier)."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "baff6285-5bd3-4e12-9d40-cf2b6dd56782",
+              "name": "Service status records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "objects",
+                    "servicestatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pretty",
+                      "value": "0"
+                    },
+                    {
+                      "key": "host_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"recordcount\": 5476,\n  \"servicestatus\": [\n    {\n      \"service_object_id\": \"string\",\n      \"host_name\": \"string\",\n      \"service_description\": \"string\",\n      \"current_state\": 1,\n      \"last_check\": \"2010-06-12T15:06:22.868Z\",\n      \"last_state_change\": \"1952-01-19T10:07:16.418Z\",\n      \"output\": \"string\",\n      \"perfdata\": \"string\"\n    },\n    {\n      \"service_object_id\": \"string\",\n      \"host_name\": \"string\",\n      \"service_description\": \"string\",\n      \"current_state\": 2,\n      \"last_check\": \"2010-02-16T17:10:14.249Z\",\n      \"last_state_change\": \"1972-02-02T14:14:59.814Z\",\n      \"output\": \"string\",\n      \"perfdata\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "145844e9-3614-4f74-ad90-61ff258522ca",
+          "name": "List Host Groups",
+          "request": {
+            "name": "List Host Groups",
+            "description": {},
+            "url": {
+              "path": [
+                "objects",
+                "hostgroup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pretty",
+                  "value": "0",
+                  "description": "Set to 1 to return human-readable formatted JSON."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "81749f33-fb06-4e16-9731-e94e60e7c11c",
+              "name": "Host group objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "objects",
+                    "hostgroup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pretty",
+                      "value": "0"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a69ed2c-41c5-4975-9473-b273b8e7e4ad",
+          "name": "List Service Groups",
+          "request": {
+            "name": "List Service Groups",
+            "description": {},
+            "url": {
+              "path": [
+                "objects",
+                "servicegroup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pretty",
+                  "value": "0",
+                  "description": "Set to 1 to return human-readable formatted JSON."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f0111a07-85a6-4e20-8e29-8489754b85ad",
+              "name": "Service group objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "objects",
+                    "servicegroup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pretty",
+                      "value": "0"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ca23b8b-d0da-41ca-adff-20734bab61b5",
+          "name": "List Contacts",
+          "request": {
+            "name": "List Contacts",
+            "description": {},
+            "url": {
+              "path": [
+                "objects",
+                "contact"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pretty",
+                  "value": "0",
+                  "description": "Set to 1 to return human-readable formatted JSON."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f8fe62ac-38bd-401c-81c0-59b5ce8e6a96",
+              "name": "Contact objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "objects",
+                    "contact"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pretty",
+                      "value": "0"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d576ccd-27ac-4209-a96a-2300d9b47196",
+          "name": "List Contact Groups",
+          "request": {
+            "name": "List Contact Groups",
+            "description": {},
+            "url": {
+              "path": [
+                "objects",
+                "contactgroup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pretty",
+                  "value": "0",
+                  "description": "Set to 1 to return human-readable formatted JSON."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "65dd4f6c-20dc-49aa-b3be-511627bf7ecb",
+              "name": "Contact group objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "objects",
+                    "contactgroup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pretty",
+                      "value": "0"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6058a0a5-0f05-4afc-a225-6898f22bd5e1",
+          "name": "List Time Periods",
+          "request": {
+            "name": "List Time Periods",
+            "description": {},
+            "url": {
+              "path": [
+                "objects",
+                "timeperiod"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pretty",
+                  "value": "0",
+                  "description": "Set to 1 to return human-readable formatted JSON."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0d5dc44e-9d58-4c9e-a5be-b3d83c378116",
+              "name": "Time period objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "objects",
+                    "timeperiod"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pretty",
+                      "value": "0"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5fe85653-5f3e-44cb-b7a8-1045fb713d1d",
+          "name": "List Commands",
+          "request": {
+            "name": "List Commands",
+            "description": {},
+            "url": {
+              "path": [
+                "objects",
+                "command"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pretty",
+                  "value": "0",
+                  "description": "Set to 1 to return human-readable formatted JSON."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6de7c36e-d7d0-4da9-a1b9-eb4c08f5a887",
+              "name": "Command objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "objects",
+                    "command"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pretty",
+                      "value": "0"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d461fbb-bf0c-4460-8f1d-33b7b9a9547f",
+          "name": "List Scheduled Downtime",
+          "request": {
+            "name": "List Scheduled Downtime",
+            "description": {},
+            "url": {
+              "path": [
+                "objects",
+                "downtime"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pretty",
+                  "value": "0",
+                  "description": "Set to 1 to return human-readable formatted JSON."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9008bf7d-b3b2-4766-a3e4-b4553fd8f893",
+              "name": "Scheduled downtime records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "objects",
+                    "downtime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pretty",
+                      "value": "0"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9da5ef61-c933-4da7-b6b7-f998093a72b7",
+          "name": "List State History",
+          "request": {
+            "name": "List State History",
+            "description": {},
+            "url": {
+              "path": [
+                "objects",
+                "statehistory"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pretty",
+                  "value": "0",
+                  "description": "Set to 1 to return human-readable formatted JSON."
+                },
+                {
+                  "disabled": false,
+                  "key": "starttime",
+                  "value": "<long>",
+                  "description": "Unix timestamp (default 24 hours ago)."
+                },
+                {
+                  "disabled": false,
+                  "key": "endtime",
+                  "value": "<long>",
+                  "description": "Unix timestamp (default now)."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c6d2d83-e00b-4cf5-9672-824dc45c8d71",
+              "name": "State history records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "objects",
+                    "statehistory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pretty",
+                      "value": "0"
+                    },
+                    {
+                      "key": "starttime",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "endtime",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "1ce85fed-9ef1-4292-85ed-cd6e75148eb4",
+      "name": "Config",
+      "description": {
+        "content": "Admin-only endpoints to add, modify, and delete hosts and services.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5593e0b3-0e04-4e4d-bd97-b8588ad9ac3f",
+          "name": "Create Or Update Host",
+          "request": {
+            "name": "Create Or Update Host",
+            "description": {
+              "content": "Add or update a Nagios XI host definition. Use `force=1` to skip template-required directives and `applyconfig=1` to immediately apply the running configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "config",
+                "host"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "host_name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "use",
+                  "value": "<string>",
+                  "description": "Template to inherit from."
+                },
+                {
+                  "disabled": false,
+                  "key": "max_check_attempts",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "check_interval",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "retry_interval",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "check_period",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "notification_interval",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "notification_period",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "contacts",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "contact_groups",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "force",
+                  "value": "<integer>",
+                  "description": "When 1, bypass the missing-directive check (rely on template values)."
+                },
+                {
+                  "disabled": false,
+                  "key": "applyconfig",
+                  "value": "<integer>",
+                  "description": "When 1, apply the configuration immediately after writing."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1c470e95-dc45-4944-8847-95dceba4f5a2",
+              "name": "Host created or updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "config",
+                    "host"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "host_name",
+                      "value": "web01"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "address",
+                      "value": "10.0.0.5"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Template to inherit from.",
+                        "type": "text/plain"
+                      },
+                      "key": "use",
+                      "value": "xiwizard_generic_host"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "max_check_attempts",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "check_interval",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "retry_interval",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "check_period",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "notification_interval",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "notification_period",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "contacts",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "contact_groups",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "When 1, bypass the missing-directive check (rely on template values).",
+                        "type": "text/plain"
+                      },
+                      "key": "force",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "When 1, apply the configuration immediately after writing.",
+                        "type": "text/plain"
+                      },
+                      "key": "applyconfig",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": \"Removed web01 from the system. Config applied, Nagios Core was restarted.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cdea505b-f978-4226-82a5-2b36d9625046",
+              "name": "Missing required directives.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "config",
+                    "host"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "host_name",
+                      "value": "web01"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "address",
+                      "value": "10.0.0.5"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Template to inherit from.",
+                        "type": "text/plain"
+                      },
+                      "key": "use",
+                      "value": "xiwizard_generic_host"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "max_check_attempts",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "check_interval",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "retry_interval",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "check_period",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "notification_interval",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "notification_period",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "contacts",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "contact_groups",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "When 1, bypass the missing-directive check (rely on template values).",
+                        "type": "text/plain"
+                      },
+                      "key": "force",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "When 1, apply the configuration immediately after writing.",
+                        "type": "text/plain"
+                      },
+                      "key": "applyconfig",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Missing required variables\",\n  \"missing\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a303c68a-7a43-4096-8baa-f26aa1037245",
+          "name": "Delete Host",
+          "request": {
+            "name": "Delete Host",
+            "description": {},
+            "url": {
+              "path": [
+                "config",
+                "host"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "host_name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "applyconfig",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1abee46c-07ba-45d3-b208-14528a3e9e92",
+              "name": "Host removed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "config",
+                    "host"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "host_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "applyconfig",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": \"Removed web01 from the system. Config applied, Nagios Core was restarted.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "03b2209c-5fad-4586-85cc-bec1727b2ce3",
+          "name": "Create Or Update Service",
+          "request": {
+            "name": "Create Or Update Service",
+            "description": {},
+            "url": {
+              "path": [
+                "config",
+                "service"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "host_name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "service_description",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "use",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "check_command",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "max_check_attempts",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "check_interval",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "retry_interval",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "notification_interval",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "check_period",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "notification_period",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "contacts",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "contact_groups",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "force",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "applyconfig",
+                  "value": "<integer>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bcd3a673-bc83-4390-8a4f-1d8ffa0ef854",
+              "name": "Service created or updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "config",
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "host_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "service_description",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "use",
+                      "value": "xiwizard_website_ping_service"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "check_command",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "max_check_attempts",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "check_interval",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "retry_interval",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "notification_interval",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "check_period",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "notification_period",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "contacts",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "contact_groups",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "force",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "applyconfig",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": \"Removed web01 from the system. Config applied, Nagios Core was restarted.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1437328d-438c-40b7-8716-c9643389aeaf",
+          "name": "Delete Service",
+          "request": {
+            "name": "Delete Service",
+            "description": {},
+            "url": {
+              "path": [
+                "config",
+                "service"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "host_name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "service_description",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "applyconfig",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a1d55412-39fe-4b26-b8d2-37ccb6539941",
+              "name": "Service removed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "config",
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "host_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "service_description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "applyconfig",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": \"Removed web01 from the system. Config applied, Nagios Core was restarted.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "bcf23791-a24b-4638-9867-8b968b2c80dd",
+      "name": "System",
+      "description": {
+        "content": "Admin-only endpoints to manage Nagios XI subsystems, apply configuration, schedule downtime, and execute commands.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0b940ec3-6e96-4d99-9535-16b02a5b2097",
+          "name": "Get System Status",
+          "request": {
+            "name": "Get System Status",
+            "description": {},
+            "url": {
+              "path": [
+                "system",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pretty",
+                  "value": "0",
+                  "description": "Set to 1 to return human-readable formatted JSON."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5d7f81bb-dc81-438d-b004-f2c8c3262fbf",
+              "name": "Current Nagios XI process status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "system",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pretty",
+                      "value": "0"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"instance_id\": \"string\",\n  \"instance_name\": \"string\",\n  \"status_update_time\": \"1993-01-20T14:44:02.424Z\",\n  \"program_start_time\": \"1953-09-11T22:29:31.126Z\",\n  \"program_run_time\": \"string\",\n  \"is_currently_running\": 0,\n  \"process_id\": \"string\",\n  \"daemon_mode\": 0,\n  \"notifications_enabled\": 1,\n  \"active_service_checks_enabled\": 0,\n  \"passive_service_checks_enabled\": 0,\n  \"active_host_checks_enabled\": 1,\n  \"passive_host_checks_enabled\": 1,\n  \"event_handlers_enabled\": 0,\n  \"flap_detection_enabled\": 1,\n  \"process_performance_data\": 0\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd485876-6c91-44d1-a321-f6bbfaefd42e",
+          "name": "Apply Configuration",
+          "request": {
+            "name": "Apply Configuration",
+            "description": {
+              "content": "Run Apply Configuration to validate and restart Nagios with any pending object changes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "system",
+                "applyconfig"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "933e21f1-8bbe-41b3-9112-581a5d6c16c3",
+              "name": "Apply configuration triggered.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "system",
+                    "applyconfig"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "93392e94-40fb-4aa0-af3e-a2a5827f5812",
+          "name": "Schedule Downtime",
+          "request": {
+            "name": "Schedule Downtime",
+            "description": {},
+            "url": {
+              "path": [
+                "system",
+                "scheduleddowntime"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "comment",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<long>",
+                  "description": "Unix timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "hosts[]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "hosts[]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "services[host][]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "services[host][]",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b1c16bf7-a7f8-4584-8226-28e94bb587db",
+              "name": "Downtime scheduled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "system",
+                    "scheduleddowntime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "comment",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Unix timestamp.",
+                        "type": "text/plain"
+                      },
+                      "key": "start",
+                      "value": "<long>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "end",
+                      "value": "<long>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "hosts[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "hosts[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "services[host][]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "services[host][]",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname or IP address of the Nagios XI server",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "nagios.example.com",
+      "key": "nagiosXiHost"
+    },
+    {
+      "type": "string",
+      "value": "https://{{nagiosXiHost}}/nagiosxi/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d53988a5-6f6c-440d-b52c-a763e5243092",
+    "name": "Nagios XI REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Built-in REST API for Nagios XI, the commercial enterprise distribution of\nNagios. The API is split into three sections: Objects (read-only backend for\nhosts, services, contacts, host groups, etc.), Config (admin-only writes for\nhosts and services), and System (admin-only commands such as apply\nconfiguration, scheduled downtime, status). Responses are returned as JSON\nwhen `pretty=1` or by default. Authentication uses a per-user Nagios XI API\nkey passed via the `apikey` query parameter.\n\n\nContact Support:\n Name: Nagios Enterprises",
+      "type": "text/plain"
+    }
+  }
+}

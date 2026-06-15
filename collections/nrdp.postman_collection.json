@@ -1,0 +1,241 @@
+{
+  "item": [
+    {
+      "id": "cceedb52-1fc5-4faa-a359-2f342311a269",
+      "name": "Submission",
+      "description": {
+        "content": "Submit passive check results and external commands.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "442dbb41-7347-43cb-a631-791a510f2027",
+          "name": "Submit NRDP Payload",
+          "request": {
+            "name": "Submit NRDP Payload",
+            "description": {
+              "content": "Submit a `checkresults` payload (`cmd=submitcheck`) or a Nagios external\ncommand (`cmd=submitcmd`). The body can be `application/x-www-form-urlencoded`\nwith an XML/JSON `XMLDATA`/`JSONDATA` field.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{nrdpHost}}",
+                  "key": "nrdpHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) NRDP authentication token."
+                },
+                {
+                  "disabled": false,
+                  "key": "cmd",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "XMLDATA",
+                  "value": "<string>",
+                  "description": "XML payload, root `<checkresults>` containing one or more\n`<checkresult type=\"host|service\">` elements with\n`<hostname>`, `<servicename>`, `<state>`, `<output>` children.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "JSONDATA",
+                  "value": "<string>",
+                  "description": "JSON string equivalent of XMLDATA — e.g.\n`{\"checkresults\":[{\"checkresult\":{\"type\":\"service\",...}}]}`.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "command",
+                  "value": "<string>",
+                  "description": "External command string when `cmd=submitcmd`."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d5f39d42-5d79-4b1e-a6ad-0c5c8b7d3922",
+              "name": "Submission result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{nrdpHost}}",
+                      "key": "nrdpHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) NRDP authentication token.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "cmd",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "XML payload, root `<checkresults>` containing one or more\n`<checkresult type=\"host|service\">` elements with\n`<hostname>`, `<servicename>`, `<state>`, `<output>` children.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "XMLDATA",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "JSON string equivalent of XMLDATA — e.g.\n`{\"checkresults\":[{\"checkresult\":{\"type\":\"service\",...}}]}`.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "JSONDATA",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "External command string when `cmd=submitcmd`.",
+                        "type": "text/plain"
+                      },
+                      "key": "command",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 1196,\n  \"message\": \"string\",\n  \"meta\": {\n    \"output\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "nagios.example.com",
+      "key": "nrdpHost"
+    },
+    {
+      "type": "string",
+      "value": "https://{{nrdpHost}}/nrdp",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "55c2b25e-a416-4265-b973-dfa28b9ee987",
+    "name": "NRDP (Nagios Remote Data Processor) API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "NRDP is a PHP-based passive result collector for Nagios. It accepts host and\nservice check results and external commands over HTTP POST in either XML or\nJSON form, then injects them into Nagios Core via the external command\npipe. Authentication uses a token configured in `config.inc.php`.\n\n\nContact Support:\n Name: Nagios Enterprises",
+      "type": "text/plain"
+    }
+  }
+}

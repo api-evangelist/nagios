@@ -1,0 +1,469 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NCPA (Nagios Cross-Platform Agent) API",
+    "version": "3.x"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "token",
+      "value": "{{token}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "System",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get System Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ncpaHost}:5693/api/system",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "NCPA community_string token from agent config."
+              }
+            ]
+          },
+          "docs": "Get System Information"
+        },
+        {
+          "info": {
+            "name": "Get Agent Version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ncpaHost}:5693/api/system/agent_version",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "NCPA community_string token from agent config."
+              }
+            ]
+          },
+          "docs": "Get Agent Version"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "CPU",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get CPU Percent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ncpaHost}:5693/api/cpu/percent",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "NCPA community_string token from agent config."
+              },
+              {
+                "name": "aggregate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "warning",
+                "value": "",
+                "type": "query",
+                "description": "Nagios-style warning threshold (e.g. '80', '90:', '@70:90')."
+              },
+              {
+                "name": "critical",
+                "value": "",
+                "type": "query",
+                "description": "Nagios-style critical threshold."
+              },
+              {
+                "name": "check",
+                "value": "",
+                "type": "query",
+                "description": "When 1, return a Nagios-style check result with returncode + stdout."
+              }
+            ]
+          },
+          "docs": "Get CPU Percent"
+        },
+        {
+          "info": {
+            "name": "Get CPU Core Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ncpaHost}:5693/api/cpu/count",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "NCPA community_string token from agent config."
+              }
+            ]
+          },
+          "docs": "Get CPU Core Count"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Memory",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Virtual Memory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ncpaHost}:5693/api/memory/virtual",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "NCPA community_string token from agent config."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Convert byte/bit values to the requested SI or binary unit."
+              },
+              {
+                "name": "warning",
+                "value": "",
+                "type": "query",
+                "description": "Nagios-style warning threshold (e.g. '80', '90:', '@70:90')."
+              },
+              {
+                "name": "critical",
+                "value": "",
+                "type": "query",
+                "description": "Nagios-style critical threshold."
+              },
+              {
+                "name": "check",
+                "value": "",
+                "type": "query",
+                "description": "When 1, return a Nagios-style check result with returncode + stdout."
+              }
+            ]
+          },
+          "docs": "Get Virtual Memory"
+        },
+        {
+          "info": {
+            "name": "Get Swap Memory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ncpaHost}:5693/api/memory/swap",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "NCPA community_string token from agent config."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Convert byte/bit values to the requested SI or binary unit."
+              }
+            ]
+          },
+          "docs": "Get Swap Memory"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Disk",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Logical Disks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ncpaHost}:5693/api/disk/logical",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "NCPA community_string token from agent config."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Convert byte/bit values to the requested SI or binary unit."
+              },
+              {
+                "name": "warning",
+                "value": "",
+                "type": "query",
+                "description": "Nagios-style warning threshold (e.g. '80', '90:', '@70:90')."
+              },
+              {
+                "name": "critical",
+                "value": "",
+                "type": "query",
+                "description": "Nagios-style critical threshold."
+              },
+              {
+                "name": "check",
+                "value": "",
+                "type": "query",
+                "description": "When 1, return a Nagios-style check result with returncode + stdout."
+              }
+            ]
+          },
+          "docs": "Get Logical Disks"
+        },
+        {
+          "info": {
+            "name": "Get Physical Disks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ncpaHost}:5693/api/disk/physical",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "NCPA community_string token from agent config."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Convert byte/bit values to the requested SI or binary unit."
+              }
+            ]
+          },
+          "docs": "Get Physical Disks"
+        },
+        {
+          "info": {
+            "name": "Get Disk Mount Points",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ncpaHost}:5693/api/disk/mount",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "NCPA community_string token from agent config."
+              }
+            ]
+          },
+          "docs": "Get Disk Mount Points"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Interface",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Network Interfaces",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ncpaHost}:5693/api/interface",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "NCPA community_string token from agent config."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Convert byte/bit values to the requested SI or binary unit."
+              },
+              {
+                "name": "delta",
+                "value": "",
+                "type": "query",
+                "description": "When 1, return per-second change rate."
+              }
+            ]
+          },
+          "docs": "Get Network Interfaces"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Processes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Processes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ncpaHost}:5693/api/processes",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "NCPA community_string token from agent config."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "exe",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cmd",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mem_percent",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cpu_percent",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Processes"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Services",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ncpaHost}:5693/api/services",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "NCPA community_string token from agent config."
+              },
+              {
+                "name": "service",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Services"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Plugins",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Run NCPA Plugin",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ncpaHost}:5693/api/plugins/:pluginName",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "NCPA community_string token from agent config."
+              },
+              {
+                "name": "pluginName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "args",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Run NCPA Plugin"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

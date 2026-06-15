@@ -1,0 +1,1605 @@
+{
+  "item": [
+    {
+      "id": "27e4d2fa-359b-41da-8f55-caab96617771",
+      "name": "System",
+      "description": {
+        "content": "Host system identity and agent metadata.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a471d909-8dda-42a5-abba-d4bb78960be4",
+          "name": "Get System Information",
+          "request": {
+            "name": "Get System Information",
+            "description": {},
+            "url": {
+              "path": [
+                "system"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) NCPA community_string token from agent config."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{ncpaHost}}",
+                  "key": "ncpaHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e91055a8-b1aa-458f-9d44-bebd74f2b003",
+              "name": "Host system info.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "system"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{ncpaHost}}",
+                      "key": "ncpaHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f1c6e27-1aee-4e50-b7e2-6e6d44e94b52",
+          "name": "Get Agent Version",
+          "request": {
+            "name": "Get Agent Version",
+            "description": {},
+            "url": {
+              "path": [
+                "system",
+                "agent_version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) NCPA community_string token from agent config."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{ncpaHost}}",
+                  "key": "ncpaHost"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "61c6ce9c-0978-4f38-9e52-b0a1c1312e08",
+              "name": "NCPA agent version.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "system",
+                    "agent_version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{ncpaHost}}",
+                      "key": "ncpaHost"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a5fd4da5-99ed-403b-8f20-5451c089db82",
+      "name": "CPU",
+      "description": {
+        "content": "System-wide CPU utilization and core counts.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "de5b597a-e5b5-4216-9904-3e014613d225",
+          "name": "Get CPU Percent",
+          "request": {
+            "name": "Get CPU Percent",
+            "description": {},
+            "url": {
+              "path": [
+                "cpu",
+                "percent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) NCPA community_string token from agent config."
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregate",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "warning",
+                  "value": "<string>",
+                  "description": "Nagios-style warning threshold (e.g. '80', '90:', '@70:90')."
+                },
+                {
+                  "disabled": false,
+                  "key": "critical",
+                  "value": "<string>",
+                  "description": "Nagios-style critical threshold."
+                },
+                {
+                  "disabled": false,
+                  "key": "check",
+                  "value": "<integer>",
+                  "description": "When 1, return a Nagios-style check result with returncode + stdout."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{ncpaHost}}",
+                  "key": "ncpaHost"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "637463a3-194d-4821-9c9e-35cc0b495015",
+              "name": "CPU utilization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cpu",
+                    "percent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "warning",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "critical",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "check",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{ncpaHost}}",
+                      "key": "ncpaHost"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f65f7b4-fcce-49a8-933f-d667b0a66035",
+          "name": "Get CPU Core Count",
+          "request": {
+            "name": "Get CPU Core Count",
+            "description": {},
+            "url": {
+              "path": [
+                "cpu",
+                "count"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) NCPA community_string token from agent config."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{ncpaHost}}",
+                  "key": "ncpaHost"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b068471b-4aa1-4964-aa9a-8cf6d814fc9e",
+              "name": "Number of CPU cores.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cpu",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{ncpaHost}}",
+                      "key": "ncpaHost"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "899a3682-41ac-4895-b319-453ab18bdf19",
+      "name": "Memory",
+      "description": {
+        "content": "Physical memory and swap.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "152c9d80-7698-4215-875e-f96251623ceb",
+          "name": "Get Virtual Memory",
+          "request": {
+            "name": "Get Virtual Memory",
+            "description": {},
+            "url": {
+              "path": [
+                "memory",
+                "virtual"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) NCPA community_string token from agent config."
+                },
+                {
+                  "disabled": false,
+                  "key": "units",
+                  "value": "<string>",
+                  "description": "Convert byte/bit values to the requested SI or binary unit."
+                },
+                {
+                  "disabled": false,
+                  "key": "warning",
+                  "value": "<string>",
+                  "description": "Nagios-style warning threshold (e.g. '80', '90:', '@70:90')."
+                },
+                {
+                  "disabled": false,
+                  "key": "critical",
+                  "value": "<string>",
+                  "description": "Nagios-style critical threshold."
+                },
+                {
+                  "disabled": false,
+                  "key": "check",
+                  "value": "<integer>",
+                  "description": "When 1, return a Nagios-style check result with returncode + stdout."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{ncpaHost}}",
+                  "key": "ncpaHost"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "365df6ec-228d-40a7-b412-6877feecda01",
+              "name": "Virtual memory metrics.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "memory",
+                    "virtual"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "warning",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "critical",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "check",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{ncpaHost}}",
+                      "key": "ncpaHost"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4191998d-eb17-47f7-8e62-d0f10508f523",
+          "name": "Get Swap Memory",
+          "request": {
+            "name": "Get Swap Memory",
+            "description": {},
+            "url": {
+              "path": [
+                "memory",
+                "swap"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) NCPA community_string token from agent config."
+                },
+                {
+                  "disabled": false,
+                  "key": "units",
+                  "value": "<string>",
+                  "description": "Convert byte/bit values to the requested SI or binary unit."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{ncpaHost}}",
+                  "key": "ncpaHost"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e1fc866c-0cec-42bf-bff1-7d79a9f3d713",
+              "name": "Swap usage.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "memory",
+                    "swap"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{ncpaHost}}",
+                      "key": "ncpaHost"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d46a3b47-0d71-429c-8dbc-e2534a85f0c1",
+      "name": "Disk",
+      "description": {
+        "content": "Logical, physical, and mount-point disk metrics.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ead370ec-eaac-4e4a-90d1-ae417d25d2ad",
+          "name": "Get Logical Disks",
+          "request": {
+            "name": "Get Logical Disks",
+            "description": {},
+            "url": {
+              "path": [
+                "disk",
+                "logical"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) NCPA community_string token from agent config."
+                },
+                {
+                  "disabled": false,
+                  "key": "units",
+                  "value": "<string>",
+                  "description": "Convert byte/bit values to the requested SI or binary unit."
+                },
+                {
+                  "disabled": false,
+                  "key": "warning",
+                  "value": "<string>",
+                  "description": "Nagios-style warning threshold (e.g. '80', '90:', '@70:90')."
+                },
+                {
+                  "disabled": false,
+                  "key": "critical",
+                  "value": "<string>",
+                  "description": "Nagios-style critical threshold."
+                },
+                {
+                  "disabled": false,
+                  "key": "check",
+                  "value": "<integer>",
+                  "description": "When 1, return a Nagios-style check result with returncode + stdout."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{ncpaHost}}",
+                  "key": "ncpaHost"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "833552e6-10af-4214-826b-b020d101d581",
+              "name": "Logical disk metrics.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "disk",
+                    "logical"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "warning",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "critical",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "check",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{ncpaHost}}",
+                      "key": "ncpaHost"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aad777f2-7c8f-40dd-8f2c-3d5f67c6ce86",
+          "name": "Get Physical Disks",
+          "request": {
+            "name": "Get Physical Disks",
+            "description": {},
+            "url": {
+              "path": [
+                "disk",
+                "physical"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) NCPA community_string token from agent config."
+                },
+                {
+                  "disabled": false,
+                  "key": "units",
+                  "value": "<string>",
+                  "description": "Convert byte/bit values to the requested SI or binary unit."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{ncpaHost}}",
+                  "key": "ncpaHost"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "709c26f6-9b93-4a1a-93d8-ac2b2c111260",
+              "name": "Physical disk metrics.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "disk",
+                    "physical"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{ncpaHost}}",
+                      "key": "ncpaHost"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a22f7333-dcd6-420a-b20f-f7d0529a7a88",
+          "name": "Get Disk Mount Points",
+          "request": {
+            "name": "Get Disk Mount Points",
+            "description": {},
+            "url": {
+              "path": [
+                "disk",
+                "mount"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) NCPA community_string token from agent config."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{ncpaHost}}",
+                  "key": "ncpaHost"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e74377b3-334f-437a-8cdb-22181cef40fa",
+              "name": "Mount point metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "disk",
+                    "mount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{ncpaHost}}",
+                      "key": "ncpaHost"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "829676a6-5a4f-4f05-a64e-46d1f64f552f",
+      "name": "Interface",
+      "description": {
+        "content": "Network interface byte and packet counters.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d5d3ea51-4d48-4ae3-91b0-f4f5df4ea4be",
+          "name": "Get Network Interfaces",
+          "request": {
+            "name": "Get Network Interfaces",
+            "description": {},
+            "url": {
+              "path": [
+                "interface"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) NCPA community_string token from agent config."
+                },
+                {
+                  "disabled": false,
+                  "key": "units",
+                  "value": "<string>",
+                  "description": "Convert byte/bit values to the requested SI or binary unit."
+                },
+                {
+                  "disabled": false,
+                  "key": "delta",
+                  "value": "<integer>",
+                  "description": "When 1, return per-second change rate."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{ncpaHost}}",
+                  "key": "ncpaHost"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "51b6ef68-a3a6-47e6-b3ce-74092b316da8",
+              "name": "Network interface counters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "interface"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "delta",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{ncpaHost}}",
+                      "key": "ncpaHost"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "6911043b-aa75-4ab5-b428-da195eb2a799",
+      "name": "Processes",
+      "description": {
+        "content": "Running process inventory and resource use.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "80171711-5c40-4f1d-b90c-a130ff325743",
+          "name": "List Processes",
+          "request": {
+            "name": "List Processes",
+            "description": {},
+            "url": {
+              "path": [
+                "processes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) NCPA community_string token from agent config."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "exe",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "cmd",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "mem_percent",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "cpu_percent",
+                  "value": "<number>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{ncpaHost}}",
+                  "key": "ncpaHost"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8aba9669-e923-4dcc-9d19-35123059abb2",
+              "name": "Process list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "processes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exe",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cmd",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mem_percent",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "cpu_percent",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{ncpaHost}}",
+                      "key": "ncpaHost"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f36a9019-a1d9-4bb9-8c82-657dd36d083a",
+      "name": "Services",
+      "description": {
+        "content": "Host service / daemon status.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4cfcbb7d-e1ad-4e5d-baec-489ad93da647",
+          "name": "List Services",
+          "request": {
+            "name": "List Services",
+            "description": {},
+            "url": {
+              "path": [
+                "services"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) NCPA community_string token from agent config."
+                },
+                {
+                  "disabled": false,
+                  "key": "service",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{ncpaHost}}",
+                  "key": "ncpaHost"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5745c62d-23f2-4ac7-8d1b-0efaaf0fc97c",
+              "name": "Service status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "service",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{ncpaHost}}",
+                      "key": "ncpaHost"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "eb4fdb38-cf13-4c28-9f28-71831f821b1f",
+      "name": "Plugins",
+      "description": {
+        "content": "User-defined Nagios-style plugins executed by the agent.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "728d8ce9-38be-4692-943b-6e512a113b93",
+          "name": "Run NCPA Plugin",
+          "request": {
+            "name": "Run NCPA Plugin",
+            "description": {},
+            "url": {
+              "path": [
+                "plugins",
+                ":pluginName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) NCPA community_string token from agent config."
+                },
+                {
+                  "disabled": false,
+                  "key": "args",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pluginName",
+                  "description": "(Required) "
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{ncpaHost}}",
+                  "key": "ncpaHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "99ba275d-9713-42ca-a4ba-eaf2b0fd944d",
+              "name": "Plugin output (Nagios check result format).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "plugins",
+                    ":pluginName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "args",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pluginName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{ncpaHost}}",
+                      "key": "ncpaHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"returncode\": 0,\n  \"stdout\": \"OK: 12% CPU usage | 'cpu_percent'=12;80;90;\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "localhost",
+      "key": "ncpaHost"
+    },
+    {
+      "type": "string",
+      "value": "https://{{ncpaHost}}:5693/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a179504f-0bac-4b85-aec6-bf54be9a45c6",
+    "name": "NCPA (Nagios Cross-Platform Agent) API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API exposed by the Nagios Cross-Platform Agent (NCPA) running on\nLinux, Windows, or macOS. The API uses a hierarchical node-based URL\nstructure (`/api/{module}/{node1}/{node2}`) and is authenticated by a\n`token` query parameter matching the `community_string` in the agent\nconfig. Both active polls and Nagios-style passive check results are\nsupported.\n\n\nContact Support:\n Name: Nagios Enterprises",
+      "type": "text/plain"
+    }
+  }
+}
