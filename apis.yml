@@ -10,7 +10,7 @@ description: >-
   header. Passive check results can also be submitted via NRDP (HTTP, JSON/XML) or NSCA (encrypted TCP, port 5667), and
   the NCPA cross-platform agent exposes a hierarchical REST API on port 5693.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Monitoring
   - Infrastructure Monitoring
