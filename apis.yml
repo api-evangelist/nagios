@@ -179,7 +179,7 @@ common:
     url: https://github.com/NagiosEnterprises/nagios-mod-gearman
   - type: PythonSDK
     url: https://github.com/NagiosEnterprises/napiv2
-  - type: SDK
+  - type: SDKs
     url: https://github.com/NagiosEnterprises/automation
   - type: PrometheusExporter
     url: https://github.com/NagiosEnterprises/nagprom
