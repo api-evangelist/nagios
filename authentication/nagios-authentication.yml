@@ -1,0 +1,29 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/nagios-xi-openapi.yml, openapi/ncpa-openapi.yml, openapi/nrdp-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  - query
+schemes:
+- name: ApiKeyQuery
+  type: apiKey
+  in: query
+  parameter: apikey
+  sources:
+  - openapi/nagios-xi-openapi.yml
+- name: ApiKeyHeader
+  type: apiKey
+  in: header
+  parameter: X-API-KEY
+  sources:
+  - openapi/nagios-xi-openapi.yml
+- name: TokenAuth
+  type: apiKey
+  in: query
+  parameter: token
+  sources:
+  - openapi/ncpa-openapi.yml
+  - openapi/nrdp-openapi.yml

@@ -145,6 +145,10 @@ apis:
       - type: GitHub
         url: https://github.com/NagiosEnterprises/nrpe
 common:
+  - type: DomainSecurity
+    url: security/nagios-domain-security.yml
+  - type: Authentication
+    url: authentication/nagios-authentication.yml
   - type: Website
     url: https://www.nagios.org
   - type: Nagios XI Website
@@ -199,6 +203,8 @@ common:
     url: vocabulary/nagios-vocabulary.yml
   - type: JSONLD
     url: json-ld/nagios-context.jsonld
+  - type: Blog
+    url: https://www.nagios.com/feed/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
