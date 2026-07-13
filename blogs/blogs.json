@@ -1,0 +1,13 @@
+{
+  "repo": "nagios",
+  "feeds": [
+    {
+      "source": "https://www.nagios.com/feed/",
+      "feed_url": "https://www.nagios.com/feed/",
+      "title": "Nagios Blog",
+      "saved": 6
+    }
+  ],
+  "fetched": "2026-07-11T11:43:46Z",
+  "post_count": 16
+}
