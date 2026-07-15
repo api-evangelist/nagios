@@ -145,6 +145,8 @@ apis:
       - type: GitHub
         url: https://github.com/NagiosEnterprises/nrpe
 common:
+  - type: AgenticAccess
+    url: agentic-access/nagios-agentic-access.yml
   - type: DomainSecurity
     url: security/nagios-domain-security.yml
   - type: Authentication
