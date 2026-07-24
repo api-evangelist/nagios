@@ -1,0 +1,421 @@
+openapi: 3.0.3
+info:
+  title: Nagios XI REST Config Objects API
+  description: 'Built-in REST API for Nagios XI, the commercial enterprise distribution of
+
+    Nagios. The API is split into three sections: Objects (read-only backend for
+
+    hosts, services, contacts, host groups, etc.), Config (admin-only writes for
+
+    hosts and services), and System (admin-only commands such as apply
+
+    configuration, scheduled downtime, status). Responses are returned as JSON
+
+    when `pretty=1` or by default. Authentication uses a per-user Nagios XI API
+
+    key passed via the `apikey` query parameter.
+
+    '
+  version: v1
+  contact:
+    name: Nagios Enterprises
+    url: https://www.nagios.com/products/nagios-xi/
+  license:
+    name: Nagios XI Commercial License
+    url: https://www.nagios.com/legal/agreements/
+servers:
+- url: https://{nagiosXiHost}/nagiosxi/api/v1
+  description: Self-hosted Nagios XI instance
+  variables:
+    nagiosXiHost:
+      default: nagios.example.com
+      description: Hostname or IP address of the Nagios XI server
+security:
+- ApiKeyQuery: []
+- ApiKeyHeader: []
+tags:
+- name: Objects
+  description: Read-only backend for hosts, services, host groups, contacts, downtime, history, and other monitored objects.
+paths:
+  /objects/host:
+    get:
+      tags:
+      - Objects
+      summary: List Host Objects
+      operationId: listHostObjects
+      parameters:
+      - $ref: '#/components/parameters/Pretty'
+      - name: host_name
+        in: query
+        schema:
+          type: string
+        description: Filter by host name (supports `name-lk=` modifier for substring match).
+      - name: records
+        in: query
+        schema:
+          type: string
+          example: '20:10'
+        description: Pagination, format `count` or `count:startingAt`.
+      - name: orderby
+        in: query
+        schema:
+          type: string
+          example: host_name:a
+        description: Order by column, `:a` ascending or `:d` descending.
+      responses:
+        '200':
+          description: Host objects.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HostList'
+  /objects/hoststatus:
+    get:
+      tags:
+      - Objects
+      summary: List Host Statuses
+      operationId: listHostStatuses
+      parameters:
+      - $ref: '#/components/parameters/Pretty'
+      - name: host_name
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Host status records.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HostStatusList'
+  /objects/service:
+    get:
+      tags:
+      - Objects
+      summary: List Service Objects
+      operationId: listServiceObjects
+      parameters:
+      - $ref: '#/components/parameters/Pretty'
+      - name: host_name
+        in: query
+        schema:
+          type: string
+      - name: service_description
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Service objects.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceList'
+  /objects/servicestatus:
+    get:
+      tags:
+      - Objects
+      summary: List Service Statuses
+      operationId: listServiceStatuses
+      parameters:
+      - $ref: '#/components/parameters/Pretty'
+      - name: host_name
+        in: query
+        schema:
+          type: string
+      - name: name
+        in: query
+        schema:
+          type: string
+        description: Service description (with optional `-lk` modifier).
+      responses:
+        '200':
+          description: Service status records.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceStatusList'
+  /objects/hostgroup:
+    get:
+      tags:
+      - Objects
+      summary: List Host Groups
+      operationId: listHostGroups
+      parameters:
+      - $ref: '#/components/parameters/Pretty'
+      responses:
+        '200':
+          description: Host group objects.
+  /objects/servicegroup:
+    get:
+      tags:
+      - Objects
+      summary: List Service Groups
+      operationId: listServiceGroups
+      parameters:
+      - $ref: '#/components/parameters/Pretty'
+      responses:
+        '200':
+          description: Service group objects.
+  /objects/contact:
+    get:
+      tags:
+      - Objects
+      summary: List Contacts
+      operationId: listContacts
+      parameters:
+      - $ref: '#/components/parameters/Pretty'
+      responses:
+        '200':
+          description: Contact objects.
+  /objects/contactgroup:
+    get:
+      tags:
+      - Objects
+      summary: List Contact Groups
+      operationId: listContactGroups
+      parameters:
+      - $ref: '#/components/parameters/Pretty'
+      responses:
+        '200':
+          description: Contact group objects.
+  /objects/timeperiod:
+    get:
+      tags:
+      - Objects
+      summary: List Time Periods
+      operationId: listTimePeriods
+      parameters:
+      - $ref: '#/components/parameters/Pretty'
+      responses:
+        '200':
+          description: Time period objects.
+  /objects/command:
+    get:
+      tags:
+      - Objects
+      summary: List Commands
+      operationId: listCommands
+      parameters:
+      - $ref: '#/components/parameters/Pretty'
+      responses:
+        '200':
+          description: Command objects.
+  /objects/downtime:
+    get:
+      tags:
+      - Objects
+      summary: List Scheduled Downtime
+      operationId: listDowntime
+      parameters:
+      - $ref: '#/components/parameters/Pretty'
+      responses:
+        '200':
+          description: Scheduled downtime records.
+  /objects/statehistory:
+    get:
+      tags:
+      - Objects
+      summary: List State History
+      operationId: listStateHistory
+      parameters:
+      - $ref: '#/components/parameters/Pretty'
+      - name: starttime
+        in: query
+        schema:
+          type: integer
+          format: int64
+        description: Unix timestamp (default 24 hours ago).
+      - name: endtime
+        in: query
+        schema:
+          type: integer
+          format: int64
+        description: Unix timestamp (default now).
+      responses:
+        '200':
+          description: State history records.
+components:
+  parameters:
+    Pretty:
+      name: pretty
+      in: query
+      schema:
+        type: integer
+        enum:
+        - 0
+        - 1
+        default: 0
+      description: Set to 1 to return human-readable formatted JSON.
+  schemas:
+    ServiceStatusList:
+      type: object
+      properties:
+        recordcount:
+          type: integer
+        servicestatus:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceStatus'
+    ServiceList:
+      type: object
+      properties:
+        recordcount:
+          type: integer
+        service:
+          type: array
+          items:
+            $ref: '#/components/schemas/Service'
+    HostStatusList:
+      type: object
+      properties:
+        recordcount:
+          type: integer
+        hoststatus:
+          type: array
+          items:
+            $ref: '#/components/schemas/HostStatus'
+    HostList:
+      type: object
+      properties:
+        recordcount:
+          type: integer
+        host:
+          type: array
+          items:
+            $ref: '#/components/schemas/Host'
+    Host:
+      type: object
+      properties:
+        host_object_id:
+          type: string
+        host_name:
+          type: string
+        display_name:
+          type: string
+        address:
+          type: string
+        check_command:
+          type: string
+        max_check_attempts:
+          type: integer
+        check_interval:
+          type: number
+        retry_interval:
+          type: number
+        notification_interval:
+          type: number
+        notification_period:
+          type: string
+        contacts:
+          type: string
+        contact_groups:
+          type: string
+        hostgroups:
+          type: array
+          items:
+            type: string
+    ServiceStatus:
+      type: object
+      properties:
+        service_object_id:
+          type: string
+        host_name:
+          type: string
+        service_description:
+          type: string
+        current_state:
+          type: integer
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          description: 0=OK, 1=WARNING, 2=CRITICAL, 3=UNKNOWN.
+        last_check:
+          type: string
+          format: date-time
+        last_state_change:
+          type: string
+          format: date-time
+        output:
+          type: string
+        perfdata:
+          type: string
+    Service:
+      type: object
+      properties:
+        service_object_id:
+          type: string
+        host_name:
+          type: string
+        service_description:
+          type: string
+        display_name:
+          type: string
+        check_command:
+          type: string
+        max_check_attempts:
+          type: integer
+        check_interval:
+          type: number
+        retry_interval:
+          type: number
+        notification_interval:
+          type: number
+        check_period:
+          type: string
+        notification_period:
+          type: string
+    HostStatus:
+      type: object
+      properties:
+        host_object_id:
+          type: string
+        host_name:
+          type: string
+        current_state:
+          type: integer
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          description: 0=UP, 1=DOWN, 2=UNREACHABLE, 3=UNKNOWN.
+        status_update_time:
+          type: string
+          format: date-time
+        last_check:
+          type: string
+          format: date-time
+        last_state_change:
+          type: string
+          format: date-time
+        output:
+          type: string
+        perfdata:
+          type: string
+        notifications_enabled:
+          type: integer
+          enum:
+          - 0
+          - 1
+        active_checks_enabled:
+          type: integer
+          enum:
+          - 0
+          - 1
+        passive_checks_enabled:
+          type: integer
+          enum:
+          - 0
+          - 1
+  securitySchemes:
+    ApiKeyQuery:
+      type: apiKey
+      in: query
+      name: apikey
+    ApiKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-KEY

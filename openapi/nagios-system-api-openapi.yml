@@ -1,0 +1,227 @@
+openapi: 3.0.3
+info:
+  title: Nagios XI REST Config System API
+  description: 'Built-in REST API for Nagios XI, the commercial enterprise distribution of
+
+    Nagios. The API is split into three sections: Objects (read-only backend for
+
+    hosts, services, contacts, host groups, etc.), Config (admin-only writes for
+
+    hosts and services), and System (admin-only commands such as apply
+
+    configuration, scheduled downtime, status). Responses are returned as JSON
+
+    when `pretty=1` or by default. Authentication uses a per-user Nagios XI API
+
+    key passed via the `apikey` query parameter.
+
+    '
+  version: v1
+  contact:
+    name: Nagios Enterprises
+    url: https://www.nagios.com/products/nagios-xi/
+  license:
+    name: Nagios XI Commercial License
+    url: https://www.nagios.com/legal/agreements/
+servers:
+- url: https://{nagiosXiHost}/nagiosxi/api/v1
+  description: Self-hosted Nagios XI instance
+  variables:
+    nagiosXiHost:
+      default: nagios.example.com
+      description: Hostname or IP address of the Nagios XI server
+security:
+- ApiKeyQuery: []
+- ApiKeyHeader: []
+tags:
+- name: System
+  description: Admin-only endpoints to manage Nagios XI subsystems, apply configuration, schedule downtime, and execute commands.
+paths:
+  /system/status:
+    get:
+      tags:
+      - System
+      summary: Get System Status
+      operationId: getSystemStatus
+      parameters:
+      - $ref: '#/components/parameters/Pretty'
+      responses:
+        '200':
+          description: Current Nagios XI process status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemStatus'
+  /system/applyconfig:
+    post:
+      tags:
+      - System
+      summary: Apply Configuration
+      description: Run Apply Configuration to validate and restart Nagios with any pending object changes.
+      operationId: applyConfig
+      responses:
+        '200':
+          description: Apply configuration triggered.
+  /system/scheduleddowntime:
+    post:
+      tags:
+      - System
+      summary: Schedule Downtime
+      operationId: scheduleDowntime
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: string
+                start:
+                  type: integer
+                  format: int64
+                  description: Unix timestamp.
+                end:
+                  type: integer
+                  format: int64
+                hosts[]:
+                  type: array
+                  items:
+                    type: string
+                services[host][]:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Downtime scheduled.
+  /system:
+    get:
+      tags:
+      - System
+      summary: Get System Information
+      operationId: getSystem
+      parameters:
+      - $ref: '#/components/parameters/Token'
+      responses:
+        '200':
+          description: Host system info.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricResponse'
+  /system/agent_version:
+    get:
+      tags:
+      - System
+      summary: Get Agent Version
+      operationId: getAgentVersion
+      parameters:
+      - $ref: '#/components/parameters/Token'
+      responses:
+        '200':
+          description: NCPA agent version.
+components:
+  schemas:
+    MetricResponse:
+      type: object
+      additionalProperties:
+        type: array
+        description: '[value, "unit"] pair returned per metric.'
+        minItems: 2
+        maxItems: 2
+        items: {}
+    SystemStatus:
+      type: object
+      properties:
+        instance_id:
+          type: string
+        instance_name:
+          type: string
+        status_update_time:
+          type: string
+          format: date-time
+        program_start_time:
+          type: string
+          format: date-time
+        program_run_time:
+          type: string
+        is_currently_running:
+          type: integer
+          enum:
+          - 0
+          - 1
+        process_id:
+          type: string
+        daemon_mode:
+          type: integer
+          enum:
+          - 0
+          - 1
+        notifications_enabled:
+          type: integer
+          enum:
+          - 0
+          - 1
+        active_service_checks_enabled:
+          type: integer
+          enum:
+          - 0
+          - 1
+        passive_service_checks_enabled:
+          type: integer
+          enum:
+          - 0
+          - 1
+        active_host_checks_enabled:
+          type: integer
+          enum:
+          - 0
+          - 1
+        passive_host_checks_enabled:
+          type: integer
+          enum:
+          - 0
+          - 1
+        event_handlers_enabled:
+          type: integer
+          enum:
+          - 0
+          - 1
+        flap_detection_enabled:
+          type: integer
+          enum:
+          - 0
+          - 1
+        process_performance_data:
+          type: integer
+          enum:
+          - 0
+          - 1
+  parameters:
+    Token:
+      name: token
+      in: query
+      required: true
+      schema:
+        type: string
+      description: NCPA community_string token from agent config.
+    Pretty:
+      name: pretty
+      in: query
+      schema:
+        type: integer
+        enum:
+        - 0
+        - 1
+        default: 0
+      description: Set to 1 to return human-readable formatted JSON.
+  securitySchemes:
+    ApiKeyQuery:
+      type: apiKey
+      in: query
+      name: apikey
+    ApiKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-KEY

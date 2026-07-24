@@ -1,0 +1,251 @@
+openapi: 3.0.3
+info:
+  title: Nagios XI REST Config API
+  description: 'Built-in REST API for Nagios XI, the commercial enterprise distribution of
+
+    Nagios. The API is split into three sections: Objects (read-only backend for
+
+    hosts, services, contacts, host groups, etc.), Config (admin-only writes for
+
+    hosts and services), and System (admin-only commands such as apply
+
+    configuration, scheduled downtime, status). Responses are returned as JSON
+
+    when `pretty=1` or by default. Authentication uses a per-user Nagios XI API
+
+    key passed via the `apikey` query parameter.
+
+    '
+  version: v1
+  contact:
+    name: Nagios Enterprises
+    url: https://www.nagios.com/products/nagios-xi/
+  license:
+    name: Nagios XI Commercial License
+    url: https://www.nagios.com/legal/agreements/
+servers:
+- url: https://{nagiosXiHost}/nagiosxi/api/v1
+  description: Self-hosted Nagios XI instance
+  variables:
+    nagiosXiHost:
+      default: nagios.example.com
+      description: Hostname or IP address of the Nagios XI server
+security:
+- ApiKeyQuery: []
+- ApiKeyHeader: []
+tags:
+- name: Config
+  description: Admin-only endpoints to add, modify, and delete hosts and services.
+paths:
+  /config/host:
+    post:
+      tags:
+      - Config
+      summary: Create Or Update Host
+      description: Add or update a Nagios XI host definition. Use `force=1` to skip template-required directives and `applyconfig=1` to immediately apply the running configuration.
+      operationId: createOrUpdateHost
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/HostInput'
+      responses:
+        '200':
+          description: Host created or updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MutationResult'
+        '400':
+          description: Missing required directives.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MutationError'
+    delete:
+      tags:
+      - Config
+      summary: Delete Host
+      operationId: deleteHost
+      parameters:
+      - name: host_name
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: applyconfig
+        in: query
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+      responses:
+        '200':
+          description: Host removed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MutationResult'
+  /config/service:
+    post:
+      tags:
+      - Config
+      summary: Create Or Update Service
+      operationId: createOrUpdateService
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ServiceInput'
+      responses:
+        '200':
+          description: Service created or updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MutationResult'
+    delete:
+      tags:
+      - Config
+      summary: Delete Service
+      operationId: deleteService
+      parameters:
+      - name: host_name
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: service_description
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: applyconfig
+        in: query
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+      responses:
+        '200':
+          description: Service removed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MutationResult'
+components:
+  schemas:
+    MutationError:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Missing required variables
+        missing:
+          type: array
+          items:
+            type: string
+    MutationResult:
+      type: object
+      properties:
+        success:
+          type: string
+          example: Removed web01 from the system. Config applied, Nagios Core was restarted.
+    ServiceInput:
+      type: object
+      required:
+      - host_name
+      - service_description
+      properties:
+        host_name:
+          type: string
+        service_description:
+          type: string
+        use:
+          type: string
+          example: xiwizard_website_ping_service
+        check_command:
+          type: string
+        max_check_attempts:
+          type: integer
+        check_interval:
+          type: number
+        retry_interval:
+          type: number
+        notification_interval:
+          type: number
+        check_period:
+          type: string
+        notification_period:
+          type: string
+        contacts:
+          type: string
+        contact_groups:
+          type: string
+        force:
+          type: integer
+          enum:
+          - 0
+          - 1
+        applyconfig:
+          type: integer
+          enum:
+          - 0
+          - 1
+    HostInput:
+      type: object
+      required:
+      - host_name
+      - address
+      properties:
+        host_name:
+          type: string
+          example: web01
+        address:
+          type: string
+          example: 10.0.0.5
+        use:
+          type: string
+          example: xiwizard_generic_host
+          description: Template to inherit from.
+        max_check_attempts:
+          type: integer
+        check_interval:
+          type: number
+        retry_interval:
+          type: number
+        check_period:
+          type: string
+        notification_interval:
+          type: number
+        notification_period:
+          type: string
+        contacts:
+          type: string
+        contact_groups:
+          type: string
+        force:
+          type: integer
+          enum:
+          - 0
+          - 1
+          description: When 1, bypass the missing-directive check (rely on template values).
+        applyconfig:
+          type: integer
+          enum:
+          - 0
+          - 1
+          description: When 1, apply the configuration immediately after writing.
+  securitySchemes:
+    ApiKeyQuery:
+      type: apiKey
+      in: query
+      name: apikey
+    ApiKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-KEY
