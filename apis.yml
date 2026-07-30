@@ -10,7 +10,20 @@ description: >-
   header. Passive check results can also be submitted via NRDP (HTTP, JSON/XML) or NSCA (encrypted TCP, port 5667), and
   the NCPA cross-platform agent exposes a hierarchical REST API on port 5693.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/nagios.png
 tags:
   - Monitoring
   - Infrastructure Monitoring
@@ -30,120 +43,492 @@ created: '2026-05-11'
 modified: '2026-05-23'
 specificationVersion: '0.19'
 apis:
-  - aid: nagios:xi-rest-api
-    name: Nagios XI REST API
-    description: >-
-      Built-in REST API for Nagios XI. Split into three sections: Objects (read-only backend for hosts, services, host
-      groups, contacts, downtime, history), Config (admin-only writes for hosts and services), and System (admin-only
-      commands such as apply configuration, scheduled downtime, status). Responses are returned as JSON. Authentication
-      uses a per-user Nagios XI API key passed via the `apikey` query parameter (or header). Custom endpoints can be
-      added by creating a Nagios XI Component.
-    humanURL: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
-    baseURL: https://{nagios-xi-host}/nagiosxi/api/v1
-    tags:
-      - Monitoring
-      - REST
-      - Nagios XI
-      - IT Operations
-    properties:
-      - type: Documentation
-        url: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
-      - type: API PDF Guide
-        url: https://assets.nagios.com/downloads/nagiosxi/docs/Accessing-and-Using-the-XI-REST-API.pdf
-      - type: Backend API
-        url: https://assets.nagios.com/downloads/nagiosxi/docs/Accessing_The_XI_Backend_API.pdf
-      - type: Automated Host Management
-        url: https://assets.nagios.com/downloads/nagiosxi/docs/Automated_Host_Management.pdf
-      - type: OpenAPI
-        url: openapi/nagios-xi-openapi.yml
-      - type: JSONSchema
-        url: json-schema/nagios-xi-host-schema.json
-      - type: JSONSchema
-        url: json-schema/nagios-xi-service-schema.json
-      - type: JSONStructure
-        url: json-structure/nagios-xi-host-structure.json
-      - type: SpectralRules
-        url: rules/nagios-xi-rules.yml
-  - aid: nagios:ncpa-api
-    name: NCPA (Nagios Cross-Platform Agent) API
-    description: >-
-      REST API exposed by the Nagios Cross-Platform Agent (NCPA), a cross-platform monitoring agent that runs on Linux,
-      Windows, and macOS. Uses a hierarchical URL structure `/api/{module}/{node1}/{node2}` for CPU, memory, disk,
-      interface, process, service, and plugin metrics. Both active polling and passive Nagios-style check results
-      (`check=1` + thresholds) are supported. Authenticated via a `token` query parameter matching the
-      `community_string` in the agent config. Default TLS port 5693.
-    humanURL: https://www.nagios.org/ncpa/help/3.x/api.html
-    baseURL: https://{ncpa-host}:5693/api
-    tags:
-      - Monitoring
-      - Agent
-      - REST
-      - NCPA
-    properties:
-      - type: Documentation
-        url: https://www.nagios.org/ncpa/help/3.x/api.html
-      - type: GitHub
-        url: https://github.com/NagiosEnterprises/ncpa
-      - type: OpenAPI
-        url: openapi/ncpa-openapi.yml
-      - type: JSONSchema
-        url: json-schema/ncpa-metric-schema.json
-      - type: SpectralRules
-        url: rules/ncpa-rules.yml
-  - aid: nagios:nrdp-api
-    name: NRDP (Nagios Remote Data Processor) API
-    description: >-
-      PHP-based HTTP collector that accepts passive check results and external commands. Two commands are supported:
-      `submitcheck` (host/service check results) and `submitcmd` (Nagios external command). Payloads can be sent as XML
-      (`XMLDATA`) or JSON (`JSONDATA`) in a POST form. Authenticated by a token configured in `config.inc.php` with
-      optional per-command deny mappings.
-    humanURL: https://github.com/NagiosEnterprises/nrdp
-    baseURL: https://{nrdp-host}/nrdp
-    tags:
-      - Monitoring
-      - Passive Check
-      - REST
-      - NRDP
-    properties:
-      - type: GitHub
-        url: https://github.com/NagiosEnterprises/nrdp
-      - type: OpenAPI
-        url: openapi/nrdp-openapi.yml
-      - type: JSONSchema
-        url: json-schema/nagios-check-result-schema.json
-      - type: JSONStructure
-        url: json-structure/nagios-check-result-structure.json
-  - aid: nagios:nsca
-    name: NSCA (Nagios Service Check Acceptor)
-    description: >-
-      Encrypted binary TCP daemon (default port 5667) that accepts passive service/host check results from remote
-      machines. Not REST — clients send tab-delimited records over a shared-secret-encrypted socket. Use NRDP for an
-      HTTP/JSON equivalent.
-    humanURL: https://github.com/NagiosEnterprises/nsca
-    baseURL: tcp://{nsca-host}:5667
-    tags:
-      - Monitoring
-      - Passive Check
-      - Binary Protocol
-      - NSCA
-    properties:
-      - type: GitHub
-        url: https://github.com/NagiosEnterprises/nsca
-  - aid: nagios:nrpe
-    name: NRPE (Nagios Remote Plugin Executor)
-    description: >-
-      Daemon that runs Nagios plugins on a remote Linux/Unix host on TCP port 5666, returning the plugin's exit code and
-      output to the Nagios server. Binary protocol, not REST.
-    humanURL: https://github.com/NagiosEnterprises/nrpe
-    baseURL: tcp://{nrpe-host}:5666
-    tags:
-      - Monitoring
-      - Active Check
-      - Binary Protocol
-      - NRPE
-    properties:
-      - type: GitHub
-        url: https://github.com/NagiosEnterprises/nrpe
+- aid: nagios:nsca
+  name: NSCA (Nagios Service Check Acceptor)
+  description: >-
+    Encrypted binary TCP daemon (default port 5667) that accepts passive service/host check results from
+    remote machines. Not REST — clients send tab-delimited records over a shared-secret-encrypted socket.
+    Use NRDP for an HTTP/JSON equivalent.
+  humanURL: https://github.com/NagiosEnterprises/nsca
+  baseURL: tcp://{nsca-host}:5667
+  tags:
+  - Monitoring
+  - Passive Check
+  - Binary Protocol
+  - NSCA
+  properties:
+  - type: GitHub
+    url: https://github.com/NagiosEnterprises/nsca
+- aid: nagios:nrpe
+  name: NRPE (Nagios Remote Plugin Executor)
+  description: >-
+    Daemon that runs Nagios plugins on a remote Linux/Unix host on TCP port 5666, returning the plugin's
+    exit code and output to the Nagios server. Binary protocol, not REST.
+  humanURL: https://github.com/NagiosEnterprises/nrpe
+  baseURL: tcp://{nrpe-host}:5666
+  tags:
+  - Monitoring
+  - Active Check
+  - Binary Protocol
+  - NRPE
+  properties:
+  - type: GitHub
+    url: https://github.com/NagiosEnterprises/nrpe
+- aid: nagios:nagios-config-api
+  name: Nagios Config API
+  description: Admin-only endpoints to add, modify, and delete hosts and services.
+  humanURL: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
+  baseURL: https://{nagios-xi-host}/nagiosxi/api/v1
+  tags:
+  - Config
+  properties:
+  - type: OpenAPI
+    url: openapi/nagios-config-api-openapi.yml
+  - type: Documentation
+    url: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
+  - type: API PDF Guide
+    url: >-
+      https://assets.nagios.com/downloads/nagiosxi/docs/Accessing-and-Using-the-XI-REST-API.pdf
+  - type: Backend API
+    url: https://assets.nagios.com/downloads/nagiosxi/docs/Accessing_The_XI_Backend_API.pdf
+  - type: Automated Host Management
+    url: https://assets.nagios.com/downloads/nagiosxi/docs/Automated_Host_Management.pdf
+  - type: JSONSchema
+    url: json-schema/nagios-xi-host-schema.json
+  - type: JSONSchema
+    url: json-schema/nagios-xi-service-schema.json
+  - type: JSONStructure
+    url: json-structure/nagios-xi-host-structure.json
+  - type: SpectralRules
+    url: rules/nagios-xi-rules.yml
+  - type: Documentation
+    url: https://www.nagios.org/ncpa/help/3.x/api.html
+  - type: GitHub
+    url: https://github.com/NagiosEnterprises/ncpa
+  - type: JSONSchema
+    url: json-schema/ncpa-metric-schema.json
+  - type: SpectralRules
+    url: rules/ncpa-rules.yml
+  - type: GitHub
+    url: https://github.com/NagiosEnterprises/nrdp
+  - type: JSONSchema
+    url: json-schema/nagios-check-result-schema.json
+  - type: JSONStructure
+    url: json-structure/nagios-check-result-structure.json
+- aid: nagios:nagios-cpu-api
+  name: Nagios CPU API
+  description: System-wide CPU utilization and core counts.
+  humanURL: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
+  baseURL: https://{nagios-xi-host}/nagiosxi/api/v1
+  tags:
+  - CPU
+  properties:
+  - type: OpenAPI
+    url: openapi/nagios-cpu-api-openapi.yml
+  - type: Documentation
+    url: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
+  - type: API PDF Guide
+    url: >-
+      https://assets.nagios.com/downloads/nagiosxi/docs/Accessing-and-Using-the-XI-REST-API.pdf
+  - type: Backend API
+    url: https://assets.nagios.com/downloads/nagiosxi/docs/Accessing_The_XI_Backend_API.pdf
+  - type: Automated Host Management
+    url: https://assets.nagios.com/downloads/nagiosxi/docs/Automated_Host_Management.pdf
+  - type: JSONSchema
+    url: json-schema/nagios-xi-host-schema.json
+  - type: JSONSchema
+    url: json-schema/nagios-xi-service-schema.json
+  - type: JSONStructure
+    url: json-structure/nagios-xi-host-structure.json
+  - type: SpectralRules
+    url: rules/nagios-xi-rules.yml
+  - type: Documentation
+    url: https://www.nagios.org/ncpa/help/3.x/api.html
+  - type: GitHub
+    url: https://github.com/NagiosEnterprises/ncpa
+  - type: JSONSchema
+    url: json-schema/ncpa-metric-schema.json
+  - type: SpectralRules
+    url: rules/ncpa-rules.yml
+  - type: GitHub
+    url: https://github.com/NagiosEnterprises/nrdp
+  - type: JSONSchema
+    url: json-schema/nagios-check-result-schema.json
+  - type: JSONStructure
+    url: json-structure/nagios-check-result-structure.json
+- aid: nagios:nagios-disk-api
+  name: Nagios Disk API
+  description: Logical, physical, and mount-point disk metrics.
+  humanURL: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
+  baseURL: https://{nagios-xi-host}/nagiosxi/api/v1
+  tags:
+  - Disk
+  properties:
+  - type: OpenAPI
+    url: openapi/nagios-disk-api-openapi.yml
+  - type: Documentation
+    url: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
+  - type: API PDF Guide
+    url: >-
+      https://assets.nagios.com/downloads/nagiosxi/docs/Accessing-and-Using-the-XI-REST-API.pdf
+  - type: Backend API
+    url: https://assets.nagios.com/downloads/nagiosxi/docs/Accessing_The_XI_Backend_API.pdf
+  - type: Automated Host Management
+    url: https://assets.nagios.com/downloads/nagiosxi/docs/Automated_Host_Management.pdf
+  - type: JSONSchema
+    url: json-schema/nagios-xi-host-schema.json
+  - type: JSONSchema
+    url: json-schema/nagios-xi-service-schema.json
+  - type: JSONStructure
+    url: json-structure/nagios-xi-host-structure.json
+  - type: SpectralRules
+    url: rules/nagios-xi-rules.yml
+  - type: Documentation
+    url: https://www.nagios.org/ncpa/help/3.x/api.html
+  - type: GitHub
+    url: https://github.com/NagiosEnterprises/ncpa
+  - type: JSONSchema
+    url: json-schema/ncpa-metric-schema.json
+  - type: SpectralRules
+    url: rules/ncpa-rules.yml
+  - type: GitHub
+    url: https://github.com/NagiosEnterprises/nrdp
+  - type: JSONSchema
+    url: json-schema/nagios-check-result-schema.json
+  - type: JSONStructure
+    url: json-structure/nagios-check-result-structure.json
+- aid: nagios:nagios-interface-api
+  name: Nagios Interface API
+  description: Network interface byte and packet counters.
+  humanURL: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
+  baseURL: https://{nagios-xi-host}/nagiosxi/api/v1
+  tags:
+  - Interface
+  properties:
+  - type: OpenAPI
+    url: openapi/nagios-interface-api-openapi.yml
+  - type: Documentation
+    url: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
+  - type: API PDF Guide
+    url: >-
+      https://assets.nagios.com/downloads/nagiosxi/docs/Accessing-and-Using-the-XI-REST-API.pdf
+  - type: Backend API
+    url: https://assets.nagios.com/downloads/nagiosxi/docs/Accessing_The_XI_Backend_API.pdf
+  - type: Automated Host Management
+    url: https://assets.nagios.com/downloads/nagiosxi/docs/Automated_Host_Management.pdf
+  - type: JSONSchema
+    url: json-schema/nagios-xi-host-schema.json
+  - type: JSONSchema
+    url: json-schema/nagios-xi-service-schema.json
+  - type: JSONStructure
+    url: json-structure/nagios-xi-host-structure.json
+  - type: SpectralRules
+    url: rules/nagios-xi-rules.yml
+  - type: Documentation
+    url: https://www.nagios.org/ncpa/help/3.x/api.html
+  - type: GitHub
+    url: https://github.com/NagiosEnterprises/ncpa
+  - type: JSONSchema
+    url: json-schema/ncpa-metric-schema.json
+  - type: SpectralRules
+    url: rules/ncpa-rules.yml
+  - type: GitHub
+    url: https://github.com/NagiosEnterprises/nrdp
+  - type: JSONSchema
+    url: json-schema/nagios-check-result-schema.json
+  - type: JSONStructure
+    url: json-structure/nagios-check-result-structure.json
+- aid: nagios:nagios-memory-api
+  name: Nagios Memory API
+  description: Physical memory and swap.
+  humanURL: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
+  baseURL: https://{nagios-xi-host}/nagiosxi/api/v1
+  tags:
+  - Memory
+  properties:
+  - type: OpenAPI
+    url: openapi/nagios-memory-api-openapi.yml
+  - type: Documentation
+    url: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
+  - type: API PDF Guide
+    url: >-
+      https://assets.nagios.com/downloads/nagiosxi/docs/Accessing-and-Using-the-XI-REST-API.pdf
+  - type: Backend API
+    url: https://assets.nagios.com/downloads/nagiosxi/docs/Accessing_The_XI_Backend_API.pdf
+  - type: Automated Host Management
+    url: https://assets.nagios.com/downloads/nagiosxi/docs/Automated_Host_Management.pdf
+  - type: JSONSchema
+    url: json-schema/nagios-xi-host-schema.json
+  - type: JSONSchema
+    url: json-schema/nagios-xi-service-schema.json
+  - type: JSONStructure
+    url: json-structure/nagios-xi-host-structure.json
+  - type: SpectralRules
+    url: rules/nagios-xi-rules.yml
+  - type: Documentation
+    url: https://www.nagios.org/ncpa/help/3.x/api.html
+  - type: GitHub
+    url: https://github.com/NagiosEnterprises/ncpa
+  - type: JSONSchema
+    url: json-schema/ncpa-metric-schema.json
+  - type: SpectralRules
+    url: rules/ncpa-rules.yml
+  - type: GitHub
+    url: https://github.com/NagiosEnterprises/nrdp
+  - type: JSONSchema
+    url: json-schema/nagios-check-result-schema.json
+  - type: JSONStructure
+    url: json-structure/nagios-check-result-structure.json
+- aid: nagios:nagios-objects-api
+  name: Nagios Objects API
+  description: >-
+    Read-only backend for hosts, services, host groups, contacts, downtime, history, and other monitored
+    objects.
+  humanURL: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
+  baseURL: https://{nagios-xi-host}/nagiosxi/api/v1
+  tags:
+  - Objects
+  properties:
+  - type: OpenAPI
+    url: openapi/nagios-objects-api-openapi.yml
+  - type: Documentation
+    url: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
+  - type: API PDF Guide
+    url: >-
+      https://assets.nagios.com/downloads/nagiosxi/docs/Accessing-and-Using-the-XI-REST-API.pdf
+  - type: Backend API
+    url: https://assets.nagios.com/downloads/nagiosxi/docs/Accessing_The_XI_Backend_API.pdf
+  - type: Automated Host Management
+    url: https://assets.nagios.com/downloads/nagiosxi/docs/Automated_Host_Management.pdf
+  - type: JSONSchema
+    url: json-schema/nagios-xi-host-schema.json
+  - type: JSONSchema
+    url: json-schema/nagios-xi-service-schema.json
+  - type: JSONStructure
+    url: json-structure/nagios-xi-host-structure.json
+  - type: SpectralRules
+    url: rules/nagios-xi-rules.yml
+  - type: Documentation
+    url: https://www.nagios.org/ncpa/help/3.x/api.html
+  - type: GitHub
+    url: https://github.com/NagiosEnterprises/ncpa
+  - type: JSONSchema
+    url: json-schema/ncpa-metric-schema.json
+  - type: SpectralRules
+    url: rules/ncpa-rules.yml
+  - type: GitHub
+    url: https://github.com/NagiosEnterprises/nrdp
+  - type: JSONSchema
+    url: json-schema/nagios-check-result-schema.json
+  - type: JSONStructure
+    url: json-structure/nagios-check-result-structure.json
+- aid: nagios:nagios-plugins-api
+  name: Nagios Plugins API
+  description: User-defined Nagios-style plugins executed by the agent.
+  humanURL: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
+  baseURL: https://{nagios-xi-host}/nagiosxi/api/v1
+  tags:
+  - Plugins
+  properties:
+  - type: OpenAPI
+    url: openapi/nagios-plugins-api-openapi.yml
+  - type: Documentation
+    url: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
+  - type: API PDF Guide
+    url: >-
+      https://assets.nagios.com/downloads/nagiosxi/docs/Accessing-and-Using-the-XI-REST-API.pdf
+  - type: Backend API
+    url: https://assets.nagios.com/downloads/nagiosxi/docs/Accessing_The_XI_Backend_API.pdf
+  - type: Automated Host Management
+    url: https://assets.nagios.com/downloads/nagiosxi/docs/Automated_Host_Management.pdf
+  - type: JSONSchema
+    url: json-schema/nagios-xi-host-schema.json
+  - type: JSONSchema
+    url: json-schema/nagios-xi-service-schema.json
+  - type: JSONStructure
+    url: json-structure/nagios-xi-host-structure.json
+  - type: SpectralRules
+    url: rules/nagios-xi-rules.yml
+  - type: Documentation
+    url: https://www.nagios.org/ncpa/help/3.x/api.html
+  - type: GitHub
+    url: https://github.com/NagiosEnterprises/ncpa
+  - type: JSONSchema
+    url: json-schema/ncpa-metric-schema.json
+  - type: SpectralRules
+    url: rules/ncpa-rules.yml
+  - type: GitHub
+    url: https://github.com/NagiosEnterprises/nrdp
+  - type: JSONSchema
+    url: json-schema/nagios-check-result-schema.json
+  - type: JSONStructure
+    url: json-structure/nagios-check-result-structure.json
+- aid: nagios:nagios-processes-api
+  name: Nagios Processes API
+  description: Running process inventory and resource use.
+  humanURL: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
+  baseURL: https://{nagios-xi-host}/nagiosxi/api/v1
+  tags:
+  - Processes
+  properties:
+  - type: OpenAPI
+    url: openapi/nagios-processes-api-openapi.yml
+  - type: Documentation
+    url: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
+  - type: API PDF Guide
+    url: >-
+      https://assets.nagios.com/downloads/nagiosxi/docs/Accessing-and-Using-the-XI-REST-API.pdf
+  - type: Backend API
+    url: https://assets.nagios.com/downloads/nagiosxi/docs/Accessing_The_XI_Backend_API.pdf
+  - type: Automated Host Management
+    url: https://assets.nagios.com/downloads/nagiosxi/docs/Automated_Host_Management.pdf
+  - type: JSONSchema
+    url: json-schema/nagios-xi-host-schema.json
+  - type: JSONSchema
+    url: json-schema/nagios-xi-service-schema.json
+  - type: JSONStructure
+    url: json-structure/nagios-xi-host-structure.json
+  - type: SpectralRules
+    url: rules/nagios-xi-rules.yml
+  - type: Documentation
+    url: https://www.nagios.org/ncpa/help/3.x/api.html
+  - type: GitHub
+    url: https://github.com/NagiosEnterprises/ncpa
+  - type: JSONSchema
+    url: json-schema/ncpa-metric-schema.json
+  - type: SpectralRules
+    url: rules/ncpa-rules.yml
+  - type: GitHub
+    url: https://github.com/NagiosEnterprises/nrdp
+  - type: JSONSchema
+    url: json-schema/nagios-check-result-schema.json
+  - type: JSONStructure
+    url: json-structure/nagios-check-result-structure.json
+- aid: nagios:nagios-services-api
+  name: Nagios Services API
+  description: Host service / daemon status.
+  humanURL: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
+  baseURL: https://{nagios-xi-host}/nagiosxi/api/v1
+  tags:
+  - Services
+  properties:
+  - type: OpenAPI
+    url: openapi/nagios-services-api-openapi.yml
+  - type: Documentation
+    url: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
+  - type: API PDF Guide
+    url: >-
+      https://assets.nagios.com/downloads/nagiosxi/docs/Accessing-and-Using-the-XI-REST-API.pdf
+  - type: Backend API
+    url: https://assets.nagios.com/downloads/nagiosxi/docs/Accessing_The_XI_Backend_API.pdf
+  - type: Automated Host Management
+    url: https://assets.nagios.com/downloads/nagiosxi/docs/Automated_Host_Management.pdf
+  - type: JSONSchema
+    url: json-schema/nagios-xi-host-schema.json
+  - type: JSONSchema
+    url: json-schema/nagios-xi-service-schema.json
+  - type: JSONStructure
+    url: json-structure/nagios-xi-host-structure.json
+  - type: SpectralRules
+    url: rules/nagios-xi-rules.yml
+  - type: Documentation
+    url: https://www.nagios.org/ncpa/help/3.x/api.html
+  - type: GitHub
+    url: https://github.com/NagiosEnterprises/ncpa
+  - type: JSONSchema
+    url: json-schema/ncpa-metric-schema.json
+  - type: SpectralRules
+    url: rules/ncpa-rules.yml
+  - type: GitHub
+    url: https://github.com/NagiosEnterprises/nrdp
+  - type: JSONSchema
+    url: json-schema/nagios-check-result-schema.json
+  - type: JSONStructure
+    url: json-structure/nagios-check-result-structure.json
+- aid: nagios:nagios-submission-api
+  name: Nagios Submission API
+  description: Submit passive check results and external commands.
+  humanURL: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
+  baseURL: https://{nagios-xi-host}/nagiosxi/api/v1
+  tags:
+  - Submission
+  properties:
+  - type: OpenAPI
+    url: openapi/nagios-submission-api-openapi.yml
+  - type: Documentation
+    url: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
+  - type: API PDF Guide
+    url: >-
+      https://assets.nagios.com/downloads/nagiosxi/docs/Accessing-and-Using-the-XI-REST-API.pdf
+  - type: Backend API
+    url: https://assets.nagios.com/downloads/nagiosxi/docs/Accessing_The_XI_Backend_API.pdf
+  - type: Automated Host Management
+    url: https://assets.nagios.com/downloads/nagiosxi/docs/Automated_Host_Management.pdf
+  - type: JSONSchema
+    url: json-schema/nagios-xi-host-schema.json
+  - type: JSONSchema
+    url: json-schema/nagios-xi-service-schema.json
+  - type: JSONStructure
+    url: json-structure/nagios-xi-host-structure.json
+  - type: SpectralRules
+    url: rules/nagios-xi-rules.yml
+  - type: Documentation
+    url: https://www.nagios.org/ncpa/help/3.x/api.html
+  - type: GitHub
+    url: https://github.com/NagiosEnterprises/ncpa
+  - type: JSONSchema
+    url: json-schema/ncpa-metric-schema.json
+  - type: SpectralRules
+    url: rules/ncpa-rules.yml
+  - type: GitHub
+    url: https://github.com/NagiosEnterprises/nrdp
+  - type: JSONSchema
+    url: json-schema/nagios-check-result-schema.json
+  - type: JSONStructure
+    url: json-structure/nagios-check-result-structure.json
+- aid: nagios:nagios-system-api
+  name: Nagios System API
+  description: >-
+    Admin-only endpoints to manage Nagios XI subsystems, apply configuration, schedule downtime, and execute
+    commands.
+  humanURL: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
+  baseURL: https://{nagios-xi-host}/nagiosxi/api/v1
+  tags:
+  - System
+  properties:
+  - type: OpenAPI
+    url: openapi/nagios-system-api-openapi.yml
+  - type: Documentation
+    url: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
+  - type: API PDF Guide
+    url: >-
+      https://assets.nagios.com/downloads/nagiosxi/docs/Accessing-and-Using-the-XI-REST-API.pdf
+  - type: Backend API
+    url: https://assets.nagios.com/downloads/nagiosxi/docs/Accessing_The_XI_Backend_API.pdf
+  - type: Automated Host Management
+    url: https://assets.nagios.com/downloads/nagiosxi/docs/Automated_Host_Management.pdf
+  - type: JSONSchema
+    url: json-schema/nagios-xi-host-schema.json
+  - type: JSONSchema
+    url: json-schema/nagios-xi-service-schema.json
+  - type: JSONStructure
+    url: json-structure/nagios-xi-host-structure.json
+  - type: SpectralRules
+    url: rules/nagios-xi-rules.yml
+  - type: Documentation
+    url: https://www.nagios.org/ncpa/help/3.x/api.html
+  - type: GitHub
+    url: https://github.com/NagiosEnterprises/ncpa
+  - type: JSONSchema
+    url: json-schema/ncpa-metric-schema.json
+  - type: SpectralRules
+    url: rules/ncpa-rules.yml
+  - type: GitHub
+    url: https://github.com/NagiosEnterprises/nrdp
+  - type: JSONSchema
+    url: json-schema/nagios-check-result-schema.json
+  - type: JSONStructure
+    url: json-structure/nagios-check-result-structure.json
 common:
   - type: AgenticAccess
     url: agentic-access/nagios-agentic-access.yml
