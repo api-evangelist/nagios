@@ -1,0 +1,269 @@
+openapi: 3.0.3
+info:
+  title: NCPA (Nagios Cross-Platform Agent) API
+  description: |
+    REST API exposed by the Nagios Cross-Platform Agent (NCPA) running on
+    Linux, Windows, or macOS. The API uses a hierarchical node-based URL
+    structure (`/api/{module}/{node1}/{node2}`) and is authenticated by a
+    `token` query parameter matching the `community_string` in the agent
+    config. Both active polls and Nagios-style passive check results are
+    supported.
+  version: '3.x'
+  contact:
+    name: Nagios Enterprises
+    url: https://www.nagios.org/ncpa/
+
+servers:
+  - url: https://{ncpaHost}:5693/api
+    description: NCPA agent listening on default TLS port 5693.
+    variables:
+      ncpaHost:
+        default: localhost
+
+security:
+  - TokenAuth: []
+
+tags:
+  - name: System
+    description: Host system identity and agent metadata.
+  - name: CPU
+    description: System-wide CPU utilization and core counts.
+  - name: Memory
+    description: Physical memory and swap.
+  - name: Disk
+    description: Logical, physical, and mount-point disk metrics.
+  - name: Interface
+    description: Network interface byte and packet counters.
+  - name: Processes
+    description: Running process inventory and resource use.
+  - name: Services
+    description: Host service / daemon status.
+  - name: Plugins
+    description: User-defined Nagios-style plugins executed by the agent.
+
+paths:
+  /system:
+    get:
+      tags: [System]
+      summary: Get System Information
+      operationId: getSystem
+      parameters:
+        - $ref: '#/components/parameters/Token'
+      responses:
+        '200': { description: Host system info.,
+                 content: { application/json: { schema: { $ref: '#/components/schemas/MetricResponse' } } } }
+  /system/agent_version:
+    get:
+      tags: [System]
+      summary: Get Agent Version
+      operationId: getAgentVersion
+      parameters:
+        - $ref: '#/components/parameters/Token'
+      responses:
+        '200': { description: NCPA agent version. }
+  /cpu/percent:
+    get:
+      tags: [CPU]
+      summary: Get CPU Percent
+      operationId: getCpuPercent
+      parameters:
+        - $ref: '#/components/parameters/Token'
+        - name: aggregate
+          in: query
+          schema: { type: string, enum: [avg, min, max, sum] }
+        - $ref: '#/components/parameters/Warning'
+        - $ref: '#/components/parameters/Critical'
+        - $ref: '#/components/parameters/Check'
+      responses:
+        '200': { description: CPU utilization. }
+  /cpu/count:
+    get:
+      tags: [CPU]
+      summary: Get CPU Core Count
+      operationId: getCpuCount
+      parameters:
+        - $ref: '#/components/parameters/Token'
+      responses:
+        '200': { description: Number of CPU cores. }
+  /memory/virtual:
+    get:
+      tags: [Memory]
+      summary: Get Virtual Memory
+      operationId: getMemoryVirtual
+      parameters:
+        - $ref: '#/components/parameters/Token'
+        - $ref: '#/components/parameters/Units'
+        - $ref: '#/components/parameters/Warning'
+        - $ref: '#/components/parameters/Critical'
+        - $ref: '#/components/parameters/Check'
+      responses:
+        '200': { description: Virtual memory metrics. }
+  /memory/swap:
+    get:
+      tags: [Memory]
+      summary: Get Swap Memory
+      operationId: getMemorySwap
+      parameters:
+        - $ref: '#/components/parameters/Token'
+        - $ref: '#/components/parameters/Units'
+      responses:
+        '200': { description: Swap usage. }
+  /disk/logical:
+    get:
+      tags: [Disk]
+      summary: Get Logical Disks
+      operationId: getDiskLogical
+      parameters:
+        - $ref: '#/components/parameters/Token'
+        - $ref: '#/components/parameters/Units'
+        - $ref: '#/components/parameters/Warning'
+        - $ref: '#/components/parameters/Critical'
+        - $ref: '#/components/parameters/Check'
+      responses:
+        '200': { description: Logical disk metrics. }
+  /disk/physical:
+    get:
+      tags: [Disk]
+      summary: Get Physical Disks
+      operationId: getDiskPhysical
+      parameters:
+        - $ref: '#/components/parameters/Token'
+        - $ref: '#/components/parameters/Units'
+      responses:
+        '200': { description: Physical disk metrics. }
+  /disk/mount:
+    get:
+      tags: [Disk]
+      summary: Get Disk Mount Points
+      operationId: getDiskMount
+      parameters:
+        - $ref: '#/components/parameters/Token'
+      responses:
+        '200': { description: Mount point metadata. }
+  /interface:
+    get:
+      tags: [Interface]
+      summary: Get Network Interfaces
+      operationId: getInterface
+      parameters:
+        - $ref: '#/components/parameters/Token'
+        - $ref: '#/components/parameters/Units'
+        - name: delta
+          in: query
+          schema: { type: integer, enum: [0, 1] }
+          description: When 1, return per-second change rate.
+      responses:
+        '200': { description: Network interface counters. }
+  /processes:
+    get:
+      tags: [Processes]
+      summary: List Processes
+      operationId: listProcesses
+      parameters:
+        - $ref: '#/components/parameters/Token'
+        - name: name
+          in: query
+          schema: { type: string }
+        - name: exe
+          in: query
+          schema: { type: string }
+        - name: cmd
+          in: query
+          schema: { type: string }
+        - name: mem_percent
+          in: query
+          schema: { type: number }
+        - name: cpu_percent
+          in: query
+          schema: { type: number }
+      responses:
+        '200': { description: Process list. }
+  /services:
+    get:
+      tags: [Services]
+      summary: List Services
+      operationId: listServices
+      parameters:
+        - $ref: '#/components/parameters/Token'
+        - name: service
+          in: query
+          schema: { type: string }
+        - name: status
+          in: query
+          schema: { type: string, enum: [running, stopped] }
+      responses:
+        '200': { description: Service status. }
+  /plugins/{pluginName}:
+    get:
+      tags: [Plugins]
+      summary: Run NCPA Plugin
+      operationId: runPlugin
+      parameters:
+        - $ref: '#/components/parameters/Token'
+        - name: pluginName
+          in: path
+          required: true
+          schema: { type: string }
+        - name: args
+          in: query
+          schema: { type: string }
+      responses:
+        '200':
+          description: Plugin output (Nagios check result format).
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/CheckResult' }
+
+components:
+  securitySchemes:
+    TokenAuth:
+      type: apiKey
+      in: query
+      name: token
+  parameters:
+    Token:
+      name: token
+      in: query
+      required: true
+      schema: { type: string }
+      description: NCPA community_string token from agent config.
+    Units:
+      name: units
+      in: query
+      schema: { type: string, enum: [k, Ki, M, Mi, G, Gi, T, Ti] }
+      description: Convert byte/bit values to the requested SI or binary unit.
+    Warning:
+      name: warning
+      in: query
+      schema: { type: string }
+      description: Nagios-style warning threshold (e.g. '80', '90:', '@70:90').
+    Critical:
+      name: critical
+      in: query
+      schema: { type: string }
+      description: Nagios-style critical threshold.
+    Check:
+      name: check
+      in: query
+      schema: { type: integer, enum: [0, 1] }
+      description: When 1, return a Nagios-style check result with returncode + stdout.
+  schemas:
+    MetricResponse:
+      type: object
+      additionalProperties:
+        type: array
+        description: '[value, "unit"] pair returned per metric.'
+        minItems: 2
+        maxItems: 2
+        items: {}
+    CheckResult:
+      type: object
+      required: [returncode, stdout]
+      properties:
+        returncode:
+          type: integer
+          enum: [0, 1, 2, 3]
+          description: 0=OK, 1=WARNING, 2=CRITICAL, 3=UNKNOWN.
+        stdout:
+          type: string
+          example: "OK: 12% CPU usage | 'cpu_percent'=12;80;90;"

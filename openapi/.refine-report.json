@@ -1,0 +1,34 @@
+{
+  "provider": "nagios",
+  "sources": [
+    "nagios-config-api-openapi.yml",
+    "nagios-cpu-api-openapi.yml",
+    "nagios-disk-api-openapi.yml",
+    "nagios-interface-api-openapi.yml",
+    "nagios-memory-api-openapi.yml",
+    "nagios-objects-api-openapi.yml",
+    "nagios-plugins-api-openapi.yml",
+    "nagios-processes-api-openapi.yml",
+    "nagios-services-api-openapi.yml",
+    "nagios-submission-api-openapi.yml",
+    "nagios-system-api-openapi.yml"
+  ],
+  "outputs": [
+    "nagios-config-api-openapi.yml",
+    "nagios-cpu-api-openapi.yml",
+    "nagios-disk-api-openapi.yml",
+    "nagios-interface-api-openapi.yml",
+    "nagios-memory-api-openapi.yml",
+    "nagios-objects-api-openapi.yml",
+    "nagios-plugins-api-openapi.yml",
+    "nagios-processes-api-openapi.yml",
+    "nagios-services-api-openapi.yml",
+    "nagios-submission-api-openapi.yml",
+    "nagios-system-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
