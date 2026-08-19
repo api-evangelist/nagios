@@ -41,7 +41,7 @@ tags:
 url: https://raw.githubusercontent.com/api-evangelist/nagios/refs/heads/main/apis.yml
 created: '2026-05-11'
 modified: '2026-05-23'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: nagios:nsca
   name: NSCA (Nagios Service Check Acceptor)
