@@ -1,0 +1,163 @@
+{
+  "item": [
+    {
+      "id": "b28deef4-1664-4b9b-b7bd-33297e97ec30",
+      "name": "Interface",
+      "description": {
+        "content": "Network interface byte and packet counters.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2658f47b-98ed-4e55-9771-e429f682c4bf",
+          "name": "Get Network Interfaces",
+          "request": {
+            "name": "Get Network Interfaces",
+            "description": {},
+            "url": {
+              "path": [
+                "interface"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) NCPA community_string token from agent config."
+                },
+                {
+                  "disabled": false,
+                  "key": "units",
+                  "value": "<string>",
+                  "description": "Convert byte/bit values to the requested SI or binary unit."
+                },
+                {
+                  "disabled": false,
+                  "key": "delta",
+                  "value": "<integer>",
+                  "description": "When 1, return per-second change rate."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "26bd8639-c3b5-424e-b9f8-b94c2588588d",
+              "name": "Network interface counters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "interface"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "delta",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname or IP address of the Nagios XI server",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "nagios.example.com",
+      "key": "nagiosXiHost"
+    },
+    {
+      "type": "string",
+      "value": "https://{{nagiosXiHost}}/nagiosxi/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a9e664bf-da3c-482a-9aec-225843b721fa",
+    "name": "Nagios XI REST Config Interface API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Built-in REST API for Nagios XI, the commercial enterprise distribution of\nNagios. The API is split into three sections: Objects (read-only backend for\nhosts, services, contacts, host groups, etc.), Config (admin-only writes for\nhosts and services), and System (admin-only commands such as apply\nconfiguration, scheduled downtime, status). Responses are returned as JSON\nwhen `pretty=1` or by default. Authentication uses a per-user Nagios XI API\nkey passed via the `apikey` query parameter.\n\n\nContact Support:\n Name: Nagios Enterprises",
+      "type": "text/plain"
+    }
+  }
+}

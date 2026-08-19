@@ -1,0 +1,87 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nagios XI REST Config CPU API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CPU",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get CPU Percent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/cpu/percent",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "NCPA community_string token from agent config."
+              },
+              {
+                "name": "aggregate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "warning",
+                "value": "",
+                "type": "query",
+                "description": "Nagios-style warning threshold (e.g. '80', '90:', '@70:90')."
+              },
+              {
+                "name": "critical",
+                "value": "",
+                "type": "query",
+                "description": "Nagios-style critical threshold."
+              },
+              {
+                "name": "check",
+                "value": "",
+                "type": "query",
+                "description": "When 1, return a Nagios-style check result with returncode + stdout."
+              }
+            ]
+          },
+          "docs": "Get CPU Percent"
+        },
+        {
+          "info": {
+            "name": "Get CPU Core Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/cpu/count",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "NCPA community_string token from agent config."
+              }
+            ]
+          },
+          "docs": "Get CPU Core Count"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

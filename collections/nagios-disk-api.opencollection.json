@@ -1,0 +1,113 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nagios XI REST Config Disk API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Disk",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Logical Disks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/disk/logical",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "NCPA community_string token from agent config."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Convert byte/bit values to the requested SI or binary unit."
+              },
+              {
+                "name": "warning",
+                "value": "",
+                "type": "query",
+                "description": "Nagios-style warning threshold (e.g. '80', '90:', '@70:90')."
+              },
+              {
+                "name": "critical",
+                "value": "",
+                "type": "query",
+                "description": "Nagios-style critical threshold."
+              },
+              {
+                "name": "check",
+                "value": "",
+                "type": "query",
+                "description": "When 1, return a Nagios-style check result with returncode + stdout."
+              }
+            ]
+          },
+          "docs": "Get Logical Disks"
+        },
+        {
+          "info": {
+            "name": "Get Physical Disks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/disk/physical",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "NCPA community_string token from agent config."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Convert byte/bit values to the requested SI or binary unit."
+              }
+            ]
+          },
+          "docs": "Get Physical Disks"
+        },
+        {
+          "info": {
+            "name": "Get Disk Mount Points",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/disk/mount",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "NCPA community_string token from agent config."
+              }
+            ]
+          },
+          "docs": "Get Disk Mount Points"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,235 @@
+{
+  "item": [
+    {
+      "id": "31662422-345a-48ad-8097-f3ea9fbea7b6",
+      "name": "Submission",
+      "description": {
+        "content": "Submit passive check results and external commands.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b7657caa-0b79-49fc-b143-2fefcd2a27ee",
+          "name": "Submit NRDP Payload",
+          "request": {
+            "name": "Submit NRDP Payload",
+            "description": {
+              "content": "Submit a `checkresults` payload (`cmd=submitcheck`) or a Nagios external\ncommand (`cmd=submitcmd`). The body can be `application/x-www-form-urlencoded`\nwith an XML/JSON `XMLDATA`/`JSONDATA` field.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) NRDP authentication token."
+                },
+                {
+                  "disabled": false,
+                  "key": "cmd",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "XMLDATA",
+                  "value": "<string>",
+                  "description": "XML payload, root `<checkresults>` containing one or more\n`<checkresult type=\"host|service\">` elements with\n`<hostname>`, `<servicename>`, `<state>`, `<output>` children.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "JSONDATA",
+                  "value": "<string>",
+                  "description": "JSON string equivalent of XMLDATA — e.g.\n`{\"checkresults\":[{\"checkresult\":{\"type\":\"service\",...}}]}`.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "command",
+                  "value": "<string>",
+                  "description": "External command string when `cmd=submitcmd`."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7a200eeb-0122-471f-aec8-4212bfa7975e",
+              "name": "Submission result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) NRDP authentication token.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "cmd",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "XML payload, root `<checkresults>` containing one or more\n`<checkresult type=\"host|service\">` elements with\n`<hostname>`, `<servicename>`, `<state>`, `<output>` children.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "XMLDATA",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "JSON string equivalent of XMLDATA — e.g.\n`{\"checkresults\":[{\"checkresult\":{\"type\":\"service\",...}}]}`.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "JSONDATA",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "External command string when `cmd=submitcmd`.",
+                        "type": "text/plain"
+                      },
+                      "key": "command",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2939,\n  \"message\": \"string\",\n  \"meta\": {\n    \"output\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname or IP address of the Nagios XI server",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "nagios.example.com",
+      "key": "nagiosXiHost"
+    },
+    {
+      "type": "string",
+      "value": "https://{{nagiosXiHost}}/nagiosxi/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "205d935d-b94b-4e81-bb06-57bcb8f0c164",
+    "name": "Nagios XI REST Config Submission API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Built-in REST API for Nagios XI, the commercial enterprise distribution of\nNagios. The API is split into three sections: Objects (read-only backend for\nhosts, services, contacts, host groups, etc.), Config (admin-only writes for\nhosts and services), and System (admin-only commands such as apply\nconfiguration, scheduled downtime, status). Responses are returned as JSON\nwhen `pretty=1` or by default. Authentication uses a per-user Nagios XI API\nkey passed via the `apikey` query parameter.\n\n\nContact Support:\n Name: Nagios Enterprises",
+      "type": "text/plain"
+    }
+  }
+}

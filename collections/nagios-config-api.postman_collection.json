@@ -1,0 +1,931 @@
+{
+  "item": [
+    {
+      "id": "3481b2d4-cefc-4037-ad86-e5a3e7073903",
+      "name": "Config",
+      "description": {
+        "content": "Admin-only endpoints to add, modify, and delete hosts and services.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0ff387fe-507c-401a-a9be-3bd703b7fa11",
+          "name": "Create Or Update Host",
+          "request": {
+            "name": "Create Or Update Host",
+            "description": {
+              "content": "Add or update a Nagios XI host definition. Use `force=1` to skip template-required directives and `applyconfig=1` to immediately apply the running configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "config",
+                "host"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "host_name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "use",
+                  "value": "<string>",
+                  "description": "Template to inherit from."
+                },
+                {
+                  "disabled": false,
+                  "key": "max_check_attempts",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "check_interval",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "retry_interval",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "check_period",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "notification_interval",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "notification_period",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "contacts",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "contact_groups",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "force",
+                  "value": "<integer>",
+                  "description": "When 1, bypass the missing-directive check (rely on template values)."
+                },
+                {
+                  "disabled": false,
+                  "key": "applyconfig",
+                  "value": "<integer>",
+                  "description": "When 1, apply the configuration immediately after writing."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4e55e3a5-58d7-4a8c-baa6-889989bb7f47",
+              "name": "Host created or updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "config",
+                    "host"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "host_name",
+                      "value": "web01"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "address",
+                      "value": "10.0.0.5"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Template to inherit from.",
+                        "type": "text/plain"
+                      },
+                      "key": "use",
+                      "value": "xiwizard_generic_host"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "max_check_attempts",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "check_interval",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "retry_interval",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "check_period",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "notification_interval",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "notification_period",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "contacts",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "contact_groups",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "When 1, bypass the missing-directive check (rely on template values).",
+                        "type": "text/plain"
+                      },
+                      "key": "force",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "When 1, apply the configuration immediately after writing.",
+                        "type": "text/plain"
+                      },
+                      "key": "applyconfig",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": \"Removed web01 from the system. Config applied, Nagios Core was restarted.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13af5345-3cd8-4a8b-9b67-5307df66528a",
+              "name": "Missing required directives.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "config",
+                    "host"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "host_name",
+                      "value": "web01"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "address",
+                      "value": "10.0.0.5"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Template to inherit from.",
+                        "type": "text/plain"
+                      },
+                      "key": "use",
+                      "value": "xiwizard_generic_host"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "max_check_attempts",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "check_interval",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "retry_interval",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "check_period",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "notification_interval",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "notification_period",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "contacts",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "contact_groups",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "When 1, bypass the missing-directive check (rely on template values).",
+                        "type": "text/plain"
+                      },
+                      "key": "force",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "When 1, apply the configuration immediately after writing.",
+                        "type": "text/plain"
+                      },
+                      "key": "applyconfig",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Missing required variables\",\n  \"missing\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4177d98d-b293-4320-805c-913d6600081b",
+          "name": "Delete Host",
+          "request": {
+            "name": "Delete Host",
+            "description": {},
+            "url": {
+              "path": [
+                "config",
+                "host"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "host_name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "applyconfig",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af74e4dd-4935-472a-8337-bc132b6f1761",
+              "name": "Host removed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "config",
+                    "host"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "host_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "applyconfig",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": \"Removed web01 from the system. Config applied, Nagios Core was restarted.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "87a45029-f316-45fd-a735-cfdbbe513ca7",
+          "name": "Create Or Update Service",
+          "request": {
+            "name": "Create Or Update Service",
+            "description": {},
+            "url": {
+              "path": [
+                "config",
+                "service"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "host_name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "service_description",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "use",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "check_command",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "max_check_attempts",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "check_interval",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "retry_interval",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "notification_interval",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "check_period",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "notification_period",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "contacts",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "contact_groups",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "force",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "applyconfig",
+                  "value": "<integer>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ecbe8753-4a33-41bd-8cc5-b8fa92d15707",
+              "name": "Service created or updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "config",
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "host_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "service_description",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "use",
+                      "value": "xiwizard_website_ping_service"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "check_command",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "max_check_attempts",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "check_interval",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "retry_interval",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "notification_interval",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "check_period",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "notification_period",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "contacts",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "contact_groups",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "force",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "applyconfig",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": \"Removed web01 from the system. Config applied, Nagios Core was restarted.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fa1f482c-ae71-4324-a01a-eda15b4b3ebc",
+          "name": "Delete Service",
+          "request": {
+            "name": "Delete Service",
+            "description": {},
+            "url": {
+              "path": [
+                "config",
+                "service"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "host_name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "service_description",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "applyconfig",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3952fec7-ca65-45f3-beeb-5b6a773f32e7",
+              "name": "Service removed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "config",
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "host_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "service_description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "applyconfig",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": \"Removed web01 from the system. Config applied, Nagios Core was restarted.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname or IP address of the Nagios XI server",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "nagios.example.com",
+      "key": "nagiosXiHost"
+    },
+    {
+      "type": "string",
+      "value": "https://{{nagiosXiHost}}/nagiosxi/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "07b4ef27-b0a1-49f8-b1d0-a294ccb14e9d",
+    "name": "Nagios XI REST Config API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Built-in REST API for Nagios XI, the commercial enterprise distribution of\nNagios. The API is split into three sections: Objects (read-only backend for\nhosts, services, contacts, host groups, etc.), Config (admin-only writes for\nhosts and services), and System (admin-only commands such as apply\nconfiguration, scheduled downtime, status). Responses are returned as JSON\nwhen `pretty=1` or by default. Authentication uses a per-user Nagios XI API\nkey passed via the `apikey` query parameter.\n\n\nContact Support:\n Name: Nagios Enterprises",
+      "type": "text/plain"
+    }
+  }
+}

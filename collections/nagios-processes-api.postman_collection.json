@@ -1,0 +1,188 @@
+{
+  "item": [
+    {
+      "id": "33c4c0a9-1d47-4c41-be8c-814057c0396a",
+      "name": "Processes",
+      "description": {
+        "content": "Running process inventory and resource use.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5d118979-56cd-4311-92c1-b49bc58c8f5e",
+          "name": "List Processes",
+          "request": {
+            "name": "List Processes",
+            "description": {},
+            "url": {
+              "path": [
+                "processes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) NCPA community_string token from agent config."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "exe",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "cmd",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "mem_percent",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "cpu_percent",
+                  "value": "<number>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the Nagios XI server",
+                  "type": "any",
+                  "value": "{{nagiosXiHost}}",
+                  "key": "nagiosXiHost"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b94f65a0-a525-4a00-90be-3b5537e6b7f0",
+              "name": "Process list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "processes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exe",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cmd",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mem_percent",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "cpu_percent",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the Nagios XI server",
+                      "type": "any",
+                      "value": "{{nagiosXiHost}}",
+                      "key": "nagiosXiHost"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname or IP address of the Nagios XI server",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "nagios.example.com",
+      "key": "nagiosXiHost"
+    },
+    {
+      "type": "string",
+      "value": "https://{{nagiosXiHost}}/nagiosxi/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1c19f167-1672-4e23-8ddb-91fe5b335b3b",
+    "name": "Nagios XI REST Config Processes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Built-in REST API for Nagios XI, the commercial enterprise distribution of\nNagios. The API is split into three sections: Objects (read-only backend for\nhosts, services, contacts, host groups, etc.), Config (admin-only writes for\nhosts and services), and System (admin-only commands such as apply\nconfiguration, scheduled downtime, status). Responses are returned as JSON\nwhen `pretty=1` or by default. Authentication uses a per-user Nagios XI API\nkey passed via the `apikey` query parameter.\n\n\nContact Support:\n Name: Nagios Enterprises",
+      "type": "text/plain"
+    }
+  }
+}

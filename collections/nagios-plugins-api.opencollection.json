@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nagios XI REST Config Plugins API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Plugins",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Run NCPA Plugin",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/plugins/:pluginName",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "NCPA community_string token from agent config."
+              },
+              {
+                "name": "pluginName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "args",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Run NCPA Plugin"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

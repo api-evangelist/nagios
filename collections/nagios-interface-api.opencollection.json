@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nagios XI REST Config Interface API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Interface",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Network Interfaces",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/interface",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "NCPA community_string token from agent config."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Convert byte/bit values to the requested SI or binary unit."
+              },
+              {
+                "name": "delta",
+                "value": "",
+                "type": "query",
+                "description": "When 1, return per-second change rate."
+              }
+            ]
+          },
+          "docs": "Get Network Interfaces"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,130 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nagios XI REST Config System API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "System",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get System Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/system/status",
+            "params": [
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 to return human-readable formatted JSON."
+              }
+            ]
+          },
+          "docs": "Get System Status"
+        },
+        {
+          "info": {
+            "name": "Apply Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/system/applyconfig"
+          },
+          "docs": "Run Apply Configuration to validate and restart Nagios with any pending object changes."
+        },
+        {
+          "info": {
+            "name": "Schedule Downtime",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/system/scheduleddowntime",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "comment",
+                  "value": ""
+                },
+                {
+                  "name": "start",
+                  "value": ""
+                },
+                {
+                  "name": "end",
+                  "value": ""
+                },
+                {
+                  "name": "hosts[]",
+                  "value": ""
+                },
+                {
+                  "name": "services[host][]",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Schedule Downtime"
+        },
+        {
+          "info": {
+            "name": "Get System Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/system",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "NCPA community_string token from agent config."
+              }
+            ]
+          },
+          "docs": "Get System Information"
+        },
+        {
+          "info": {
+            "name": "Get Agent Version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/system/agent_version",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "NCPA community_string token from agent config."
+              }
+            ]
+          },
+          "docs": "Get Agent Version"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

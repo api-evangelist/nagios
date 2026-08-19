@@ -1,0 +1,107 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nagios XI REST Config API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Config",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Or Update Host",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/config/host",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Add or update a Nagios XI host definition. Use `force=1` to skip template-required directives and `applyconfig=1` to immediately apply the running configuration."
+        },
+        {
+          "info": {
+            "name": "Delete Host",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/config/host",
+            "params": [
+              {
+                "name": "host_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "applyconfig",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete Host"
+        },
+        {
+          "info": {
+            "name": "Create Or Update Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/config/service",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Create Or Update Service"
+        },
+        {
+          "info": {
+            "name": "Delete Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{nagiosXiHost}/nagiosxi/api/v1/config/service",
+            "params": [
+              {
+                "name": "host_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "service_description",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "applyconfig",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete Service"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
