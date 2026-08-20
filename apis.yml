@@ -28,6 +28,20 @@ tags:
   - Monitoring
   - Infrastructure Monitoring
   - Network Monitoring
+  - Open-Source
+  - IT Operations
+  - Alerting
+  - Observability
+  - Nagios XI
+  - Nagios Core
+  - NCPA
+  - NRPE
+  - NSCA
+  - NRDP
+tags_raw:
+  - Monitoring
+  - Infrastructure Monitoring
+  - Network Monitoring
   - Open Source
   - IT Operations
   - Alerting
@@ -203,6 +217,8 @@ apis:
   humanURL: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
   baseURL: https://{nagios-xi-host}/nagiosxi/api/v1
   tags:
+  - Interfaces
+  tags_raw:
   - Interface
   properties:
   - type: OpenAPI
