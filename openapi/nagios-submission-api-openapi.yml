@@ -1,38 +1,27 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Nagios XI REST Config Submission API
-  description: 'Built-in REST API for Nagios XI, the commercial enterprise distribution of
+  title: NRDP (Nagios Remote Data Processor) Submission API
+  description: 'NRDP is a PHP-based passive result collector for Nagios. It accepts host and
 
-    Nagios. The API is split into three sections: Objects (read-only backend for
+    service check results and external commands over HTTP POST in either XML or
 
-    hosts, services, contacts, host groups, etc.), Config (admin-only writes for
+    JSON form, then injects them into Nagios Core via the external command
 
-    hosts and services), and System (admin-only commands such as apply
-
-    configuration, scheduled downtime, status). Responses are returned as JSON
-
-    when `pretty=1` or by default. Authentication uses a per-user Nagios XI API
-
-    key passed via the `apikey` query parameter.
+    pipe. Authentication uses a token configured in `config.inc.php`.
 
     '
-  version: v1
+  version: 2.0.x
   contact:
     name: Nagios Enterprises
-    url: https://www.nagios.com/products/nagios-xi/
-  license:
-    name: Nagios XI Commercial License
-    url: https://www.nagios.com/legal/agreements/
+    url: https://github.com/NagiosEnterprises/nrdp
 servers:
-- url: https://{nagiosXiHost}/nagiosxi/api/v1
-  description: Self-hosted Nagios XI instance
+- url: https://{nrdpHost}/nrdp
+  description: Self-hosted NRDP collector.
   variables:
-    nagiosXiHost:
+    nrdpHost:
       default: nagios.example.com
-      description: Hostname or IP address of the Nagios XI server
 security:
-- ApiKeyQuery: []
-- ApiKeyHeader: []
+- TokenForm: []
 tags:
 - name: Submission
   description: Submit passive check results and external commands.
@@ -111,11 +100,7 @@ components:
             output:
               type: string
   securitySchemes:
-    ApiKeyQuery:
+    TokenForm:
       type: apiKey
       in: query
-      name: apikey
-    ApiKeyHeader:
-      type: apiKey
-      in: header
-      name: X-API-KEY
+      name: token

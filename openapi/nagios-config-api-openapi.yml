@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Nagios XI REST Config API
   description: 'Built-in REST API for Nagios XI, the commercial enterprise distribution of
@@ -139,22 +139,6 @@ paths:
                 $ref: '#/components/schemas/MutationResult'
 components:
   schemas:
-    MutationError:
-      type: object
-      properties:
-        error:
-          type: string
-          example: Missing required variables
-        missing:
-          type: array
-          items:
-            type: string
-    MutationResult:
-      type: object
-      properties:
-        success:
-          type: string
-          example: Removed web01 from the system. Config applied, Nagios Core was restarted.
     ServiceInput:
       type: object
       required:
@@ -196,6 +180,12 @@ components:
           enum:
           - 0
           - 1
+    MutationResult:
+      type: object
+      properties:
+        success:
+          type: string
+          example: Removed web01 from the system. Config applied, Nagios Core was restarted.
     HostInput:
       type: object
       required:
@@ -240,6 +230,16 @@ components:
           - 0
           - 1
           description: When 1, apply the configuration immediately after writing.
+    MutationError:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Missing required variables
+        missing:
+          type: array
+          items:
+            type: string
   securitySchemes:
     ApiKeyQuery:
       type: apiKey

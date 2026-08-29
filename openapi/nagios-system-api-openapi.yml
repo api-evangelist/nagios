@@ -1,28 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Nagios XI REST Config System API
-  description: 'Built-in REST API for Nagios XI, the commercial enterprise distribution of
-
-    Nagios. The API is split into three sections: Objects (read-only backend for
-
-    hosts, services, contacts, host groups, etc.), Config (admin-only writes for
-
-    hosts and services), and System (admin-only commands such as apply
-
-    configuration, scheduled downtime, status). Responses are returned as JSON
-
-    when `pretty=1` or by default. Authentication uses a per-user Nagios XI API
-
-    key passed via the `apikey` query parameter.
-
-    '
-  version: v1
-  contact:
-    name: Nagios Enterprises
-    url: https://www.nagios.com/products/nagios-xi/
-  license:
-    name: Nagios XI Commercial License
-    url: https://www.nagios.com/legal/agreements/
+  title: Nagios System API
+  version: '1.0'
+  description: 'Operations tagged System across 2 of this provider''s published API definitions: nagios-xi-openapi.yml, ncpa-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://{nagiosXiHost}/nagiosxi/api/v1
   description: Self-hosted Nagios XI instance
@@ -30,9 +10,11 @@ servers:
     nagiosXiHost:
       default: nagios.example.com
       description: Hostname or IP address of the Nagios XI server
-security:
-- ApiKeyQuery: []
-- ApiKeyHeader: []
+- url: https://{ncpaHost}:5693/api
+  description: NCPA agent listening on default TLS port 5693.
+  variables:
+    ncpaHost:
+      default: localhost
 tags:
 - name: System
   description: Admin-only endpoints to manage Nagios XI subsystems, apply configuration, schedule downtime, and execute commands.
@@ -52,6 +34,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SystemStatus'
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+    servers:
+    - url: https://{nagiosXiHost}/nagiosxi/api/v1
+      description: Self-hosted Nagios XI instance
+      variables:
+        nagiosXiHost:
+          default: nagios.example.com
+          description: Hostname or IP address of the Nagios XI server
   /system/applyconfig:
     post:
       tags:
@@ -62,6 +54,16 @@ paths:
       responses:
         '200':
           description: Apply configuration triggered.
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+    servers:
+    - url: https://{nagiosXiHost}/nagiosxi/api/v1
+      description: Self-hosted Nagios XI instance
+      variables:
+        nagiosXiHost:
+          default: nagios.example.com
+          description: Hostname or IP address of the Nagios XI server
   /system/scheduleddowntime:
     post:
       tags:
@@ -95,6 +97,16 @@ paths:
       responses:
         '200':
           description: Downtime scheduled.
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+    servers:
+    - url: https://{nagiosXiHost}/nagiosxi/api/v1
+      description: Self-hosted Nagios XI instance
+      variables:
+        nagiosXiHost:
+          default: nagios.example.com
+          description: Hostname or IP address of the Nagios XI server
   /system:
     get:
       tags:
@@ -110,6 +122,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MetricResponse'
+      security:
+      - TokenAuth: []
+    servers:
+    - url: https://{ncpaHost}:5693/api
+      description: NCPA agent listening on default TLS port 5693.
+      variables:
+        ncpaHost:
+          default: localhost
   /system/agent_version:
     get:
       tags:
@@ -121,16 +141,34 @@ paths:
       responses:
         '200':
           description: NCPA agent version.
+      security:
+      - TokenAuth: []
+    servers:
+    - url: https://{ncpaHost}:5693/api
+      description: NCPA agent listening on default TLS port 5693.
+      variables:
+        ncpaHost:
+          default: localhost
 components:
+  parameters:
+    Pretty:
+      name: pretty
+      in: query
+      schema:
+        type: integer
+        enum:
+        - 0
+        - 1
+        default: 0
+      description: Set to 1 to return human-readable formatted JSON.
+    Token:
+      name: token
+      in: query
+      required: true
+      schema:
+        type: string
+      description: NCPA community_string token from agent config.
   schemas:
-    MetricResponse:
-      type: object
-      additionalProperties:
-        type: array
-        description: '[value, "unit"] pair returned per metric.'
-        minItems: 2
-        maxItems: 2
-        items: {}
     SystemStatus:
       type: object
       properties:
@@ -198,24 +236,14 @@ components:
           enum:
           - 0
           - 1
-  parameters:
-    Token:
-      name: token
-      in: query
-      required: true
-      schema:
-        type: string
-      description: NCPA community_string token from agent config.
-    Pretty:
-      name: pretty
-      in: query
-      schema:
-        type: integer
-        enum:
-        - 0
-        - 1
-        default: 0
-      description: Set to 1 to return human-readable formatted JSON.
+    MetricResponse:
+      type: object
+      additionalProperties:
+        type: array
+        description: '[value, "unit"] pair returned per metric.'
+        minItems: 2
+        maxItems: 2
+        items: {}
   securitySchemes:
     ApiKeyQuery:
       type: apiKey
@@ -225,3 +253,10 @@ components:
       type: apiKey
       in: header
       name: X-API-KEY
+    TokenAuth:
+      type: apiKey
+      in: query
+      name: token
+x-refined-from:
+- nagios-xi-openapi.yml
+- ncpa-openapi.yml

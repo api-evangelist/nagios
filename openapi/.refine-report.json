@@ -1,34 +1,44 @@
 {
   "provider": "nagios",
   "sources": [
-    "nagios-config-api-openapi.yml",
-    "nagios-cpu-api-openapi.yml",
-    "nagios-disk-api-openapi.yml",
-    "nagios-interface-api-openapi.yml",
-    "nagios-memory-api-openapi.yml",
-    "nagios-objects-api-openapi.yml",
-    "nagios-plugins-api-openapi.yml",
-    "nagios-processes-api-openapi.yml",
-    "nagios-services-api-openapi.yml",
-    "nagios-submission-api-openapi.yml",
-    "nagios-system-api-openapi.yml"
+    "_original/nagios-xi-openapi.yml",
+    "_original/ncpa-openapi.yml",
+    "_original/nrdp-openapi.yml"
   ],
   "outputs": [
     "nagios-config-api-openapi.yml",
+    "nagios-objects-api-openapi.yml",
+    "nagios-system-api-openapi.yml",
     "nagios-cpu-api-openapi.yml",
     "nagios-disk-api-openapi.yml",
     "nagios-interface-api-openapi.yml",
     "nagios-memory-api-openapi.yml",
-    "nagios-objects-api-openapi.yml",
     "nagios-plugins-api-openapi.yml",
     "nagios-processes-api-openapi.yml",
     "nagios-services-api-openapi.yml",
-    "nagios-submission-api-openapi.yml",
-    "nagios-system-api-openapi.yml"
+    "nagios-submission-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "nagios-xi-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "ncpa-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "nrdp-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "tag 'System' spans 2 source specs (nagios-xi-openapi.yml, ncpa-openapi.yml): per-path servers applied"
+  ],
+  "skipped": [
+    "nagios-config-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nagios-cpu-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nagios-disk-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nagios-interface-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nagios-memory-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nagios-objects-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nagios-plugins-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nagios-processes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nagios-services-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nagios-submission-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nagios-system-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
