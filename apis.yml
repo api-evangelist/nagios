@@ -229,7 +229,7 @@ apis:
   humanURL: https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html
   baseURL: https://{nagios-xi-host}/nagiosxi/api/v1
   tags:
-  - Interfaces
+  - Interface
   tags_raw:
   - Interface
   properties:
