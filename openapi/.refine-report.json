@@ -26,7 +26,8 @@
     "nagios-xi-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "ncpa-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "nrdp-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "tag 'System' spans 2 source specs (nagios-xi-openapi.yml, ncpa-openapi.yml): per-path servers applied"
+    "tag 'System' spans 2 source specs (nagios-xi-openapi.yml, ncpa-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "nagios-config-api-openapi.yml: previously refined output, superseded by openapi/_original/",

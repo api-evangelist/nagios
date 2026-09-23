@@ -11,9 +11,7 @@ info:
 
     config. Both active polls and Nagios-style passive check results are
 
-    supported.
-
-    '
+    supported.'
   version: 3.x
   contact:
     name: Nagios Enterprises
@@ -55,14 +53,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/CheckResult'
 components:
-  parameters:
-    Token:
-      name: token
-      in: query
-      required: true
-      schema:
-        type: string
-      description: NCPA community_string token from agent config.
   schemas:
     CheckResult:
       type: object
@@ -81,6 +71,14 @@ components:
         stdout:
           type: string
           example: 'OK: 12% CPU usage | ''cpu_percent''=12;80;90;'
+  parameters:
+    Token:
+      name: token
+      in: query
+      required: true
+      schema:
+        type: string
+      description: NCPA community_string token from agent config.
   securitySchemes:
     TokenAuth:
       type: apiKey

@@ -11,9 +11,7 @@ info:
 
     config. Both active polls and Nagios-style passive check results are
 
-    supported.
-
-    '
+    supported.'
   version: 3.x
   contact:
     name: Nagios Enterprises

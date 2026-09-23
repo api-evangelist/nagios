@@ -7,9 +7,7 @@ info:
 
     JSON form, then injects them into Nagios Core via the external command
 
-    pipe. Authentication uses a token configured in `config.inc.php`.
-
-    '
+    pipe. Authentication uses a token configured in `config.inc.php`.'
   version: 2.0.x
   contact:
     name: Nagios Enterprises
@@ -35,9 +33,7 @@ paths:
 
         command (`cmd=submitcmd`). The body can be `application/x-www-form-urlencoded`
 
-        with an XML/JSON `XMLDATA`/`JSONDATA` field.
-
-        '
+        with an XML/JSON `XMLDATA`/`JSONDATA` field.'
       operationId: submitNrdp
       requestBody:
         required: true

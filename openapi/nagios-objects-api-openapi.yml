@@ -13,9 +13,7 @@ info:
 
     when `pretty=1` or by default. Authentication uses a per-user Nagios XI API
 
-    key passed via the `apikey` query parameter.
-
-    '
+    key passed via the `apikey` query parameter.'
   version: v1
   contact:
     name: Nagios Enterprises
@@ -237,46 +235,15 @@ paths:
           description: State history records.
 components:
   schemas:
-    Host:
-      type: object
-      properties:
-        host_object_id:
-          type: string
-        host_name:
-          type: string
-        display_name:
-          type: string
-        address:
-          type: string
-        check_command:
-          type: string
-        max_check_attempts:
-          type: integer
-        check_interval:
-          type: number
-        retry_interval:
-          type: number
-        notification_interval:
-          type: number
-        notification_period:
-          type: string
-        contacts:
-          type: string
-        contact_groups:
-          type: string
-        hostgroups:
-          type: array
-          items:
-            type: string
-    HostList:
+    ServiceList:
       type: object
       properties:
         recordcount:
           type: integer
-        host:
+        service:
           type: array
           items:
-            $ref: '#/components/schemas/Host'
+            $ref: '#/components/schemas/Service'
     HostStatus:
       type: object
       properties:
@@ -320,6 +287,64 @@ components:
           enum:
           - 0
           - 1
+    HostStatusList:
+      type: object
+      properties:
+        recordcount:
+          type: integer
+        hoststatus:
+          type: array
+          items:
+            $ref: '#/components/schemas/HostStatus'
+    HostList:
+      type: object
+      properties:
+        recordcount:
+          type: integer
+        host:
+          type: array
+          items:
+            $ref: '#/components/schemas/Host'
+    ServiceStatusList:
+      type: object
+      properties:
+        recordcount:
+          type: integer
+        servicestatus:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceStatus'
+    Host:
+      type: object
+      properties:
+        host_object_id:
+          type: string
+        host_name:
+          type: string
+        display_name:
+          type: string
+        address:
+          type: string
+        check_command:
+          type: string
+        max_check_attempts:
+          type: integer
+        check_interval:
+          type: number
+        retry_interval:
+          type: number
+        notification_interval:
+          type: number
+        notification_period:
+          type: string
+        contacts:
+          type: string
+        contact_groups:
+          type: string
+        hostgroups:
+          type: array
+          items:
+            type: string
     ServiceStatus:
       type: object
       properties:
@@ -347,33 +372,6 @@ components:
           type: string
         perfdata:
           type: string
-    ServiceList:
-      type: object
-      properties:
-        recordcount:
-          type: integer
-        service:
-          type: array
-          items:
-            $ref: '#/components/schemas/Service'
-    HostStatusList:
-      type: object
-      properties:
-        recordcount:
-          type: integer
-        hoststatus:
-          type: array
-          items:
-            $ref: '#/components/schemas/HostStatus'
-    ServiceStatusList:
-      type: object
-      properties:
-        recordcount:
-          type: integer
-        servicestatus:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServiceStatus'
     Service:
       type: object
       properties:

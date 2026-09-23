@@ -13,9 +13,7 @@ info:
 
     when `pretty=1` or by default. Authentication uses a per-user Nagios XI API
 
-    key passed via the `apikey` query parameter.
-
-    '
+    key passed via the `apikey` query parameter.'
   version: v1
   contact:
     name: Nagios Enterprises
@@ -180,6 +178,16 @@ components:
           enum:
           - 0
           - 1
+    MutationError:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Missing required variables
+        missing:
+          type: array
+          items:
+            type: string
     MutationResult:
       type: object
       properties:
@@ -230,16 +238,6 @@ components:
           - 0
           - 1
           description: When 1, apply the configuration immediately after writing.
-    MutationError:
-      type: object
-      properties:
-        error:
-          type: string
-          example: Missing required variables
-        missing:
-          type: array
-          items:
-            type: string
   securitySchemes:
     ApiKeyQuery:
       type: apiKey

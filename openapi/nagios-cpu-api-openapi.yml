@@ -11,9 +11,7 @@ info:
 
     config. Both active polls and Nagios-style passive check results are
 
-    supported.
-
-    '
+    supported.'
   version: 3.x
   contact:
     name: Nagios Enterprises
@@ -66,13 +64,15 @@ paths:
           description: Number of CPU cores.
 components:
   parameters:
-    Token:
-      name: token
+    Check:
+      name: check
       in: query
-      required: true
       schema:
-        type: string
-      description: NCPA community_string token from agent config.
+        type: integer
+        enum:
+        - 0
+        - 1
+      description: When 1, return a Nagios-style check result with returncode + stdout.
     Warning:
       name: warning
       in: query
@@ -85,15 +85,13 @@ components:
       schema:
         type: string
       description: Nagios-style critical threshold.
-    Check:
-      name: check
+    Token:
+      name: token
       in: query
+      required: true
       schema:
-        type: integer
-        enum:
-        - 0
-        - 1
-      description: When 1, return a Nagios-style check result with returncode + stdout.
+        type: string
+      description: NCPA community_string token from agent config.
   securitySchemes:
     TokenAuth:
       type: apiKey

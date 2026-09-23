@@ -11,9 +11,7 @@ info:
 
     config. Both active polls and Nagios-style passive check results are
 
-    supported.
-
-    '
+    supported.'
   version: 3.x
   contact:
     name: Nagios Enterprises
@@ -65,15 +63,12 @@ components:
       schema:
         type: string
       description: Nagios-style warning threshold (e.g. '80', '90:', '@70:90').
-    Check:
-      name: check
+    Critical:
+      name: critical
       in: query
       schema:
-        type: integer
-        enum:
-        - 0
-        - 1
-      description: When 1, return a Nagios-style check result with returncode + stdout.
+        type: string
+      description: Nagios-style critical threshold.
     Units:
       name: units
       in: query
@@ -89,6 +84,15 @@ components:
         - T
         - Ti
       description: Convert byte/bit values to the requested SI or binary unit.
+    Check:
+      name: check
+      in: query
+      schema:
+        type: integer
+        enum:
+        - 0
+        - 1
+      description: When 1, return a Nagios-style check result with returncode + stdout.
     Token:
       name: token
       in: query
@@ -96,12 +100,6 @@ components:
       schema:
         type: string
       description: NCPA community_string token from agent config.
-    Critical:
-      name: critical
-      in: query
-      schema:
-        type: string
-      description: Nagios-style critical threshold.
   securitySchemes:
     TokenAuth:
       type: apiKey
