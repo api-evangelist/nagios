@@ -137,63 +137,6 @@ paths:
                 $ref: '#/components/schemas/MutationResult'
 components:
   schemas:
-    ServiceInput:
-      type: object
-      required:
-      - host_name
-      - service_description
-      properties:
-        host_name:
-          type: string
-        service_description:
-          type: string
-        use:
-          type: string
-          example: xiwizard_website_ping_service
-        check_command:
-          type: string
-        max_check_attempts:
-          type: integer
-        check_interval:
-          type: number
-        retry_interval:
-          type: number
-        notification_interval:
-          type: number
-        check_period:
-          type: string
-        notification_period:
-          type: string
-        contacts:
-          type: string
-        contact_groups:
-          type: string
-        force:
-          type: integer
-          enum:
-          - 0
-          - 1
-        applyconfig:
-          type: integer
-          enum:
-          - 0
-          - 1
-    MutationError:
-      type: object
-      properties:
-        error:
-          type: string
-          example: Missing required variables
-        missing:
-          type: array
-          items:
-            type: string
-    MutationResult:
-      type: object
-      properties:
-        success:
-          type: string
-          example: Removed web01 from the system. Config applied, Nagios Core was restarted.
     HostInput:
       type: object
       required:
@@ -238,6 +181,63 @@ components:
           - 0
           - 1
           description: When 1, apply the configuration immediately after writing.
+    ServiceInput:
+      type: object
+      required:
+      - host_name
+      - service_description
+      properties:
+        host_name:
+          type: string
+        service_description:
+          type: string
+        use:
+          type: string
+          example: xiwizard_website_ping_service
+        check_command:
+          type: string
+        max_check_attempts:
+          type: integer
+        check_interval:
+          type: number
+        retry_interval:
+          type: number
+        notification_interval:
+          type: number
+        check_period:
+          type: string
+        notification_period:
+          type: string
+        contacts:
+          type: string
+        contact_groups:
+          type: string
+        force:
+          type: integer
+          enum:
+          - 0
+          - 1
+        applyconfig:
+          type: integer
+          enum:
+          - 0
+          - 1
+    MutationResult:
+      type: object
+      properties:
+        success:
+          type: string
+          example: Removed web01 from the system. Config applied, Nagios Core was restarted.
+    MutationError:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Missing required variables
+        missing:
+          type: array
+          items:
+            type: string
   securitySchemes:
     ApiKeyQuery:
       type: apiKey

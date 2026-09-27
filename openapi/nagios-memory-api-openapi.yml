@@ -63,12 +63,6 @@ components:
       schema:
         type: string
       description: Nagios-style warning threshold (e.g. '80', '90:', '@70:90').
-    Critical:
-      name: critical
-      in: query
-      schema:
-        type: string
-      description: Nagios-style critical threshold.
     Units:
       name: units
       in: query
@@ -84,6 +78,13 @@ components:
         - T
         - Ti
       description: Convert byte/bit values to the requested SI or binary unit.
+    Token:
+      name: token
+      in: query
+      required: true
+      schema:
+        type: string
+      description: NCPA community_string token from agent config.
     Check:
       name: check
       in: query
@@ -93,13 +94,12 @@ components:
         - 0
         - 1
       description: When 1, return a Nagios-style check result with returncode + stdout.
-    Token:
-      name: token
+    Critical:
+      name: critical
       in: query
-      required: true
       schema:
         type: string
-      description: NCPA community_string token from agent config.
+      description: Nagios-style critical threshold.
   securitySchemes:
     TokenAuth:
       type: apiKey

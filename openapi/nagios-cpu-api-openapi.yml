@@ -64,6 +64,25 @@ paths:
           description: Number of CPU cores.
 components:
   parameters:
+    Warning:
+      name: warning
+      in: query
+      schema:
+        type: string
+      description: Nagios-style warning threshold (e.g. '80', '90:', '@70:90').
+    Token:
+      name: token
+      in: query
+      required: true
+      schema:
+        type: string
+      description: NCPA community_string token from agent config.
+    Critical:
+      name: critical
+      in: query
+      schema:
+        type: string
+      description: Nagios-style critical threshold.
     Check:
       name: check
       in: query
@@ -73,25 +92,6 @@ components:
         - 0
         - 1
       description: When 1, return a Nagios-style check result with returncode + stdout.
-    Warning:
-      name: warning
-      in: query
-      schema:
-        type: string
-      description: Nagios-style warning threshold (e.g. '80', '90:', '@70:90').
-    Critical:
-      name: critical
-      in: query
-      schema:
-        type: string
-      description: Nagios-style critical threshold.
-    Token:
-      name: token
-      in: query
-      required: true
-      schema:
-        type: string
-      description: NCPA community_string token from agent config.
   securitySchemes:
     TokenAuth:
       type: apiKey

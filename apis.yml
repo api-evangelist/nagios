@@ -12,15 +12,22 @@ description: >-
 type: Index
 deliveryModel:
   model: saas
-  open_source: false
+  license_evidence:
+    not_product:
+    - nagiosenterprises/ncpa
+    - nagiosenterprises/nrdp
+    - nagiosenterprises/nrpe
+    - nagiosenterprises/nsca
+  open_source: unknown
   commercial: true
   callable_host: false
   label: Hosted service · you call their endpoint
-  confidence: medium
+  confidence: low
   source:
   - openapi
   - pricing
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
@@ -41,7 +48,7 @@ tags:
   - Monitoring
   - Infrastructure Monitoring
   - Network Monitoring
-  - Open-Source
+  - Open Source
   - IT Operations
   - Alerting
   - Observability
@@ -65,6 +72,7 @@ tags_raw:
   - NRPE
   - NSCA
   - NRDP
+  - Open-Source
 url: https://raw.githubusercontent.com/api-evangelist/nagios/refs/heads/main/apis.yml
 created: '2026-05-11'
 modified: '2026-05-23'
