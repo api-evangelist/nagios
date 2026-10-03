@@ -150,24 +150,6 @@ paths:
         ncpaHost:
           default: localhost
 components:
-  parameters:
-    Pretty:
-      name: pretty
-      in: query
-      schema:
-        type: integer
-        enum:
-        - 0
-        - 1
-        default: 0
-      description: Set to 1 to return human-readable formatted JSON.
-    Token:
-      name: token
-      in: query
-      required: true
-      schema:
-        type: string
-      description: NCPA community_string token from agent config.
   schemas:
     SystemStatus:
       type: object
@@ -244,6 +226,24 @@ components:
         minItems: 2
         maxItems: 2
         items: {}
+  parameters:
+    Pretty:
+      name: pretty
+      in: query
+      schema:
+        type: integer
+        enum:
+        - 0
+        - 1
+        default: 0
+      description: Set to 1 to return human-readable formatted JSON.
+    Token:
+      name: token
+      in: query
+      required: true
+      schema:
+        type: string
+      description: NCPA community_string token from agent config.
   securitySchemes:
     ApiKeyQuery:
       type: apiKey

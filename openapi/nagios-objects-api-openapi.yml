@@ -234,18 +234,25 @@ paths:
         '200':
           description: State history records.
 components:
-  parameters:
-    Pretty:
-      name: pretty
-      in: query
-      schema:
-        type: integer
-        enum:
-        - 0
-        - 1
-        default: 0
-      description: Set to 1 to return human-readable formatted JSON.
   schemas:
+    HostList:
+      type: object
+      properties:
+        recordcount:
+          type: integer
+        host:
+          type: array
+          items:
+            $ref: '#/components/schemas/Host'
+    ServiceStatusList:
+      type: object
+      properties:
+        recordcount:
+          type: integer
+        servicestatus:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceStatus'
     ServiceStatus:
       type: object
       properties:
@@ -282,15 +289,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/HostStatus'
-    ServiceStatusList:
-      type: object
-      properties:
-        recordcount:
-          type: integer
-        servicestatus:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServiceStatus'
     Host:
       type: object
       properties:
@@ -365,6 +363,15 @@ components:
           enum:
           - 0
           - 1
+    ServiceList:
+      type: object
+      properties:
+        recordcount:
+          type: integer
+        service:
+          type: array
+          items:
+            $ref: '#/components/schemas/Service'
     Service:
       type: object
       properties:
@@ -390,24 +397,17 @@ components:
           type: string
         notification_period:
           type: string
-    HostList:
-      type: object
-      properties:
-        recordcount:
-          type: integer
-        host:
-          type: array
-          items:
-            $ref: '#/components/schemas/Host'
-    ServiceList:
-      type: object
-      properties:
-        recordcount:
-          type: integer
-        service:
-          type: array
-          items:
-            $ref: '#/components/schemas/Service'
+  parameters:
+    Pretty:
+      name: pretty
+      in: query
+      schema:
+        type: integer
+        enum:
+        - 0
+        - 1
+        default: 0
+      description: Set to 1 to return human-readable formatted JSON.
   securitySchemes:
     ApiKeyQuery:
       type: apiKey

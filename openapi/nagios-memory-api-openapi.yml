@@ -57,12 +57,28 @@ paths:
           description: Swap usage.
 components:
   parameters:
-    Warning:
-      name: warning
+    Token:
+      name: token
+      in: query
+      required: true
+      schema:
+        type: string
+      description: NCPA community_string token from agent config.
+    Critical:
+      name: critical
       in: query
       schema:
         type: string
-      description: Nagios-style warning threshold (e.g. '80', '90:', '@70:90').
+      description: Nagios-style critical threshold.
+    Check:
+      name: check
+      in: query
+      schema:
+        type: integer
+        enum:
+        - 0
+        - 1
+      description: When 1, return a Nagios-style check result with returncode + stdout.
     Units:
       name: units
       in: query
@@ -78,28 +94,12 @@ components:
         - T
         - Ti
       description: Convert byte/bit values to the requested SI or binary unit.
-    Token:
-      name: token
-      in: query
-      required: true
-      schema:
-        type: string
-      description: NCPA community_string token from agent config.
-    Check:
-      name: check
-      in: query
-      schema:
-        type: integer
-        enum:
-        - 0
-        - 1
-      description: When 1, return a Nagios-style check result with returncode + stdout.
-    Critical:
-      name: critical
+    Warning:
+      name: warning
       in: query
       schema:
         type: string
-      description: Nagios-style critical threshold.
+      description: Nagios-style warning threshold (e.g. '80', '90:', '@70:90').
   securitySchemes:
     TokenAuth:
       type: apiKey

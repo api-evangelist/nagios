@@ -50,6 +50,13 @@ paths:
           description: Network interface counters.
 components:
   parameters:
+    Token:
+      name: token
+      in: query
+      required: true
+      schema:
+        type: string
+      description: NCPA community_string token from agent config.
     Units:
       name: units
       in: query
@@ -65,13 +72,6 @@ components:
         - T
         - Ti
       description: Convert byte/bit values to the requested SI or binary unit.
-    Token:
-      name: token
-      in: query
-      required: true
-      schema:
-        type: string
-      description: NCPA community_string token from agent config.
   securitySchemes:
     TokenAuth:
       type: apiKey
