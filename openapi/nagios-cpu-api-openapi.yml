@@ -64,13 +64,6 @@ paths:
           description: Number of CPU cores.
 components:
   parameters:
-    Token:
-      name: token
-      in: query
-      required: true
-      schema:
-        type: string
-      description: NCPA community_string token from agent config.
     Check:
       name: check
       in: query
@@ -92,6 +85,13 @@ components:
       schema:
         type: string
       description: Nagios-style critical threshold.
+    Token:
+      name: token
+      in: query
+      required: true
+      schema:
+        type: string
+      description: NCPA community_string token from agent config.
   securitySchemes:
     TokenAuth:
       type: apiKey

@@ -244,15 +244,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Host'
-    ServiceStatusList:
-      type: object
-      properties:
-        recordcount:
-          type: integer
-        servicestatus:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServiceStatus'
     ServiceStatus:
       type: object
       properties:
@@ -280,46 +271,15 @@ components:
           type: string
         perfdata:
           type: string
-    HostStatusList:
+    ServiceList:
       type: object
       properties:
         recordcount:
           type: integer
-        hoststatus:
+        service:
           type: array
           items:
-            $ref: '#/components/schemas/HostStatus'
-    Host:
-      type: object
-      properties:
-        host_object_id:
-          type: string
-        host_name:
-          type: string
-        display_name:
-          type: string
-        address:
-          type: string
-        check_command:
-          type: string
-        max_check_attempts:
-          type: integer
-        check_interval:
-          type: number
-        retry_interval:
-          type: number
-        notification_interval:
-          type: number
-        notification_period:
-          type: string
-        contacts:
-          type: string
-        contact_groups:
-          type: string
-        hostgroups:
-          type: array
-          items:
-            type: string
+            $ref: '#/components/schemas/Service'
     HostStatus:
       type: object
       properties:
@@ -363,15 +323,55 @@ components:
           enum:
           - 0
           - 1
-    ServiceList:
+    ServiceStatusList:
       type: object
       properties:
         recordcount:
           type: integer
-        service:
+        servicestatus:
           type: array
           items:
-            $ref: '#/components/schemas/Service'
+            $ref: '#/components/schemas/ServiceStatus'
+    HostStatusList:
+      type: object
+      properties:
+        recordcount:
+          type: integer
+        hoststatus:
+          type: array
+          items:
+            $ref: '#/components/schemas/HostStatus'
+    Host:
+      type: object
+      properties:
+        host_object_id:
+          type: string
+        host_name:
+          type: string
+        display_name:
+          type: string
+        address:
+          type: string
+        check_command:
+          type: string
+        max_check_attempts:
+          type: integer
+        check_interval:
+          type: number
+        retry_interval:
+          type: number
+        notification_interval:
+          type: number
+        notification_period:
+          type: string
+        contacts:
+          type: string
+        contact_groups:
+          type: string
+        hostgroups:
+          type: array
+          items:
+            type: string
     Service:
       type: object
       properties:
