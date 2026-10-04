@@ -567,6 +567,9 @@ apis:
   - type: JSONStructure
     url: json-structure/nagios-check-result-structure.json
 common:
+  - type: CapabilityMap
+    url: capabilities/nagios-capability-edges.yml
+    name: Nagios Business Capability Map
   - type: AgenticAccess
     url: agentic-access/nagios-agentic-access.yml
   - type: DomainSecurity
