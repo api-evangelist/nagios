@@ -4,13 +4,12 @@
     {
       "source": "https://www.nagios.com/feed/",
       "feed_url": "https://www.nagios.com/feed/",
-      "title": "Nagios Blog",
+      "title": "",
       "saved": 0,
-      "nature": "undetermined",
-      "nature_basis": null
+      "method": "feed"
     }
   ],
-  "fetched": "2026-10-03T12:15:37Z",
+  "fetched": "2026-10-10T13:15:00Z",
   "post_count": 16,
   "feed_nature": "undetermined",
   "feed_nature_basis": null,
