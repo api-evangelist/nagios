@@ -235,42 +235,6 @@ paths:
           description: State history records.
 components:
   schemas:
-    HostList:
-      type: object
-      properties:
-        recordcount:
-          type: integer
-        host:
-          type: array
-          items:
-            $ref: '#/components/schemas/Host'
-    ServiceStatus:
-      type: object
-      properties:
-        service_object_id:
-          type: string
-        host_name:
-          type: string
-        service_description:
-          type: string
-        current_state:
-          type: integer
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          description: 0=OK, 1=WARNING, 2=CRITICAL, 3=UNKNOWN.
-        last_check:
-          type: string
-          format: date-time
-        last_state_change:
-          type: string
-          format: date-time
-        output:
-          type: string
-        perfdata:
-          type: string
     ServiceList:
       type: object
       properties:
@@ -280,6 +244,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Service'
+    Service:
+      type: object
+      properties:
+        service_object_id:
+          type: string
+        host_name:
+          type: string
+        service_description:
+          type: string
+        display_name:
+          type: string
+        check_command:
+          type: string
+        max_check_attempts:
+          type: integer
+        check_interval:
+          type: number
+        retry_interval:
+          type: number
+        notification_interval:
+          type: number
+        check_period:
+          type: string
+        notification_period:
+          type: string
     HostStatus:
       type: object
       properties:
@@ -323,24 +312,6 @@ components:
           enum:
           - 0
           - 1
-    ServiceStatusList:
-      type: object
-      properties:
-        recordcount:
-          type: integer
-        servicestatus:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServiceStatus'
-    HostStatusList:
-      type: object
-      properties:
-        recordcount:
-          type: integer
-        hoststatus:
-          type: array
-          items:
-            $ref: '#/components/schemas/HostStatus'
     Host:
       type: object
       properties:
@@ -372,7 +343,25 @@ components:
           type: array
           items:
             type: string
-    Service:
+    HostList:
+      type: object
+      properties:
+        recordcount:
+          type: integer
+        host:
+          type: array
+          items:
+            $ref: '#/components/schemas/Host'
+    ServiceStatusList:
+      type: object
+      properties:
+        recordcount:
+          type: integer
+        servicestatus:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceStatus'
+    ServiceStatus:
       type: object
       properties:
         service_object_id:
@@ -381,22 +370,33 @@ components:
           type: string
         service_description:
           type: string
-        display_name:
-          type: string
-        check_command:
-          type: string
-        max_check_attempts:
+        current_state:
           type: integer
-        check_interval:
-          type: number
-        retry_interval:
-          type: number
-        notification_interval:
-          type: number
-        check_period:
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          description: 0=OK, 1=WARNING, 2=CRITICAL, 3=UNKNOWN.
+        last_check:
           type: string
-        notification_period:
+          format: date-time
+        last_state_change:
           type: string
+          format: date-time
+        output:
+          type: string
+        perfdata:
+          type: string
+    HostStatusList:
+      type: object
+      properties:
+        recordcount:
+          type: integer
+        hoststatus:
+          type: array
+          items:
+            $ref: '#/components/schemas/HostStatus'
   parameters:
     Pretty:
       name: pretty

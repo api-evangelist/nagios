@@ -178,22 +178,6 @@ components:
           enum:
           - 0
           - 1
-    MutationError:
-      type: object
-      properties:
-        error:
-          type: string
-          example: Missing required variables
-        missing:
-          type: array
-          items:
-            type: string
-    MutationResult:
-      type: object
-      properties:
-        success:
-          type: string
-          example: Removed web01 from the system. Config applied, Nagios Core was restarted.
     HostInput:
       type: object
       required:
@@ -238,6 +222,22 @@ components:
           - 0
           - 1
           description: When 1, apply the configuration immediately after writing.
+    MutationResult:
+      type: object
+      properties:
+        success:
+          type: string
+          example: Removed web01 from the system. Config applied, Nagios Core was restarted.
+    MutationError:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Missing required variables
+        missing:
+          type: array
+          items:
+            type: string
   securitySchemes:
     ApiKeyQuery:
       type: apiKey
