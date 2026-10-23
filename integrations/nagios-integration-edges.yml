@@ -1,0 +1,27 @@
+generated: '2026-10-22'
+method: searched
+checked:
+- ansible/integrations/ansible-integration-edges.yml
+source:
+- ansible/integrations/ansible-integration-edges.yml
+edges:
+- partner_name: Ansible (ansible-galaxy)
+  partner: ansible
+  partner_match: mirror
+  mirror_match: register
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: ansible-galaxy
+  evidence: https://galaxy.ansible.com/ui/repo/published/nagios/nagios_xi/
+  mirror_of: ansible/integrations/ansible-integration-edges.yml
+  apps:
+  - nagios.nagios_xi
+  - nagios.ncpa_deploy_and_register
+  - nagios.xi_inventory
+  - nagios.ncpa
+  listing_count: 1
+  detected: '2026-10-22'
+  detected_by: mirror-platform-listings.py
+  category: configuration-management content listing (Ansible collection)
