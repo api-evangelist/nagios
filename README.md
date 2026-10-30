@@ -1,4 +1,4 @@
-# Nagios (nagios)
+# Nagios
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,189 +66,177 @@
 
 Nagios is a family of open-source and commercial IT infrastructure monitoring tools, including Nagios Core (the original open-source monitoring engine), Nagios XI (the commercial enterprise distribution), Nagios Fusion, Nagios Log Server, and Nagios Network Analyzer, used to monitor hosts, services, networks, applications, and metrics with alerting and reporting. Nagios Core itself has no central HTTP API; Nagios XI ships a built-in REST API (typically reached at https://{nagios-xi-host}/nagiosxi/api/v1/) for reading, writing, deleting, and updating monitoring configuration and status. The Nagios XI API is authenticated via a per-user API key passed as a query parameter or header. Passive check results can also be submitted via NRDP (HTTP, JSON/XML) or NSCA (encrypted TCP, port 5667), and the NCPA cross-platform agent exposes a hierarchical REST API on port 5693.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/nagios/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/nagios/refs/heads/main/apis.yml)
+**Areas:** Monitoring · Infrastructure Monitoring · Network Monitoring · Open Source · IT Operations · Alerting · Observability · Nagios XI · Nagios Core · NCPA · NRPE · NSCA
 
-## Scope
+## Nagios on APIs.io
 
-- **Type:** Index
+Everything profiled for Nagios is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/nagios/](https://apis.io/providers/nagios/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (13)
 
-- Monitoring
-- Infrastructure Monitoring
-- Network Monitoring
-- Open Source
-- IT Operations
-- Alerting
-- Observability
-- Nagios XI
-- Nagios Core
-- NCPA
-- NRPE
-- NSCA
-- NRDP
+- [NSCA (Nagios Service Check Acceptor)](https://apis.io/apis/nagios/nsca/) — Encrypted binary TCP daemon (default port 5667) that accepts passive service/host check results from remote machines. Not REST — clients send tab-delimited…
+- [NRPE (Nagios Remote Plugin Executor)](https://apis.io/apis/nagios/nrpe/) — Daemon that runs Nagios plugins on a remote Linux/Unix host on TCP port 5666, returning the plugin's exit code and output to the Nagios server. Binary…
+- [Nagios Config API](https://apis.io/apis/nagios/nagios-config-api/) — Admin-only endpoints to add, modify, and delete hosts and services.
+- [Nagios CPU API](https://apis.io/apis/nagios/nagios-cpu-api/) — System-wide CPU utilization and core counts.
+- [Nagios Disk API](https://apis.io/apis/nagios/nagios-disk-api/) — Logical, physical, and mount-point disk metrics.
+- [Nagios Interface API](https://apis.io/apis/nagios/nagios-interface-api/) — Network interface byte and packet counters.
+- [Nagios Memory API](https://apis.io/apis/nagios/nagios-memory-api/) — Physical memory and swap.
+- [Nagios Objects API](https://apis.io/apis/nagios/nagios-objects-api/) — Read-only backend for hosts, services, host groups, contacts, downtime, history, and other monitored objects.
+- [Nagios Plugins API](https://apis.io/apis/nagios/nagios-plugins-api/) — User-defined Nagios-style plugins executed by the agent.
+- [Nagios Processes API](https://apis.io/apis/nagios/nagios-processes-api/) — Running process inventory and resource use.
+- [Nagios Services API](https://apis.io/apis/nagios/nagios-services-api/) — Host service / daemon status.
+- [Nagios Submission API](https://apis.io/apis/nagios/nagios-submission-api/) — Submit passive check results and external commands.
+- [Nagios System API](https://apis.io/apis/nagios/nagios-system-api/) — Admin-only endpoints to manage Nagios XI subsystems, apply configuration, schedule downtime, and execute commands.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-11
-- **Modified:** 2026-05-23
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Nagios XI REST API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Built-in REST API for Nagios XI. Split into three sections: Objects (read-only backend for hosts, services, host groups, contacts, downtime, history), Config (admin-only writes for hosts and services), and System (admin-only commands such as apply configuration, scheduled downtime, status). Responses are returned as JSON. Authentication uses a per-user Nagios XI API key passed via the `apikey` query parameter (or header). Custom endpoints can be added by creating a Nagios XI Component.
+- [Nagios Agentic Access](https://apis.io/agentic-access/nagios/nagios-agentic-access/)
 
-- **Human URL:** [https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html](https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html)
-- **Base URL:** `https://{nagios-xi-host}/nagiosxi/api/v1`
+#### JSON Schema (4)
 
-#### Tags
+The data models the API reads and writes.
 
-- Monitoring
-- REST
-- Nagios XI
-- IT Operations
+- [Nagios Check Result](https://apis.io/schemas/nagios/nagios-check-result/)
+- [Nagios XI Host](https://apis.io/schemas/nagios/nagios-xi-host/)
+- [Nagios XI Service](https://apis.io/schemas/nagios/nagios-xi-service/)
+- [NCPA Metric Response](https://apis.io/schemas/nagios/ncpa-metric/)
 
-#### Properties
+#### JSON Structure (2)
 
-- [Documentation](https://support.nagios.com/kb/article/nagios-xi-rest-api-176.html)
-- [A P I  P D F  Guide](https://assets.nagios.com/downloads/nagiosxi/docs/Accessing-and-Using-the-XI-REST-API.pdf)
-- [Backend  A P I](https://assets.nagios.com/downloads/nagiosxi/docs/Accessing_The_XI_Backend_API.pdf)
-- [Automated  Host  Management](https://assets.nagios.com/downloads/nagiosxi/docs/Automated_Host_Management.pdf)
-- [OpenAPI](openapi/nagios-xi-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nagios-xi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nagios-xi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/nagios-xi-host-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/nagios-xi-service-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/nagios-xi-host-structure.json)
-- [Spectral Rules](rules/nagios-xi-rules.yml)
+Data models expressed in JSON Structure.
 
-### NCPA (Nagios Cross-Platform Agent) API
+- [Nagios Check Result Structure](https://apis.io/json-structure/nagios/nagios-check-result-structure/)
+- [Nagios Xi Host Structure](https://apis.io/json-structure/nagios/nagios-xi-host-structure/)
 
-REST API exposed by the Nagios Cross-Platform Agent (NCPA), a cross-platform monitoring agent that runs on Linux, Windows, and macOS. Uses a hierarchical URL structure `/api/{module}/{node1}/{node2}` for CPU, memory, disk, interface, process, service, and plugin metrics. Both active polling and passive Nagios-style check results (`check=1` + thresholds) are supported. Authenticated via a `token` query parameter matching the `community_string` in the agent config. Default TLS port 5693.
+#### JSON-LD (1)
 
-- **Human URL:** [https://www.nagios.org/ncpa/help/3.x/api.html](https://www.nagios.org/ncpa/help/3.x/api.html)
-- **Base URL:** `https://{ncpa-host}:5693/api`
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [Nagios Context](https://apis.io/jsonld/nagios/nagios-context/)
 
-- Monitoring
-- Agent
-- REST
-- NCPA
+#### Vocabulary (1)
 
-#### Properties
+The provider's domain terms, defined.
 
-- [Documentation](https://www.nagios.org/ncpa/help/3.x/api.html)
-- [Git Hub](https://github.com/NagiosEnterprises/ncpa)
-- [OpenAPI](openapi/ncpa-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/ncpa.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/ncpa.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/ncpa-metric-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [Spectral Rules](rules/ncpa-rules.yml)
+- [Nagios Vocabulary](https://apis.io/vocabularies/nagios/nagios-vocabulary/)
 
-### NRDP (Nagios Remote Data Processor) API
+#### Examples (7)
 
-PHP-based HTTP collector that accepts passive check results and external commands. Two commands are supported: `submitcheck` (host/service check results) and `submitcmd` (Nagios external command). Payloads can be sent as XML (`XMLDATA`) or JSON (`JSONDATA`) in a POST form. Authenticated by a token configured in `config.inc.php` with optional per-command deny mappings.
+Example requests and responses.
 
-- **Human URL:** [https://github.com/NagiosEnterprises/nrdp](https://github.com/NagiosEnterprises/nrdp)
-- **Base URL:** `https://{nrdp-host}/nrdp`
+- [Nagios Xi Host Create Example](https://apis.io/examples/nagios/nagios-xi-host-create-example/)
+- [Nagios Xi Host Status Example](https://apis.io/examples/nagios/nagios-xi-host-status-example/)
+- [Nagios Xi Service Delete Example](https://apis.io/examples/nagios/nagios-xi-service-delete-example/)
+- [Nagios Xi System Status Example](https://apis.io/examples/nagios/nagios-xi-system-status-example/)
+- [Ncpa Cpu Percent Example](https://apis.io/examples/nagios/ncpa-cpu-percent-example/)
+- [Ncpa Memory Virtual Example](https://apis.io/examples/nagios/ncpa-memory-virtual-example/)
+- [Nrdp Submit Check Example](https://apis.io/examples/nagios/nrdp-submit-check-example/)
 
-#### Tags
+#### Collections (14)
 
-- Monitoring
-- Passive Check
-- REST
-- NRDP
+Postman and Open Collection request collections.
 
-#### Properties
+- [Nagios XI REST Config API](https://apis.io/collections/nagios/open-nagios-config-api/)
+- [Nagios XI REST Config CPU API](https://apis.io/collections/nagios/open-nagios-cpu-api/)
+- [Nagios XI REST Config Disk API](https://apis.io/collections/nagios/open-nagios-disk-api/)
+- [Nagios XI REST Config Interface API](https://apis.io/collections/nagios/open-nagios-interface-api/)
+- [Nagios XI REST Config Memory API](https://apis.io/collections/nagios/open-nagios-memory-api/)
+- [Nagios XI REST Config Objects API](https://apis.io/collections/nagios/open-nagios-objects-api/)
+- [Nagios XI REST Config Plugins API](https://apis.io/collections/nagios/open-nagios-plugins-api/)
+- [Nagios XI REST Config Processes API](https://apis.io/collections/nagios/open-nagios-processes-api/)
+- [Nagios XI REST Config Services API](https://apis.io/collections/nagios/open-nagios-services-api/)
+- [Nagios XI REST Config Submission API](https://apis.io/collections/nagios/open-nagios-submission-api/)
+- [Nagios XI REST Config System API](https://apis.io/collections/nagios/open-nagios-system-api/)
+- [Nagios XI REST API](https://apis.io/collections/nagios/open-nagios-xi/)
+- [NCPA (Nagios Cross-Platform Agent) API](https://apis.io/collections/nagios/open-ncpa/)
+- [NRDP (Nagios Remote Data Processor) API](https://apis.io/collections/nagios/open-nrdp/)
 
-- [Git Hub](https://github.com/NagiosEnterprises/nrdp)
-- [OpenAPI](openapi/nrdp-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nrdp.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nrdp.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/nagios-check-result-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/nagios-check-result-structure.json)
+#### Governance rules (3)
 
-### NSCA (Nagios Service Check Acceptor)
+Spectral rulesets for the provider's contracts.
 
-Encrypted binary TCP daemon (default port 5667) that accepts passive service/host check results from remote machines. Not REST — clients send tab-delimited records over a shared-secret-encrypted socket. Use NRDP for an HTTP/JSON equivalent.
+- [Nagios — jsonschema rules](https://apis.io/rules/nagios/nagios-jsonschema-spectral-rules/)
+- [Nagios — xi rules](https://apis.io/rules/nagios/nagios-xi-rules/)
+- [Nagios — ncpa rules](https://apis.io/rules/nagios/ncpa-rules/)
 
-- **Human URL:** [https://github.com/NagiosEnterprises/nsca](https://github.com/NagiosEnterprises/nsca)
-- **Base URL:** `tcp://{nsca-host}:5667`
+#### Security (2)
 
-#### Tags
+Authentication, trust centre, and vulnerability disclosure.
 
-- Monitoring
-- Passive Check
-- Binary Protocol
-- NSCA
+- [Nagios Authentication](https://apis.io/security/nagios/nagios-authentication/)
+- [Nagios Domain Security](https://apis.io/security/nagios/nagios-domain-security/)
 
-#### Properties
+#### Plans and pricing (1)
 
-- [Git Hub](https://github.com/NagiosEnterprises/nsca)
-- [Postman Collection](collections/nagios-xi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nagios-xi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/ncpa.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/ncpa.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nrdp.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nrdp.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Published plans, tiers and prices.
 
-### NRPE (Nagios Remote Plugin Executor)
+- [Nagios Plans Pricing](https://apis.io/plans/nagios/nagios-plans-pricing/)
 
-Daemon that runs Nagios plugins on a remote Linux/Unix host on TCP port 5666, returning the plugin's exit code and output to the Nagios server. Binary protocol, not REST.
+## Where to find this API
 
-- **Human URL:** [https://github.com/NagiosEnterprises/nrpe](https://github.com/NagiosEnterprises/nrpe)
-- **Base URL:** `tcp://{nrpe-host}:5666`
-
-#### Tags
-
-- Monitoring
-- Active Check
-- Binary Protocol
-- NRPE
-
-#### Properties
-
-- [Git Hub](https://github.com/NagiosEnterprises/nrpe)
-- [Postman Collection](collections/nagios-xi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nagios-xi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/ncpa.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/ncpa.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nrdp.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nrdp.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.nagios.org)
-- [Nagios  X I  Website](https://www.nagios.com/products/nagios-xi/)
 - [Documentation](https://www.nagios.org/documentation/)
-- [Nagios Library](https://library.nagios.com/docs/)
-- [Support  Knowledgebase](https://support.nagios.com/kb/)
 - [Pricing](https://www.nagios.com/products/pricing/)
-- [Downloads](https://www.nagios.org/downloads/)
-- [Nagios Exchange](https://exchange.nagios.org/)
-- [GitHub Organization](https://github.com/NagiosEnterprises)
-- [Source Repo](https://github.com/NagiosEnterprises/nagioscore)
-- [Source Repo](https://github.com/NagiosEnterprises/ncpa)
-- [Source Repo](https://github.com/NagiosEnterprises/nrpe)
-- [Source Repo](https://github.com/NagiosEnterprises/nsca)
-- [Source Repo](https://github.com/NagiosEnterprises/nrdp)
-- [Source Repo](https://github.com/NagiosEnterprises/ndoutils)
-- [Source Repo](https://github.com/NagiosEnterprises/nagios-mod-gearman)
-- [Python S D K](https://github.com/NagiosEnterprises/napiv2)
-- [SDK](https://github.com/NagiosEnterprises/automation)
-- [Prometheus Exporter](https://github.com/NagiosEnterprises/nagprom)
-- [Service Now Integration](https://github.com/NagiosEnterprises/NagiosXI-ServiceNow-EventHandler)
-- [Pager Duty Integration](https://github.com/NagiosEnterprises/nagiosxi-pagerduty-handler)
-- [V Mware Integration](https://github.com/NagiosEnterprises/NSXMon)
-- [LinkedIn](https://www.linkedin.com/company/nagios-enterprises-llc)
-- [License](https://github.com/NagiosEnterprises/nagioscore/blob/master/LICENSE)
-- [Plans](plans/nagios-plans-pricing.yml)
-- [Vocabulary](vocabulary/nagios-vocabulary.yml)
-- [JSON-LD](json-ld/nagios-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+- [Blog](https://www.nagios.com/feed/)
+- [GitHub](https://github.com/NagiosEnterprises)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 35.7** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 53.1 |
+| Contract governance | 27.3 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 31.0 |
+| Access clarity | 18.4 |
+
+**Agent readiness 17.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/nagios/](https://apis.io/providers/nagios/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Nagios: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/nagios/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
